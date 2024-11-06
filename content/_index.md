@@ -194,11 +194,12 @@ src = "images/sail-logo.jpg"
 ## 4. Neural Search Engine
 <div style="text-align: left; font-size: 28px; margin-left: 30px;">
   <span class="fragment">
-  <p>With tradition physics-based docking tools (Glide, Smina), evaluating affinity of a ligand can be prohibitively expensive. This process can still be expensive (average 15 mins/pose). Current docking runtime:</p>
+  <p>Traditional physics-based docking tools (e.g., Glide, Smina) are computationally expensive to evaluate ligand affinity.</p>
   </span>
   <ul style="margin-left: 40px; list-style-type: none;">
-    <li class="fragment">- <strong>Our model</strong>: 5s/64 poses per pair</li>
-    <li class="fragment">- <strong>Chai</strong>: 1 min/5 poses per pair</li>
+    <li class="fragment">- <strong>Traditional Tools</strong>: 15mins/1 pose</li>
+    <li class="fragment">- <strong>Our model</strong>: 5s/64 poses</li>
+    <li class="fragment">- <strong>Chai</strong>: 1 min/5 poses</li>
   </ul>
 </div>
 
