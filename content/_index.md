@@ -26,7 +26,8 @@ src = "images/sail-logo.jpg"
   <span class="fragment">For modern libraries, it is feasible scaling up to billions or even trillions of compounds enhances the reach and impact of virtual screening.</span>
 
 <span class="fragment">
-  <img src="images/enamine1.png" width="60%">
+    <figure style="display: flex; flex-direction: column; align-items: center; width: 80%; margin-top: -30px; margin-left: 100px">
+    <img src="images/vs.png">
 </span>
 
 ---
@@ -186,7 +187,7 @@ src = "images/sail-logo.jpg"
     <li class="fragment">Surrogate model (selection model): Gaussian Process, Neural net, Random forest</li>
     <li class="fragment">Acquisition function: UCB, Greedy, Thompson sampling</li>
   </ul>
-  <img src="images/vs.png" alt="Active Virtual Screening Diagram" style="width: 80%;" class="fragment">
+  <img src="images/avs.png" alt="Active Virtual Screening Diagram" style="width: 80%;" class="fragment">
 
 ---
 {{< slide auto-animate="" >}}
