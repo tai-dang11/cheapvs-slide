@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+  <head><script src="/class/cs329h/slides/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=class/cs329h/slides/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<title>Chapter 1: Introduction</title>
+
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><link rel="stylesheet" href="/class/cs329h/slides/reveal-js/dist/reset.css">
+<link rel="stylesheet" href="/class/cs329h/slides/reveal-js/dist/reveal.css"><link rel="stylesheet" href="/class/cs329h/slides/css/serif.css" id="theme"><link rel="stylesheet" href="/class/cs329h/slides/highlight-js/default.min.css">
+  </head>
+  <body>
+    
+    <style>
+      #logo {
+        position: absolute;
+        top: 1%;
+        left: 1%;
+        width: 15%;
+      }
+    </style>
+    <img id="logo" src="../images/sail-logo.jpg" alt="">
+    
+    <div class="reveal">
+      <div class="slides">
+  
+
+    
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h2 id="section-2-related-work">Section 2: Related Work</h2>
+<p><a href='http://localhost:1313/class/cs329h/slides/#/1'> All Sections </a></p>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="the-challenge-of-growing-models-and-datasets"><strong>The Challenge of Growing Models and Datasets</strong></h3>
+<ul>
+<li>Increasing Evaluation Costs
+<ul>
+<li>Larger models and datasets raise the cost of evaluation</li>
+<li>Search for more efficient LLM evaluation methods is ongoing</li>
+</ul>
+</li>
+</ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="flash-helm-perlitz-et-al-2023"><strong>Flash-HELM (Perlitz et al. 2023)</strong></h3>
+<ul>
+<li>Prioritizes Higher-Ranked Models
+<ul>
+<li>Reduces computational costs by focusing on top models</li>
+</ul>
+</li>
+<li>Limitations
+<ul>
+<li>Ignores lower-ranked models, important in safety benchmarks</li>
+<li>Random subsampling may cause significant estimation errors</li>
+</ul>
+</li>
+</ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="anchor-based-coreset-selection-vivek-et-al-2023"><strong>Anchor-Based Coreset Selection (Vivek et al. 2023)</strong></h3>
+<ul>
+<li>Coresets Based on Model Confidence
+<ul>
+<li>Focuses on models&rsquo; confidence in selecting the correct class</li>
+</ul>
+</li>
+<li>Limitations
+<ul>
+<li>Lacks rigorous theory</li>
+<li>Can be unreliable if correctness patterns are spurious</li>
+</ul>
+</li>
+</ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="irt-based-approaches-in-recent-work"><strong>IRT-Based Approaches in Recent Work</strong></h3>
+<ul>
+<li>Tiny Benchmarks (Polo et al. 2024)
+<ul>
+<li>Uses IRT to minimize examples needed for LLM evaluation</li>
+<li>Reduces computational costs while maintaining accuracy</li>
+</ul>
+</li>
+<li>IRT for Leaderboard Rankings (Rodriguez et al. 2021)
+<ul>
+<li>Models item difficulty and discriminability to improve rankings</li>
+<li>Focuses on static evaluations</li>
+</ul>
+</li>
+</ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="our-approach"><strong>Our Approach</strong></h3>
+<ul>
+<li>Distinct from Static Evaluations
+<ul>
+<li>Introduces <strong>Amortized Calibration</strong> to reduce costs</li>
+<li>Uses a <strong>Language Model</strong> for automated question generation</li>
+</ul>
+</li>
+<li>Adaptive and Scalable
+<ul>
+<li>Enables continuous monitoring as models evolve</li>
+<li>Supports long-term evaluation beyond static benchmarks</li>
+</ul>
+</li>
+</ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="next-topics">Next Topics</h3>
+<p><a href='http://localhost:1313/class/cs329h/slides/3.methods/'>3.Methods</a></p>
+</section>
+
+  
+
+
+</div>
+      
+
+    </div>
+<script type="text/javascript" src=/class/cs329h/slides/reveal-hugo/object-assign.js></script>
+
+
+<script src="/class/cs329h/slides/reveal-js/dist/reveal.js"></script>
+
+
+  <script type="text/javascript" src="/class/cs329h/slides/reveal-js/plugin/markdown/markdown.js"></script>
+  
+  <script type="text/javascript" src="/class/cs329h/slides/reveal-js/plugin/highlight/highlight.js"></script>
+  
+  <script type="text/javascript" src="/class/cs329h/slides/reveal-js/plugin/zoom/zoom.js"></script>
+  
+  <script type="text/javascript" src="/class/cs329h/slides/reveal-js/plugin/notes/notes.js"></script>
+  
+<script type="text/javascript">
+  
+  
+  function camelize(map) {
+    if (map) {
+      Object.keys(map).forEach(function(k) {
+        newK = k.replace(/(\_\w)/g, function(m) { return m[1].toUpperCase() });
+        if (newK != k) {
+          map[newK] = map[k];
+          delete map[k];
+        }
+      });
+    }
+    return map;
+  }
+
+  var revealHugoDefaults = { center: true, controls: true, history: true, progress: true, transition: "slide" };
+  var revealHugoSiteParams = {"custom_theme":"css/serif.css","enablesourcemap":true,"history":true,"margin":0.1,"slide_number":true};
+  var revealHugoPageParams = {};
+
+  var revealHugoPlugins = {
+    
+    plugins: [RevealMarkdown,RevealHighlight,RevealZoom,RevealNotes]
+  };
+
+  
+  var options = Object.assign({},
+    camelize(revealHugoDefaults),
+    camelize(revealHugoSiteParams),
+    camelize(revealHugoPageParams),
+    camelize(revealHugoPlugins));
+
+  Reveal.initialize(options);
+</script>
+
+
+
+
+
+  
+  
+    
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+
+
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    },
+    svg: {
+      fontCache: 'global'
+    }
+  };
+</script>
+  
+
+<script type="text/javascript" id="MathJax-script" async src="/class/cs329h/slides/tex-svg_7522271970123696654.js"></script>
+
+    
+    
+  </body>
+</html>

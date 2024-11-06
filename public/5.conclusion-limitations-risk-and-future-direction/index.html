@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+  <head><script src="/class/cs329h/slides/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=class/cs329h/slides/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<title>Chapter 5: Conclusion, Limitations, Risk, and Future Direction</title>
+
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><link rel="stylesheet" href="/class/cs329h/slides/reveal-js/dist/reset.css">
+<link rel="stylesheet" href="/class/cs329h/slides/reveal-js/dist/reveal.css"><link rel="stylesheet" href="/class/cs329h/slides/css/serif.css" id="theme"><link rel="stylesheet" href="/class/cs329h/slides/highlight-js/default.min.css">
+  </head>
+  <body>
+    
+    <style>
+      #logo {
+        position: absolute;
+        top: 1%;
+        left: 1%;
+        width: 15%;
+      }
+    </style>
+    <img id="logo" src="../images/sail-logo.jpg" alt="">
+    
+    <div class="reveal">
+      <div class="slides">
+  
+
+    
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h2 id="5conclusion-limitations-risk-and-future-direction">5.Conclusion, Limitations, Risk, and Future Direction</h2>
+<p><a href='http://localhost:1313/class/cs329h/slides/#/1'> All Sections </a></p>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="model-based-evaluation-framework"><strong>Model-Based Evaluation Framework</strong></h3>
+<ul>
+<li><strong>Evaluation Method</strong>:
+<ul>
+<li>Uses <strong>Item Response Theory (IRT)</strong> to assess generative model performance</li>
+<li>Decouples evaluation from specific test subsets</li>
+</ul>
+</li>
+<li><strong>Advantages</strong>:
+<ul>
+<li>More reliable and efficient across empirical settings</li>
+<li>Incorporates <strong>amortized calibration</strong> to reduce item calibration costs</li>
+</ul>
+</li>
+<li><strong>Conditional Question Generation</strong>:
+<ul>
+<li>Generates questions based on predicted <strong>item difficulty</strong></li>
+<li>Scalable for evolving models in real-world settings</li>
+</ul>
+</li>
+</ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="key-contributions"><strong>Key Contributions</strong></h3>
+<ul>
+<li><strong>Amortized Calibration</strong>:
+<ul>
+<li>Significantly reduces costs compared to traditional item calibration</li>
+<li>Enables faster, more scalable evaluation</li>
+</ul>
+</li>
+<li><strong>Conditional Question Generation</strong>:
+<ul>
+<li>Predicts item difficulty ($z$ values) to generate questions automatically</li>
+<li>Streamlines and scales the evaluation process</li>
+</ul>
+</li>
+</ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="limitations"><strong>Limitations</strong></h3>
+<ul>
+<li><strong>Generated Question Quality</strong>:
+<ul>
+<li>Depends on the accuracy of question embeddings and predicted $z$ values</li>
+<li>Misaligned predictions may result in incorrect difficulty or content</li>
+</ul>
+</li>
+<li><strong>Amortization Drawback</strong>:
+<ul>
+<li>Requires <strong>re-calibration</strong> over time as models evolve or new benchmarks emerge</li>
+<li>Could limit robustness in the long term</li>
+</ul>
+</li>
+</ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="future-directions"><strong>Future Directions</strong></h3>
+<ul>
+<li><strong>Improve Question Reliability</strong>:
+<ul>
+<li>Integrate <strong>content validation techniques</strong> to ensure generated questions align with intended difficulty and domain</li>
+</ul>
+</li>
+<li><strong>Advanced Amortization</strong>:
+<ul>
+<li>Develop more robust techniques for dynamic and adversarial environments</li>
+<li>Enhance scalability for model-based evaluations</li>
+</ul>
+</li>
+</ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="broader-application"><strong>Broader Application</strong></h3>
+<ul>
+<li><strong>Expand to Other Domains</strong>:
+<ul>
+<li>Apply this method to <strong>multilingual evaluation</strong></li>
+<li>Broaden the impact on various AI applications and the wider community</li>
+</ul>
+</li>
+</ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="the-end">The End</h3>
+<p><a href='http://localhost:1313/class/cs329h/slides/#/1'> All Sections </a></p>
+</section>
+
+  
+
+
+</div>
+      
+
+    </div>
+<script type="text/javascript" src=/class/cs329h/slides/reveal-hugo/object-assign.js></script>
+
+
+<script src="/class/cs329h/slides/reveal-js/dist/reveal.js"></script>
+
+
+  <script type="text/javascript" src="/class/cs329h/slides/reveal-js/plugin/markdown/markdown.js"></script>
+  
+  <script type="text/javascript" src="/class/cs329h/slides/reveal-js/plugin/highlight/highlight.js"></script>
+  
+  <script type="text/javascript" src="/class/cs329h/slides/reveal-js/plugin/zoom/zoom.js"></script>
+  
+  <script type="text/javascript" src="/class/cs329h/slides/reveal-js/plugin/notes/notes.js"></script>
+  
+<script type="text/javascript">
+  
+  
+  function camelize(map) {
+    if (map) {
+      Object.keys(map).forEach(function(k) {
+        newK = k.replace(/(\_\w)/g, function(m) { return m[1].toUpperCase() });
+        if (newK != k) {
+          map[newK] = map[k];
+          delete map[k];
+        }
+      });
+    }
+    return map;
+  }
+
+  var revealHugoDefaults = { center: true, controls: true, history: true, progress: true, transition: "slide" };
+  var revealHugoSiteParams = {"custom_theme":"css/serif.css","enablesourcemap":true,"history":true,"margin":0.1,"slide_number":true};
+  var revealHugoPageParams = {};
+
+  var revealHugoPlugins = {
+    
+    plugins: [RevealMarkdown,RevealHighlight,RevealZoom,RevealNotes]
+  };
+
+  
+  var options = Object.assign({},
+    camelize(revealHugoDefaults),
+    camelize(revealHugoSiteParams),
+    camelize(revealHugoPageParams),
+    camelize(revealHugoPlugins));
+
+  Reveal.initialize(options);
+</script>
+
+
+
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+
+
+
+    
+    
+  </body>
+</html>

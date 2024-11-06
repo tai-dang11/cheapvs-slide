@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+	<meta name="generator" content="Hugo 0.135.0"><script src="/~sttruong/reeval/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=~sttruong/reeval/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<title>Reliable and Efficient Amortized Model-based Evaluation</title>
+
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><link rel="stylesheet" href="/~sttruong/reeval/reveal-js/dist/reset.css">
+<link rel="stylesheet" href="/~sttruong/reeval/reveal-js/dist/reveal.css"><link rel="stylesheet" href="/~sttruong/reeval/css/serif.css" id="theme"><link rel="stylesheet" href="/~sttruong/reeval/highlight-js/default.min.css">
+  </head>
+  <body>
+    
+    <style>
+      #logo {
+        position: absolute;
+        top: 1%;
+        left: 1%;
+        width: 15%;
+      }
+    </style>
+    <img id="logo" src="images/sail-logo.jpg" alt="">
+    
+    <div class="reveal">
+      <div class="slides">
+  
+
+    
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="accelerate-virtual-screening">Accelerate Virtual Screening</h3>
+<h3 id="with-amortized-neural-search">with Amortized Neural Search</h3>
+<h3 id="and-multi-objective-bayesian-optimization">and Multi-Objective Bayesian Optimization</h3>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h2 id="1introduction-problem-set-up-of-virtual-screening">1.Introduction: Problem Set-up of Virtual Screening</h2>
+<ul>
+<li>
+<p>For <strong>a given protein</strong> linked to a certain disease,
+<span class="fragment">we want to select a few small molecules (i.e., ligand)</span>
+<span class="fragment">from a library of millions candidates</span>
+<span class="fragment">such that the selected candidate will have the highest utility in disease treating.</span></p>
+</li>
+<li>
+<p><span class="fragment">For modern libraries, it is feasible scaling up to billions or even trillions of compounds enhances the reach and impact of virtual screening.</span></p>
+</li>
+</ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h2 id="1introduction-problem-set-up-of-virtual-screening-1">1.Introduction: Problem Set-up of Virtual Screening</h2>
+</section>
+
+  
+
+
+</div>
+      
+
+    </div>
+<script type="text/javascript" src=/~sttruong/reeval/reveal-hugo/object-assign.js></script>
+
+
+<script src="/~sttruong/reeval/reveal-js/dist/reveal.js"></script>
+
+
+  <script type="text/javascript" src="/~sttruong/reeval/reveal-js/plugin/markdown/markdown.js"></script>
+  
+  <script type="text/javascript" src="/~sttruong/reeval/reveal-js/plugin/highlight/highlight.js"></script>
+  
+  <script type="text/javascript" src="/~sttruong/reeval/reveal-js/plugin/zoom/zoom.js"></script>
+  
+  <script type="text/javascript" src="/~sttruong/reeval/reveal-js/plugin/notes/notes.js"></script>
+  
+<script type="text/javascript">
+  
+  
+  function camelize(map) {
+    if (map) {
+      Object.keys(map).forEach(function(k) {
+        newK = k.replace(/(\_\w)/g, function(m) { return m[1].toUpperCase() });
+        if (newK != k) {
+          map[newK] = map[k];
+          delete map[k];
+        }
+      });
+    }
+    return map;
+  }
+
+  var revealHugoDefaults = { center: true, controls: true, history: true, progress: true, transition: "slide" };
+  var revealHugoSiteParams = {"custom_theme":"css/serif.css","enablesourcemap":true,"history":true,"margin":0.1,"slide_number":true};
+  var revealHugoPageParams = {};
+
+  var revealHugoPlugins = {
+    
+    plugins: [RevealMarkdown,RevealHighlight,RevealZoom,RevealNotes]
+  };
+
+  
+  var options = Object.assign({},
+    camelize(revealHugoDefaults),
+    camelize(revealHugoSiteParams),
+    camelize(revealHugoPageParams),
+    camelize(revealHugoPlugins));
+
+  Reveal.initialize(options);
+</script>
+
+
+
+
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+
+
+
+    
+    
+  </body>
+</html>

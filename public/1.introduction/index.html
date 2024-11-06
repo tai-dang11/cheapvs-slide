@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="en">
+  <head><script src="/class/cs329h/slides/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=class/cs329h/slides/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+<title>Chapter 1: Introduction</title>
+
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><link rel="stylesheet" href="/class/cs329h/slides/reveal-js/dist/reset.css">
+<link rel="stylesheet" href="/class/cs329h/slides/reveal-js/dist/reveal.css"><link rel="stylesheet" href="/class/cs329h/slides/css/serif.css" id="theme"><link rel="stylesheet" href="/class/cs329h/slides/highlight-js/default.min.css">
+  </head>
+  <body>
+    
+    <style>
+      #logo {
+        position: absolute;
+        top: 1%;
+        left: 1%;
+        width: 15%;
+      }
+    </style>
+    <img id="logo" src="../images/sail-logo.jpg" alt="">
+    
+    <div class="reveal">
+      <div class="slides">
+  
+
+    
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h2 id="section-1-introduction">Section 1: Introduction</h2>
+<p>Sang Truong, Yuheng Tu, Percy Liang, Bo Li, Sanmi Koyejo</p>
+<p><a href='http://localhost:1313/class/cs329h/slides/#/1'> All Sections </a></p>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li>
+<p>Introduction</p>
+</li>
+<li>
+<p>Related Work</p>
+</li>
+<li>
+<p>Method</p>
+<ul>
+<li>Amortized Calibration</li>
+<li>Adaptive Testing with Conditional Item Generation</li>
+</ul>
+</li>
+<li>
+<p>Experiment</p>
+<ul>
+<li>Amortized Calibration</li>
+<li>Adaptive Testing with Conditional Item Generation</li>
+</ul>
+</li>
+<li>
+<p>Conclusion, Limitations, Risk, and Future Direction</p>
+</li>
+</ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h2 id="1introduction">1.Introduction</h2>
+<ul>
+<li>Current generative model evaluations are costly and sensitive to test set selection.</li>
+<li>We propose an Item Response Theory (IRT) framework to ensure reliable, efficient evaluation by decoupling performance from specific test subsets.</li>
+<li>Key innovations:
+<ol>
+<li>Amortized calibration to reduce IRT item parameter estimation costs.</li>
+<li>Large language model-based item generator for diverse question generation.</li>
+</ol>
+</li>
+<li>Tested on 24 benchmarks and 180 models, offering a scalable, resource-efficient alternative to traditional methods.</li>
+</ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<p><strong>Generative Models</strong></p>
+<ul>
+<li>General-purpose tools with various capabilities</li>
+<li>Require continuous evaluation for safety and performance</li>
+<li>Monitoring model performance is essential before deployment</li>
+</ul>
+<p><strong>Challenges in Continuous Monitoring</strong></p>
+<ul>
+<li>Resource intensive for large datasets</li>
+<li>Expensive in terms of human and computational cost</li>
+<li>Example: Evaluating Pythia suite models by EleutherAI is prohibitively expensive</li>
+</ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<p><strong>Common practice: Use average scores across subsets</strong></p>
+<ul>
+<li>
+<p>Issues:</p>
+<ul>
+<li>
+<p>Varies based on subset difficulty</p>
+</li>
+<li>
+<p>Test sets are often different and not controllable</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Examples:</p>
+<ul>
+<li><strong>Web-Based Environments:</strong>
+A model&rsquo;s previous actions can affect the difficulty of future tasks, making evaluation inconsistent.</li>
+<li><strong>Healthcare Test Sets:</strong>
+Models are tested on different hospital datasets that can’t be shared, leading to score variability.</li>
+<li><strong>Adversarial Red-Teaming:</strong>
+Evaluators choose harder subsets to challenge models, making average scores less reliable.</li>
+</ul>
+</li>
+</ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<p><strong>Classical Test Theory (CTT)</strong></p>
+<ul>
+<li>CTT dates back to the 1800s</li>
+<li>Measures average scores across a test set</li>
+<li>Test-dependent ability estimation</li>
+</ul>
+<p><strong>Item Response Theory (IRT)</strong></p>
+<ul>
+<li>
+<p><strong>Model-Based Approach</strong></p>
+<ul>
+<li>
+<p>Explicitly models item and test taker characteristics</p>
+</li>
+<li>
+<p>Test-invariant ability estimation, regardless of subset</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>IRT Models (e.g., Rasch’s Model)</strong></p>
+<ul>
+<li>
+<p>Probabilistic models linking ability and item characteristics</p>
+</li>
+<li>
+<p>Decomposes ability and item difficulty, improving reliability</p>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<img src="https://cdn.jsdelivr.net/gh/yuhengtu/typora_images@master/img/202410052328076.png" alt="Item-and-Test-analsyis-using-CTT-and-IRT" style="zoom: 150%;" />
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<p><strong>Advantages of IRT for Model Evaluation</strong></p>
+<ul>
+<li>Ability Estimation
+<ul>
+<li>Item-invariant ability estimation</li>
+<li>Faster adaptive testing</li>
+</ul>
+</li>
+<li>Experimental Results
+<ul>
+<li>Tested on 24 benchmark datasets with 505,000 questions and 184 models</li>
+<li>IRT reduces up to 82% of questions needed to evaluate models reliably</li>
+</ul>
+</li>
+</ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<p><strong>Technical Challenges with IRT</strong></p>
+<ul>
+<li>Two-Phase Process
+<ul>
+<li>Calibration: Item parameters for each question</li>
+<li>Scoring: Ability estimation during model evaluation</li>
+</ul>
+</li>
+<li>Costly Calibration
+<ul>
+<li>Requires large item banks and human involvement</li>
+<li>Regular periodic calibration needed to refresh item banks</li>
+</ul>
+</li>
+</ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<img src="figures/empiricalvsestimated1.png" alt="empiricalvsestimated1" style="zoom:30%;" />
+<img src="figures/empiricalvsestimated2.png" alt="empiricalvsestimated2" style="zoom:30%;" />
+<img src="figures/empiricalvsestimated3.png" alt="empiricalvsestimated3" style="zoom:30%;" />
+<img src="https://cdn.jsdelivr.net/gh/yuhengtu/typora_images@master/img/202410052324289.png" alt="empiricalvsestimated4" style="zoom:30%;" />
+<img src="figures/empiricalvsestimated5.png" alt="empiricalvsestimated5" style="zoom:30%;" />
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<p><strong>Amortized Calibration</strong></p>
+<ul>
+<li>Introduction to Amortized Calibration
+<ul>
+<li>Uses machine learning to predict item parameters based on question content</li>
+<li>Reduces calibration cost complexity to constant with bank size</li>
+</ul>
+</li>
+<li>Conditional Item Generator
+<ul>
+<li>Generates questions based on difficulty levels</li>
+<li>Automates item bank construction for diverse, adaptive testing</li>
+</ul>
+</li>
+</ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<p><img src="https://cdn.jsdelivr.net/gh/yuhengtu/typora_images@master/img/202410052329635.png" alt="amortized_loan.asp-final-23646fe3883e4f87902df8207a750e0a"></p>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<p><strong>Key Contributions</strong></p>
+<ul>
+<li>Model-Based Evaluation on Large-Scale Benchmarks
+<ul>
+<li>Tested on 24 NLP datasets and 180 language models from HELM</li>
+<li>IRT reduces query complexity by 50% on average</li>
+</ul>
+</li>
+<li>Amortized Calibration
+<ul>
+<li>Efficient alternative to traditional calibration</li>
+<li>Lower cost complexity without sacrificing accuracy</li>
+</ul>
+</li>
+<li>Conditional Item Generator
+<ul>
+<li>Automates creation of diverse and well-calibrated item banks</li>
+<li>Enhances adaptive selection during scoring phase</li>
+</ul>
+</li>
+</ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<p><img src="https://cdn.jsdelivr.net/gh/yuhengtu/typora_images@master/img/202410042223835.png" alt="reeval"></p>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<ul>
+<li><strong>Response matrix ($Y$)</strong>:
+<ul>
+<li>Blue = pass, Red = fail, White = missing data.</li>
+</ul>
+</li>
+<li><strong>Variables</strong>:
+<ul>
+<li>$z$: question difficulty, $\theta$: test taker, $\phi$: item predictor, $\psi$: item generator.</li>
+</ul>
+</li>
+<li><strong>Arrows</strong>:
+<ul>
+<li><strong>Dashed</strong>: Learning ($\phi$, $\psi$) through amortized predictor and generator optimization.</li>
+<li><strong>Solid</strong>: Forward prediction of these models.</li>
+</ul>
+</li>
+<li><strong>Calibration</strong>: Fits $z$ for adaptive testing of new models.</li>
+<li><strong>Amortized network</strong>: Predicts $z$ for new questions, allowing adaptive testing without calibration.</li>
+<li><strong>Item generator</strong>: Expands item bank by generating questions based on $z$.</li>
+</ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<p><strong>Summary</strong></p>
+<ul>
+<li>IRT-Based Model Evaluation
+<ul>
+<li>More reliable and efficient than model-free approaches</li>
+<li>Solves subset dependency issue in classical evaluation</li>
+</ul>
+</li>
+<li>Cost Reduction Methods
+<ul>
+<li>Amortized calibration via machine learning</li>
+<li>Conditional item generation for efficient item bank creation</li>
+</ul>
+</li>
+<li>Practical Applications
+<ul>
+<li>Reliable and scalable solution for continuous model evaluation</li>
+<li>Applicable across various fields, such as NLP, healthcare, and education</li>
+</ul>
+</li>
+</ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="next-topics">Next Topics</h3>
+<p><a href='http://localhost:1313/class/cs329h/slides/2.related-work/'>2.Related Work</a></a></p>
+</section>
+
+  
+
+
+</div>
+      
+
+    </div>
+<script type="text/javascript" src=/class/cs329h/slides/reveal-hugo/object-assign.js></script>
+
+
+<script src="/class/cs329h/slides/reveal-js/dist/reveal.js"></script>
+
+
+  <script type="text/javascript" src="/class/cs329h/slides/reveal-js/plugin/markdown/markdown.js"></script>
+  
+  <script type="text/javascript" src="/class/cs329h/slides/reveal-js/plugin/highlight/highlight.js"></script>
+  
+  <script type="text/javascript" src="/class/cs329h/slides/reveal-js/plugin/zoom/zoom.js"></script>
+  
+  <script type="text/javascript" src="/class/cs329h/slides/reveal-js/plugin/notes/notes.js"></script>
+  
+<script type="text/javascript">
+  
+  
+  function camelize(map) {
+    if (map) {
+      Object.keys(map).forEach(function(k) {
+        newK = k.replace(/(\_\w)/g, function(m) { return m[1].toUpperCase() });
+        if (newK != k) {
+          map[newK] = map[k];
+          delete map[k];
+        }
+      });
+    }
+    return map;
+  }
+
+  var revealHugoDefaults = { center: true, controls: true, history: true, progress: true, transition: "slide" };
+  var revealHugoSiteParams = {"custom_theme":"css/serif.css","enablesourcemap":true,"history":true,"margin":0.1,"slide_number":true};
+  var revealHugoPageParams = {};
+
+  var revealHugoPlugins = {
+    
+    plugins: [RevealMarkdown,RevealHighlight,RevealZoom,RevealNotes]
+  };
+
+  
+  var options = Object.assign({},
+    camelize(revealHugoDefaults),
+    camelize(revealHugoSiteParams),
+    camelize(revealHugoPageParams),
+    camelize(revealHugoPlugins));
+
+  Reveal.initialize(options);
+</script>
+
+
+
+
+
+  
+  
+    
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+
+
+
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    },
+    svg: {
+      fontCache: 'global'
+    }
+  };
+</script>
+  
+
+<script type="text/javascript" id="MathJax-script" async src="/class/cs329h/slides/tex-svg_7522271970123696654.js"></script>
+
+    
+    
+  </body>
+</html>

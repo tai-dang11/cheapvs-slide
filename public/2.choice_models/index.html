@@ -1,0 +1,852 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>Chapter 2: Choice Models</title>
+
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><link rel="stylesheet" href="/class/cs329h/slides/reveal-js/dist/reset.css">
+<link rel="stylesheet" href="/class/cs329h/slides/reveal-js/dist/reveal.css"><link rel="stylesheet" href="/class/cs329h/slides/css/serif.css" id="theme"><link rel="stylesheet" href="/class/cs329h/slides/highlight-js/default.min.css">
+  </head>
+  <body>
+    
+    <style>
+      #logo {
+        position: absolute;
+        top: 1%;
+        left: 1%;
+        width: 15%;
+      }
+    </style>
+    <img id="logo" src="../images/sail-logo.jpg" alt="">
+    
+    <div class="reveal">
+      <div class="slides">
+  
+
+    
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h2 id="human-preference-models">Human Preference Models:</h2>
+<h2 id="choice-models">Choice models</h2>
+<p>Sanmi Koyejo, Sang Truong, Kenan Hasanaliyev</p>
+<p><a href='https://web.stanford.edu/class/cs329h/slides/#/1'> All Sections </a></p>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="today-choice-modeling">Today: Choice Modeling</h3>
+<p>Tools to predict the choice behavior of a group of decision-makers in a specific choice context.</p>
+<img src="figures/choice_model.jpg" alt="Choice Modeling" style="width: 50%;"/>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="application-marketing">Application: Marketing</h3>
+<p>What features affect a car purchase?</p>
+<img src="figures/car_choice.png" style="width: 70%;">
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="application-transportation">Application: Transportation</h3>
+<ul>
+<li>How pricing affects route choice</li>
+<li>How much is a driver willing to pay</li>
+</ul>
+<img src="figures/app_transportation.jpg" style="width: 50%;">
+<p style="text-align: center; font-size: 12px;">Image source: https://www.supplychain247.com/article/8_factors_to_consider_when_choosing_route_optimization_software/locus</p>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="application-energy-economics">Application: Energy Economics</h3>
+<img src="figures/app_ener_eco.jpg" style="width: 80%;">
+<p style="text-align: left; font-size: 12px;">Del Granado, Pedro Crespo, Renger H. Van Nieuwkoop, Evangelos G. Kardakos, and Christian Schaffner. "Modelling the energy transition: A nexus of energy system and economic models." <span style="font-style: italic;">Energy strategy reviews</span>, 20 (2018): 229-235.</p>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h4 id="example-daily-activity-travel-pattern-of-an-individual">Example: Daily activity-travel pattern of an individual</h4>
+<img src="figures/daily_travel.png" style="width: 100%;">
+<p style="text-align: center; font-size: 12px;">Source: Chandra Bhat, “ General introduction to choice modeling”</p>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="application-rl-and-language">Application: RL and Language</h3>
+<img src="figures/app_rl_lm.png" style="width: 100%;">
+<p style="text-align: center; font-size: 12px;">https://openai.com/research/learning-to-summarize-with-human-feedback</p>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="history">History</h3>
+<ul>
+  <li>Thurstone research into food preferences in the 1920s</li>
+  <li>Microeconomics: Random Utility Theory (1970s)
+    <ul>
+      <li><span style="text-align: left; font-size: 20px;">McFadden: Nobel prize in 2000 for the theoretical basis for discrete choice.</span></li>
+    </ul>
+  </li>
+  <li>Psychology: Duncan Luce and Anthony Marley
+    <ul>
+      <li><span style="text-align: left; font-size: 20px;">Luce, R. Duncan (1959). “Conditional logit analysis of qualitative choice behavior”</span></li>
+    </ul>
+  </li>
+  <li>Early use in marketing
+    <ul>
+      <li><span style="text-align: left; font-size: 20px;">Predict demand for new products that are potentially expensive to produce</span></li>
+    </ul>
+  </li>
+  <li>Early use in transportation
+    <ul>
+      <li><span style="text-align: left; font-size: 20px;">Predict usage of transportation resources, e.g., used by McFadden to predict the demand for the Bay Area Rapid Transit (BART) before it was built</span></li>
+    </ul>
+  </li>
+</ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="why-are-we-studying-choice-models">Why are we studying choice models?</h3>
+<ul>
+  <li>Human preferences are often gathered by asking for choices across alternatives</li>
+  <li>Basic choice models are the workhorse for ML from preferences (Bradley-Terry, Plackett Luce)</li>
+  <li>Our discussion will highlight some of the key assumptions, e.g., utility and rationality
+    <ul>
+      <li><span style="text-align: left; font-size: 24px;">We will cover models originally built for discrete/finite choices, which have been extended to ML applications (conditional choices)</p>
+    </ul>
+  </li>
+</ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="discrete-choice-models">(Discrete) choice models</h3>
+<ul>
+<li>Models designed to capture decision-process of individuals</li>
+<li>True utility is not observable, but perhaps can measure via preferences over choices</li>
+<li><strong>Main assumption</strong>: utility (benefit, or value) that an individual derives from item A over item B is a function of the frequency that they choose item A over item B in repeated choices.</li>
+<li><strong>Useful Note</strong>: “Utility” in choice models &lt;=&gt; “Reward” in RL</li>
+</ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="modeling-discrete-choice">Modeling: Discrete choice</h3>
+<ul>
+<li>Choices are collectively exhaustive, mutually exclusive, and finite</li>
+</ul>
+<p>$$y_{ni} = 
+\begin{cases} 
+1, & \text{if } U_{ni} > U_{nj} \ \forall j \neq i \\ 
+0, & \text{otherwise} 
+\end{cases}$$</p>
+<p>$$U_{ni} = H_{ni}(z_{ni})$$</p>
+<ul>
+<li>$z_{n,i}$ are variables describing the individual attributes and the alternative choices</li>
+<li>$H_{ni}(z_{ni})$ is a stochastic function, e.g., linear $H_{ni}(z_{ni}) = \beta z_{ni} + \epsilon_{ni}$, where $\epsilon_{ni}$ are unobserved individual factors</li>
+</ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="implications-of-the-choice-model">Implications of the choice model</h3>
+<ul>
+<li>Only the utility differences matter</li>
+</ul>
+<p>$$\begin{aligned}
+  P_{ni} &= Pr(y_{ni} = 1) \\
+         &= Pr(U_{ni} > U_{nj}, \forall j \neq i) \\
+         &= Pr(U_{ni} - U_{nj} > 0, \forall j \neq i)
+\end{aligned}$$</p>
+<ul>
+<li>Note that utility here is scale-free
+<ul>
+<li>May be invariant to monotonic transformations</li>
+<li>Ok within a single context, but will need to normalize for comparing across datasets</li>
+<li>Common approach: normalize scale by standardizing the variance</li>
+</ul>
+</li>
+</ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h4 id="example-binary-choice-with-individual-attributes"><strong>Example: Binary choice with individual attributes</strong></h4>
+<ul>
+<li>Benefit of action depends on $s_n$ = individual characteristics</li>
+</ul>
+<p>$$\begin{cases}
+U_n = \beta s_n + \epsilon_n \\
+y_n = 
+    \begin{cases}
+    1 & U_n > 0 \\
+    0 & U_n \leq 0
+    \end{cases}
+\end{cases} \quad \Rightarrow \quad P_{n1} = \frac{1}{1 + \exp(-\beta s_n)}$$</p>
+<ul>
+<li>
+<p>$\epsilon \sim$ Logistic</p>
+</li>
+<li>
+<p>Replacing $\epsilon \sim$ Standard Normal gives the probit model</p>
+</li>
+</ul>
+<p>$$P_{n1} = \Phi(\beta s_n)$$</p>
+<ul>
+<li>Where $\Phi(.)$ is the normal CDF</li>
+</ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h4 id="example-utility-is-linear-function-of-variables-that-vary-over-alternatives-bradley-terry-model"><strong>Example: Utility is linear function of variables that vary over alternatives (Bradley-Terry Model)</strong></h4>
+<ul>
+<li>The utility of each alternative depends on the attributes of the alternatives (which may include individual attributes)</li>
+<li>Unobserved terms are assumed to have an extreme value distribution</li>
+</ul>
+<p>$$\begin{cases}
+U_{n1} = \beta z_{n1} + \epsilon_{n1} \\
+U_{n2} = \beta z_{n2} + \epsilon_{n2} \\
+\epsilon_{n1}, \epsilon_{n2} \sim \text{iid extreme value}
+\end{cases} \quad \Rightarrow \quad P_{n1} = \frac{\exp(\beta z_{n1})}{\exp(\beta z_{n1}) + \exp(\beta z_{n2})}$$</p>
+<ul>
+<li>
+<p>Equivalently $P_{n1} = \frac{1}{1 + \exp(-\beta (z_{n1} - z_{n2}))}$</p>
+</li>
+<li>
+<p>Can replace noise with Standard Normal $P_{n1} = \Phi(\beta (z_{n1} - z_{n2}))$</p>
+</li>
+</ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h4 id="example-utility-for-each-alternative-depends-on-attributes-of-that-alternative"><strong>Example: Utility for each alternative depends on attributes of that alternative</strong></h4>
+<ul>
+<li>Unobserved terms are assumed to have an extreme value distribution</li>
+<li>With $J$ alternatives</li>
+</ul>
+<p>$$\begin{cases}
+U_{ni} = \beta z_{ni} + \epsilon_{ni} \\
+\epsilon_{ni} \sim \text{iid extreme value}
+\end{cases} \quad \Rightarrow \quad P_{ni} = \frac{\exp(\beta z_{ni})}{\sum_{j=1}^{J} \exp(\beta z_{nj})}$$</p>
+<ul>
+<li>Compare to standard model for multiclass classification (multiclass logistic)</li>
+<li>Can also replace noise model with Gaussians</li>
+</ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="capturing-correlations-across-alternatives">Capturing correlations across alternatives</h3>
+<ul>
+<li>All the prior models use the logistic model which does not capture correlations in noise.</li>
+<li>This can be fixed using a joint distribution over the noise e.g.,</li>
+</ul>
+<p>$$\begin{cases}
+U_{ni} = \beta z_{ni} + \epsilon_{ni} \\
+\epsilon_n \equiv (\epsilon_{n1}, \cdots, \epsilon_{nJ}) \sim N(0, \Omega)
+\end{cases}$$</p>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="estimation">Estimation</h3>
+<ul>
+<li><strong>Linear case</strong>: maximum likelihood estimators
+<ul>
+<li>Logistic model: use (binary or multinomial) logistic regression</li>
+<li>Gaussian Model: use probit regression</li>
+</ul>
+</li>
+<li><strong>More complex function classes</strong>: use standard ML fitting tools for (regularized) maximum likelihood, e.g., stochastic gradient descent (SGD)</li>
+<li><strong>Standard tradeoffs</strong>, e.g., bias-variance tradeoff
+<ul>
+<li>More complex utility models generally require more data</li>
+<li>Most ML applications pool the model across individuals, individual differences may matter (more on this in future class)</li>
+</ul>
+</li>
+</ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="what-of-measuring-ordered-preferences">What of measuring ordered preferences?</h3>
+<ul>
+<li>Example: On a 1-5 scale where 1 means disagree completely and 5 means agree completely, how much do you agree with the following statement: &ldquo;I am enjoying this class so far&rdquo;</li>
+<li>Use ordinal regression, e.g.,</li>
+</ul>
+<p>$$U_n = H_n(z_n)
+\quad \quad \quad
+y_n = 
+\begin{cases} 
+1, & \text{if } U_n < a \\
+2, & \text{if } a < U_n < b \\
+3, & \text{if } b < U_n < c \\
+4, & \text{if } c < U_n < d \\
+5, & \text{if } U_n > d 
+\end{cases}$$</p>
+<ul>
+<li>For some real numbers $a, b, c, d$ (parameters)</li>
+</ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="ordered-logit">Ordered Logit</h3>
+<ul>
+<li>For linear utility: $U_n = \beta z_n + \epsilon$, $\epsilon \sim$ Logistic</li>
+</ul>
+<p>$Pr(\text{choosing 1}) = Pr(U_n &lt; a) = Pr(\epsilon &lt; a - \beta z_n) = \frac{1}{1 + \exp(-(a - \beta z_n))}$</p>
+<p>$$\begin{aligned}
+Pr(\text{choosing 2}) &= Pr(a < U_n < b) = Pr(a - \beta z_n < \epsilon < b - \beta z_n) \\
+&= \frac{1}{1 + \exp(-(b - \beta z_n))} - \frac{1}{1 + \exp(-(a - \beta z_n))}
+\end{aligned}$$</p>
+<p>$$...$$</p>
+<p>$Pr(\text{choosing 5}) = Pr(U_n &gt; d) = Pr(\epsilon &gt; d - \beta z_n) = 1 - \frac{1}{1 + \exp(-(d - \beta z_n))}$</p>
+<ul>
+<li>Can also replace with Gaussian for ordered probit regression</li>
+</ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="plackett-luce-model">Plackett-Luce Model</h3>
+<ul>
+<li>Ranking models the <strong>sequence of choices</strong> (Plackett and Luce in 1970s)</li>
+<li>Probability of choice 1, 2, &hellip;, J is</li>
+</ul>
+<p>$Pr(\text{ranking } 1, 2, \dots, J) = \frac{\exp(\beta z_1)}{\sum_{j=1}^{J} \exp(\beta z_{nj})} \cdot \frac{\exp(\beta z_2)}{\sum_{j=2}^{J} \exp(\beta z_{nj})} \cdots \frac{\exp(\beta z_{J-1})}{\sum_{j=J-1}^{J} \exp(\beta z_{nj})}$</p>
+<ul>
+<li>PL is common in biomedical literature</li>
+<li>aka rank ordered logit (econometrics ~1980s), or exploded logit model</li>
+<li>All the extensions mentioned also apply (nonlinear utility, correlated noise, etc.)</li>
+</ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="modeling-and-estimation-summary">Modeling and estimation summary</h3>
+<ul>
+<li>Choose the utility model, i.e., how the attributes and alternatives define the utility e.g., linear function of attributes with logistic noise</li>
+<li>Choose the response/observation model, e.g., binary, multiple choice, ordered choice.</li>
+<li>Fit the model using (regularized) maximum likelihood</li>
+</ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="aside-revealed-preference-vs-stated-preference">Aside: &ldquo;Revealed preference&rdquo; vs &ldquo;stated preference&rdquo;</h3>
+<ul>
+  <li><b>Revealed preference:</b> Use observed data about the choices to estimate value ascribed to items.
+    <ul>
+      <li><span style="text-align: left; font-size: 24px;">Generally offline observational data about real choices</span></li>
+    </ul>
+  </li>
+  <li><b>Stated Preference:</b> Use the choices made by individuals under experimental conditions to estimate these values
+    <ul>
+      <li><span style="text-align: left; font-size: 24px;">Generally online experimental data (can include controlled experiments)</span></li>
+    </ul>
+  </li>
+  <li>Revealed preference is considered a “real” choice, so can be more accurate
+    <ul>
+      <li><span style="text-align: left; font-size: 24px;">In simulated situations, participants may not respond well to hypotheticals</p></li>
+      <li><span style="text-align: left; font-size: 24px;">OTOH: observed data may not cover the space, hence the appeal of experiments</p></li>
+    </ul>
+  </li>
+</ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h4 id="exercise-inclass-choice-model-for-classes"><strong>Exercise (inclass): choice model for class(es)</strong></h4>
+<ul>
+<li><strong>&ldquo;Should you take CS 329H or not?&rdquo;</strong>
+<ul>
+<li>What are the attributes/features (describe what to measure about a class)?</li>
+<li>What utility model?</li>
+<li>What is the observation/response model?</li>
+<li>Revealed preference (observed choices) or stated preference (hypothetical)?</li>
+</ul>
+</li>
+<li><strong>&ldquo;Should you take CS 329H or CS 221 or CS 229?&rdquo;</strong>
+<ul>
+<li>What are the attributes/features?</li>
+<li>What utility model?</li>
+<li>What is the observation/response model?</li>
+<li>Revealed preference or stated preference?</li>
+</ul>
+</li>
+</ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h4 id="exercise-inclass-choice-model-for-language"><strong>Exercise (inclass): choice model for language</strong></h4>
+<p><span style="text-align: left; font-size: 36px;"><b>Design a choice model to evaluate the quality of a language model?</b></span></p>
+<ul>
+<li>What utility model?
+<ul>
+<li>What are the attributes/features?</li>
+</ul>
+</li>
+<li>What is the observation/response model?</li>
+<li>Revealed preference or stated preference?</li>
+<li>Who should you query?
+<ul>
+<li>Individual or pooled responses: why or why not?</li>
+</ul>
+</li>
+<li>What are some pro/cons of your design?</li>
+</ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="the-ideal-point-model">The ideal point model</h3>
+<ul>
+<li>An embedding approach, assumes user item preference depends on distance
+<ul>
+<li>Let $x_n$ denote a latent vector representing an individual $n$</li>
+<li>Let $v_i$ denote a latent vector representing choice (or item) $i$ $U_{ni} = dist(x_n, v_i) + \epsilon_{ni}$</li>
+<li>Model is equivalent to choosing the “closest” item</li>
+</ul>
+</li>
+</ul>
+<p>$$y_{ni} = 
+\begin{cases} 
+1, & \text{if } U_{ni} > U_{nj} \ \forall j \neq i \\
+0, & \text{otherwise} 
+\end{cases}$$</p>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="ideal-point-model-the-why">Ideal point model: the why</h3>
+<ul>
+<li>Pros: Can sometimes learn preferences faster than attribute-based preference models by exploiting geometry (see refs)</li>
+<li>Cons:
+<ul>
+<li>Embedding assumption may be strong (can make more flexible via distance function choice)</li>
+<li>However, have to select a distance function (usually use Euclidian distance in the embedding)</li>
+</ul>
+</li>
+</ul>
+<p style="text-align: left; font-size: 16px;">Jamieson, Kevin G., and Robert Nowak. "Active ranking using pairwise comparisons."
+<br>
+Tatli, Gokcan, Rob Nowak, and Ramya Korlakai Vinayak. "Learning Preference Distributions From Distance Measurements."</p>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="choice-models-in-rl-and-rlhf">Choice models in RL (and RLHF)</h3>
+<p><img src="figures/choice_of_rl.png" alt="Choice models in RL"></p>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="application-rl-and-language-1">Application: RL and Language</h3>
+<h3 id="bradley-terry-model">(Bradley-Terry model)</h3>
+<p><img src="figures/rlhf.png" alt="RLHF"></p>
+<p style="text-align: center; font-size: 16px;">https://openai.com/research/learning-to-summarize-with-human-feedback</p>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h4 id="choice-models-in-ml-recommender-systems-bandits-direct-preference-optimization">Choice models in ML (recommender systems, bandits, Direct Preference Optimization)</h4>
+<p><img src="figures/model_in_ml.png" alt="Model in ML"></p>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h4 id="choice-models-in-ml-recommender-systems-bandits-dpo">Choice models in ML (recommender systems, bandits, DPO)</h4>
+<p><img src="figures/model_in_ML2.png" alt="Model in ML"></p>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="why-dpo">Why DPO?</h3>
+<p><img src="figures/dpo_vs_ppo.png" alt="DPO vs PPO"></p>
+<ul>
+<li>RLHF pipeline is complex and unstable due to the reward model optimization.</li>
+<li>DPO is more stable and can be used to optimize the reward model directly.</li>
+</ul>
+<p style="text-align: left; font-size: 16px;">Rafael Rafaelov, Archit Sharma, Eric Mitchell, Stefano Ermon, Christopher D. Manning, and Chelsea Finn, "Direct preference optimization: Your language model is secretly a reward model."</p>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="dpo-bradley-terry-model">DPO: Bradley-Terry model</h3>
+<ul>
+<li>Given prompt $x$ and completions $y_w$ and $y_l$ the choice model gives the preference</li>
+</ul>
+<p>$$p^*(y_w > y_l | x) = \frac{\exp(r^*(x, y_w))}{\exp(r^*(x, y_w)) + \exp(r^*(x, y_l))}$$</p>
+<p>where $r^*(x, y)$ is some latent reward model that we do not have access to (i.e., the human preference)</p>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="dpo-bradley-terry-model-1">DPO: Bradley-Terry model</h3>
+<p>Luckily, we can use parameterize the reward model with some neural networks with parameters $\phi$:</p>
+<p>Let us start with the Reward Maximization Objective in RL:</p>
+<p>$$\max_{\pi_\theta} \mathbb{E}_{x \sim \mathcal{D}, y \sim \pi_\theta(y|x)} [r_\phi(x, y) - \beta D_{KL}(\pi_\theta(y|x) \| \pi_{\text{ref}}(y|x))]$$</p>
+
+
+<span class='fragment ' ><ul>
+<li>Where $\pi_\theta(y|x)$ is the language model, and $\pi_{\text{ref}}(y|x)$ is the reference model (e.g., the language model before fine-tuning)</li>
+</ul>
+</span>
+
+
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<p>$$\max_{\pi_\theta} \mathbb{E}_{x \sim \mathcal{D}, y \sim \pi_\theta(y|x)} [r_\phi(x, y) - \beta D_{KL}(\pi_\theta(y|x) \| \pi_
+{\text{ref}}(y|x))]$$</p>
+<p>Recall the definition of KL divergence:</p>
+<p>$$D_{KL}(p \| q) = \sum_{x \in \mathcal{X}} p(x) \log \frac{p(x)}{q(x)} = \mathbb{E}_{x \sim \mathcal{X}} \left[ \log \frac{p(x)}{q(x)} \right]$$</p>
+<p>Then we can rewrite the objective as:</p>
+<p>$$\begin{aligned}
+&\max_{\pi_\theta} \mathbb{E}_{x \sim \mathcal{D}, y \sim \pi_\theta(y|x)} \left[ r_\phi(x, y) - \beta \mathbb{E}_{y \sim \pi_\theta(y|x)} \left[\log \frac{\pi_\theta(y|x)}{\pi_{\text{ref}}(y|x)} \right] \right]\\
+&=\max_{\pi_\theta} \mathbb{E}_{x \sim \mathcal{D}} \mathbb{E}_{y \sim \pi_\theta(y|x)} \left[ r_\phi(x, y) - \beta \log \frac{\pi_\theta(y|x)}{\pi_{\text{ref}}(y|x)} \right]
+\end{aligned}$$</p>
+</section>
+<p>
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+Then, we can continue to derive the objective as:</p>
+<p>$$\begin{aligned}
+    &\max_{\pi_\theta} \mathbb{E}_{x \sim \mathcal{D}} \mathbb{E}_{y \sim \pi_\theta(y|x)} \left[ r_\phi(x, y) - \beta \log \frac{\pi_\theta(y|x)}{\pi_{\text{ref}}(y|x)} \right] \\
+    &\propto \min_{\pi_\theta} \mathbb{E}_{x \sim \mathcal{D}} \mathbb{E}_{y \sim \pi_\theta(y|x)} \left[ \log \frac{\pi_\theta(y|x)}{\pi_{\text{ref}}(y|x)} - \frac{1}{\beta} r_\phi(x, y) \right] \text{// reverse and divide } \beta\\
+    &= \min_{\pi_\theta} \mathbb{E}_{x \sim \mathcal{D}} \mathbb{E}_{y \sim \pi_\theta(y|x)} \left[ \log \frac{\pi_\theta(y|x)}{\frac{1}{Z(x)} \pi_{\text{ref}}(y|x) \exp\left(\frac{1}{\beta} r_\phi(x, y)\right)} - \log Z(x) \right]
+\end{aligned}$$</p>
+<p>$$\text{with} \quad Z(x) = \sum_{y} \pi_{\text{ref}}(y|x) \exp\left(\frac{1}{\beta} r_\phi(x, y)\right)$$</p>
+</section>
+<p>
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+Because $Z(x)$ is a constant with respect to $\pi_\theta$, we can define:</p>
+<p>$$\pi^*(y|x) = \frac{1}{Z(x)} \pi_{\text{ref}}(y|x) \exp\left(\frac{1}{\beta} r_\phi(x, y)\right)$$</p>
+<p>Then, we can rewrite the optimization problem as:</p>
+<p>$$\min_{\pi_\theta} \mathbb{E}_{x \sim \mathcal{D}} \mathbb{E}_{y \sim \pi_\theta(y|x)} \left[ \log \frac{\pi_\theta(y|x)}{\pi^*(y|x)} - \log Z(x) \right]$$</p>
+<p>$$= \min_{\pi_\theta} \mathbb{E}_{x \sim \mathcal{D}} \mathbb{E}_{y \sim \pi_\theta(y|x)} \left[ \mathbb{D}_{KL}(\pi_\theta(y|x) \| \pi^*(y|x)) - \log Z(x) \right]$$</p>
+<p>Thus, the optimal solution (i.e., the optimal language model) is:</p>
+<p>$$\pi_\theta(y|x) = \pi^*(y|x) = \frac{1}{Z(x)} \pi_{\text{ref}}(y|x) \exp\left(\frac{1}{\beta} r_\phi(x, y)\right)$$</p>
+</section>
+<p>
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+With some algebra, we can show that the optimal reward model is:</p>
+<p>$$\begin{aligned}
+\pi_\theta(y|x) &= \frac{1}{Z(x)} \pi_{\text{ref}}(y|x) \exp\left(\frac{1}{\beta} r_\phi(x, y)\right)\\
+\log \pi_\theta(y|x) &= \log \pi_{\text{ref}}(y|x) + \frac{1}{\beta} r_\phi(x, y) - \log Z(x) \text{// perform  } \log(.)\\
+r_\phi(x, y) &= \beta \log \frac{\pi_\theta(y|x)}{\pi_{\text{ref}}(y|x)} + \beta \log Z(x)\\
+\end{aligned}$$</p>
+</section>
+<p>
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+Recall the Bradley-Terry model with parameterized reward model:</p>
+<p>$$p_\phi(y_w > y_l | x) = \frac{\exp(r_\phi(x, y_w))}{\exp(r_\phi(x, y_w)) + \exp(r_\phi(x, y_l))}$$</p>
+<p>We also have the optimal reward model:</p>
+<p>$$r_\phi(x, y) = \beta \log \frac{\pi_\theta(y|x)}{\pi_{\text{ref}}(y|x)} + \beta \log Z(x)$$</p>
+<p>Thus, we can rewrite the choice model as:</p>
+<p>$$\begin{aligned}
+p_\phi(y_w \succ y_l | x) &= \frac{1}{1 + \exp\left( \beta \log \frac{\pi_\theta(y_l | x)}{\pi_{\text{ref}}(y_l | x)} - \beta \log \frac{\pi_\theta(y_w | x)}{\pi_{\text{ref}}(y_w | x)} \right)}\\
+&= \sigma\left( \beta \log \frac{\pi_\theta(y_w | x)}{\pi_{\text{ref}}(y_w | x)} - \beta \log \frac{\pi_\theta(y_l | x)}{\pi_{\text{ref}}(y_l | x)} \right)
+\end{aligned}$$</p>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="dpo-bradley-terry-model-2">DPO: Bradley-Terry model</h3>
+<p>Recall our objective to maximize the reward model, we can rewrite the objective as maximizing the likelihood of the choice model:</p>
+<p>$$\mathcal{L} (r_\theta, \mathcal{D}) = - \mathbb{E}_{(x, y_w, u_l) \sim \mathcal{D}} \left[ \log p_\phi(y_w \succ y_l | x) \right]$$</p>
+<p>Finally, we can rewrite the objective as:</p>
+<p>$$\begin{aligned}
+\mathcal{L}_{DPO}(\pi_\theta; \pi_{\text{ref}}) &= - \mathbb{E}_{(x, y_w, u_l) \sim \mathcal{D}} \left[ \log p_\phi(y_w \succ y_l | x) \right]\\
+&= -\mathbb{E}_{(x, y_w, y_l) \sim D} \left[ \log \sigma\left( \beta \log \frac{\pi_\theta(y_w | x)}{\pi_{\text{ref}}(y_w | x)} - \beta \log \frac{\pi_\theta(y_l | x)}{\pi_{\text{ref}}(y_l | x)} \right) \right]
+\end{aligned}$$</p>
+<p style="text-align: left; font-size: 16px;">Rafael Rafaelov, Archit Sharma, Eric Mitchell, Stefano Ermon, Christopher D. Manning, and Chelsea Finn, "Direct preference optimization: Your language model is secretly a reward model."</p>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<p><img src="figures/rlhf_comparison.png" alt="RLHF Comparison"></p>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="should-your-ml-application-use-an-explicit-utilityreward-model">Should your ML application use an explicit utility/reward model?</h3>
+<ul>
+<li>Pro:
+<ul>
+<li>Reward models can be re-used (in principle)</li>
+<li>Reward model can be examined to infer properties of human(s), and measure the quality of the preference model(s)</li>
+<li>Reward model(s) add useful inductive biases to the training pipeline</li>
+</ul>
+</li>
+<li>Cons:
+<ul>
+<li>The extra step of reward modeling can introduce (unnecessary?) errors</li>
+<li>Reward model optimization can be unstable (e.g., in RLHF, as argued by DPO)</li>
+</ul>
+</li>
+</ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="some-criticisms-of-choice-modeling-more-broadly">Some criticisms of choice modeling more broadly</h3>
+<ul>
+<li>Real-world choices often appear to be highly situational or context-dependent e.g., way choice is posed, emotional states, other factors not well modeled.
+<ul>
+<li>Arguably what is exploited by marketing. Related to framing effects (more later).</li>
+<li>A partial rebuttal: In principle, can always add more context to the model.</li>
+</ul>
+</li>
+<li>Many choices are intuitive rather than rational, so utility optimization models do not apply
+<ul>
+<li>Please have limited attention and cognitive capability, especially for less salient choices</li>
+<li>Default choices are powerful, e.g., in 401K, or opt-in organ donors</li>
+</ul>
+</li>
+</ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h2 id="q--a">Q &amp; A</h2>
+<ul>
+<li>What are some key assumptions in (discrete) choice models?
+<ul>
+<li>Rationality (existence of a utility function that determines choices)</li>
+<li>Parametric model for utility and choice noise</li>
+<li>Finite set of choices, and explicit alternatives</li>
+</ul>
+</li>
+<li>How does one apply discrete choice models to ML/RL applications with changing context (input)
+<ul>
+<li>Model utility via generic models (e.g., deep neural networks)</li>
+</ul>
+</li>
+<li>What are some criticisms of discrete choice models?
+<ul>
+<li>Humans display context-dependent choices</li>
+<li>Humans often make intuitive (or irrational) choices</li>
+</ul>
+</li>
+</ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h2 id="what-is-not-covered">What is not covered</h2>
+<ul>
+<li><strong>Details of estimation, analysis</strong>
+<ul>
+<li>Maximum likelihood is generally equivalent to standard classification/ranking</li>
+<li>Existing analysis (though often interesting) is mostly for linear (or simpler) utilities</li>
+<li>Many of the interesting theoretical questions are for active querying settings</li>
+</ul>
+</li>
+<li><strong>Beyond discrete choice models</strong>
+<ul>
+<li>With equivalent alternatives ($U_1 &gt; U_2, U_1 \approx U_3$)</li>
+<li>Continuous &ldquo;choices&rdquo; e.g., pricing, demand/supply</li>
+<li>Dynamic discrete choice (for time varying choices) $\approx$ RL</li>
+</ul>
+</li>
+<li><strong>Experimental design for &ldquo;stated preferences&rdquo;</strong>
+<ul>
+<li>How to design a survey to measure alternatives, conjoint analysis</li>
+</ul>
+</li>
+<li><strong>Active querying</strong> (future discussion)</li>
+</ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h2 id="summary">Summary</h2>
+<ul>
+<li><strong>Today:</strong> Overview of discrete choice models
+<ul>
+<li>Basics of discrete choice and rationality assumptions</li>
+<li>Benefits and criticisms of discrete choice</li>
+<li>Some special cases and applications of discrete choice models to ML</li>
+</ul>
+</li>
+<li><strong>Next Lecture:</strong> Human Decision Making and Choice Models (Continue)</li>
+</ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h2 id="references">References</h2>
+<small>
+<ul>
+  <li>Train, K. (1986). <em>Qualitative Choice Analysis: Theory, Econometrics, and an Application to Automobile Demand.</em> MIT Press. ISBN 9780262200554. Chapter 8.</li>
+  <li>McFadden, D.; Train, K. (2000). "Mixed MNL Models for Discrete Response" (PDF). <em>Journal of Applied Econometrics.</em> 15 (5): 447–470.</li>
+  <li>Luce, R. D. (1959). <em>Individual Choice Behavior: A Theoretical Analysis.</em> Wiley.</li>
+  <li>Additional:
+    <ul>
+      <li>Ben-Akiva, M.; Lerman, S. (1985). <em>Discrete Choice Analysis: Theory and Application to Travel Demand.</em> Transportation Studies. Massachusetts: MIT Press.</li>
+      <li>Park, Byeong U.; Simar, Léopold; Zelenyuk, Valentin (2017). "Nonparametric estimation of dynamic discrete choice models for time series data" (PDF). <em>Computational Statistics & Data Analysis.</em> 108: 97–120. doi:10.1016/j.csda.2016.10.024.</li>
+      <li>Rafailov, Rafael, Archit Sharma, Eric Mitchell, Stefano Ermon, Christopher D. Manning, and Chelsea Finn. "Direct preference optimization: Your language model is secretly a reward model." arXiv preprint arXiv:2305.18290 (2023).</li>
+    </ul>
+  </li>
+</ul>
+</small></section>
+
+  
+
+
+</div>
+      
+
+    </div>
+<script type="text/javascript" src=/class/cs329h/slides/reveal-hugo/object-assign.js></script>
+
+
+<script src="/class/cs329h/slides/reveal-js/dist/reveal.js"></script>
+
+
+  <script type="text/javascript" src="/class/cs329h/slides/reveal-js/plugin/markdown/markdown.js"></script>
+  
+  <script type="text/javascript" src="/class/cs329h/slides/reveal-js/plugin/highlight/highlight.js"></script>
+  
+  <script type="text/javascript" src="/class/cs329h/slides/reveal-js/plugin/zoom/zoom.js"></script>
+  
+  <script type="text/javascript" src="/class/cs329h/slides/reveal-js/plugin/notes/notes.js"></script>
+  
+<script type="text/javascript">
+  
+  
+  function camelize(map) {
+    if (map) {
+      Object.keys(map).forEach(function(k) {
+        newK = k.replace(/(\_\w)/g, function(m) { return m[1].toUpperCase() });
+        if (newK != k) {
+          map[newK] = map[k];
+          delete map[k];
+        }
+      });
+    }
+    return map;
+  }
+
+  var revealHugoDefaults = { center: true, controls: true, history: true, progress: true, transition: "slide" };
+  var revealHugoSiteParams = {"custom_theme":"css/serif.css","enablesourcemap":true,"history":true,"margin":0.1,"slide_number":true};
+  var revealHugoPageParams = {};
+
+  var revealHugoPlugins = {
+    
+    plugins: [RevealMarkdown,RevealHighlight,RevealZoom,RevealNotes]
+  };
+
+  
+  var options = Object.assign({},
+    camelize(revealHugoDefaults),
+    camelize(revealHugoSiteParams),
+    camelize(revealHugoPageParams),
+    camelize(revealHugoPlugins));
+
+  Reveal.initialize(options);
+</script>
+
+
+
+
+
+  
+  
+
+  
+  
+
+  
+  
+    
+  
+
+  
+  
+
+  
+  
+
+
+
+
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    },
+    svg: {
+      fontCache: 'global'
+    }
+  };
+</script>
+  
+
+<script type="text/javascript" id="MathJax-script" async src="/class/cs329h/slides/tex-svg_10887261161190234492.js"></script>
+
+    
+    
+  </body>
+</html>
