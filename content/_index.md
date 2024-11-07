@@ -274,6 +274,19 @@ outputs = ["Reveal"]
     </ul> 
 </div>
 
+---
+{{< slide auto-animate="" >}}
+## 5. Diffusion Model: Results
+<div style="text-align: left; font-size: 24px; margin-left: 30px;"> <span class="fragment"> <p><strong>Benchmark on Posebusters Dataset:</strong></p> </span> <p class="fragment">Posebusters Version 1 includes 428 protein-ligand structures, and Version 2 has 308, all released to the PDB after 2021. Performance is measured by the percentage of protein-ligand pairs with pocket-aligned ligand RMSD under 2 Å.</p> </div>
+
+<span class="fragment">
+  <figure style="display: flex; flex-direction: column; align-items: center;">
+    <div style="display: flex; justify-content: center; width: 100%; gap: 10px; margin-top: -20px;">
+        <img src="images/docking_results.png" style="width: 100%; max-width: 1000px;">
+    </div>
+  </figure>
+</span>
+
 
 ---
 {{< slide auto-animate="" >}}
