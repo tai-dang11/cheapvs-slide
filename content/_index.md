@@ -129,8 +129,8 @@ outputs = ["Reveal"]
 {{< slide auto-animate="" >}}
 ## 2.Eliciting Expert Preferences in Virtual Screening
   <p style="font-size: 24px; text-align: left;">Eliciting preference can be viewed as a logistic regression:</p>
-  <ul style="font-size: 24px;">
-    <li class="fragment">\( p(y \mid x_1, x_2) = \sigma(f(x_1) - f(x_2)) \) where \( \text{sigmoid}(z) = \frac{1}{1 + e^{-z}} \).</li>
+  <ul style="font-size: 24px">
+    <li class="fragment"> \( p(y \mid x_1, x_2) = \sigma(f(x_1) - f(x_2)) \) where \( \text{sigmoid}(z) = \frac{1}{1 + e^{-z}} \).</li>
   </ul>
 
   <p class="fragment" style="font-size: 24px; text-align: left;">If we assume utility is a linear function of ligand features, we can use gradient descent to achieve:</p>
