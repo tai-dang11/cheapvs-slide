@@ -2,10 +2,12 @@
 title = "Reliable and Efficient Amortized Model-based Evaluation"
 date = "2024-09-23"
 outputs = ["Reveal"]
-[logo]
-src = "images/sail-logo.jpg"
 
 +++
+<div style="display: flex; justify-content: space-between; width: 100%;">
+  <img src="images/SOM_vert_Web_Color_LG.png" alt="Main Logo" style="height: 70px; margin-left: -150px;"> 
+  <img src="images/sail-logo.jpg" alt="Second Logo" style="height: 70px; margin-right: -180px;">
+</div>
 
 {{< slide auto-animate="" >}}
 ### Accelerate Virtual Screening 
@@ -15,18 +17,21 @@ src = "images/sail-logo.jpg"
 ---
 {{< slide auto-animate="" >}}
 ## 1.Introduction: Problem Set-up of Virtual Screening
+  <ul style="font-size: 24px;">
+    <li class="fragment">For <strong>a given protein</strong> linked to a certain disease,
+    <span class="fragment">we want to select a few small molecules (i.e., ligand)</span>
+    <span class="fragment">from a library of millions candidates</span>
+    <span class="fragment">such that the selected candidate will have the highest utility in disease treating.</span>
+    </li>
+  </ul>
 
-- <p style="font-size: 24px;">
-  <span class="fragment">For <strong>a given protein</strong> linked to a certain disease,</span>
-  <span class="fragment">we want to select a few small molecules (i.e., ligand)</span>
-  <span class="fragment">from a library of millions candidates</span>
-  <span class="fragment">such that the selected candidate will have the highest utility in disease treating.</span>
-
-- <p style="font-size: 24px;">
-  <span class="fragment">For modern libraries, it is feasible scaling up to billions or even trillions of compounds enhances the reach and impact of virtual screening.</span>
+  <ul style="font-size: 24px;">
+    <li class="fragment">For modern libraries, it is feasible scaling up to billions or even trillions of compounds enhances the reach and impact of virtual screening.
+    </li>
+  </ul>
 
 <span class="fragment">
-    <figure style="display: flex; flex-direction: column; align-items: center; width: 80%; margin-top: -30px; margin-left: 100px">
+    <figure style="display: flex; flex-direction: column; align-items: center; width: 80%; margin-top: 0px; margin-left: 100px">
     <img src="images/vs.png">
 </span>
 
@@ -58,13 +63,17 @@ src = "images/sail-logo.jpg"
 ---
 {{< slide auto-animate="" >}}
 ## 2.Eliciting Expert Preferences in Virtual Screening
-- <p style="font-size: 24px;">
-  <span class="fragment">Depending on the specific disease and protein, experts have preferences about characteristics of candidate ligands,</span>
-  <span class="fragment">trading off various criteria such as synthesizability, affinity, solubility, and side effects.</span>
+  <ul style="font-size: 24px;">
+    <li class="fragment">Depending on the specific disease and protein, experts have preferences about characteristics of candidate ligands,
+    <span class="fragment">trading off various criteria such as synthesizability, affinity, solubility, and side effects.</span>
+    </li>
+  </ul>
 
-- <p style="font-size: 24px;">
-  <span class="fragment">Some characteristics are “must-have,” such as synthesizability,</span>
-  <span class="fragment">while others are “nice-to-have.”</span>
+  <ul style="font-size: 24px;">
+    <li class="fragment">Some characteristics are “must-have,” such as synthesizability,
+    <span class="fragment">while others are “nice-to-have.</span>
+    </li>
+  </ul>
 
 <span class="fragment">
   <div style="display: flex; justify-content: center; width: 100%; gap: -30px; margin-top: -100px;">
@@ -119,52 +128,37 @@ src = "images/sail-logo.jpg"
 ---
 {{< slide auto-animate="" >}}
 ## 2.Eliciting Expert Preferences in Virtual Screening
-
-<div style="text-align: left; font-size: 24px; margin-left: 30px;">
-  <span class="fragment">
-  <p>Eliciting preference can be viewed as a logistic regression:</p>
-  <p style="margin-left: 50px;">
-    \( p(y \mid x_1, x_2) = \sigma(f(x_1) - f(x_2)) \) where \( \text{sigmoid}(z) = \frac{1}{1 + e^{-z}} \).
-  </p>
-  </span>
-  
-  <span class="fragment">
-  <p>If we assume utility is a linear function of ligand features, we can use gradient descent to achieve:</p>
-  <ul style="margin-left: 70px; list-style-type: none;">
-    <li>- Train accuracy: 0.95</li>
-    <li>- Test accuracy: 0.94</li>
+  <p style="font-size: 24px; text-align: left;">Eliciting preference can be viewed as a logistic regression:</p>
+  <ul style="font-size: 24px;">
+    <li class="fragment">\( p(y \mid x_1, x_2) = \sigma(f(x_1) - f(x_2)) \) where \( \text{sigmoid}(z) = \frac{1}{1 + e^{-z}} \).</li>
   </ul>
-  </span>
 
-  <span class="fragment">
-  <p>Alternatively, using a Gaussian process yields the same results:</p>
-  <ul style="margin-left: 70px; list-style-type: none;">
-    <li>- Train accuracy: 0.95</li>
-    <li>- Test accuracy: 0.94</li>
+  <p class="fragment" style="font-size: 24px; text-align: left;">If we assume utility is a linear function of ligand features, we can use gradient descent to achieve:</p>
+  <ul style="font-size: 24px; text-align: left; margin-left: -700px;">
+    <li class="fragment">Train accuracy: 0.95</li>
+    <li class="fragment">Test accuracy: 0.95</li>
   </ul>
-  </span>
 
-</div>
-
+  <p class="fragment" style="font-size: 24px; text-align: left;">Alternatively, using a Gaussian process yields the same results:</p>
+  <ul style="font-size: 24px; text-align: left; margin-left: -700px;">
+    <li class="fragment">Train accuracy: 0.95</li>
+    <li class="fragment">Test accuracy: 0.95</li>
+  </ul>
 
 ---
 {{< slide auto-animate="" >}}
 ## 2.Eliciting Expert Preferences in Virtual Screening
-<div style="font-size: 24px; text-align: left; margin-left: 30px;">
-
-  - <span class="fragment"> <strong>Initial Selection</strong>: Randomly select pairs of ligands from a library \( L \) of 7,000 compounds to explore the chemical space.</span>
-  
-  - <span class="fragment"> <strong>Adaptive Selection</strong>: Optimize future selections from \( L \) to reduce oracle queries, improving efficiency and estimating the weight vector \( W \).</span>
-  
-  - <span class="fragment"> <strong>Reward Function</strong>: For utility \( U \) using logistic regression \( U = W \cdot X \), where:</span>
-  
-    <ul>
+<ul style="font-size: 24px;">
+  <li class="fragment"><strong>Initial Selection</strong>: Randomly select pairs of ligands from a library \( L \) of 7,000 compounds to explore the chemical space.</li>
+  <li class="fragment"><strong>Adaptive Selection</strong>: Optimize future selections from \( L \) to reduce oracle queries, improving efficiency and estimating the weight vector \( W \).</li>
+  <li class="fragment"><strong>Reward Function</strong>: For utility \( U \) using logistic regression \( U = W \cdot X \), where:
+    <ul style="font-size: 22px;">
       <li class="fragment">\( U \): utility score indicating ligand suitability</li>
       <li class="fragment">\( W \): weights representing feature importance</li>
-      <li class="fragment">\( X \): ligand feature vector (f(x_1) - f(x_2))</li> 
+      <li class="fragment">\( X \): ligand feature vector (f(x_1) - f(x_2))</li>
     </ul>
-
-</div>
+  </li>
+</ul>
 
 ---
 {{< slide auto-animate="" >}}
@@ -196,10 +190,10 @@ src = "images/sail-logo.jpg"
   <span class="fragment">
   <p>Traditional physics-based docking tools (e.g., Glide, Smina) are computationally expensive to evaluate ligand affinity.</p>
   </span>
-  <ul style="margin-left: 40px; list-style-type: none;">
-    <li class="fragment">- <strong>Traditional Tools</strong>: 15mins/1 pose</li>
-    <li class="fragment">- <strong>Our model</strong>: 5s/64 poses</li>
-    <li class="fragment">- <strong>Chai</strong>: 1 min/5 poses</li>
+  <ul style="margin-left: 40px;">
+    <li class="fragment"> <strong>Traditional Tools</strong>: 15mins/1 pose</li>
+    <li class="fragment"> <strong>Our model</strong>: 5s/64 poses</li>
+    <li class="fragment"> <strong>Chai</strong>: 1 min/5 poses</li>
   </ul>
 </div>
 
@@ -207,9 +201,9 @@ src = "images/sail-logo.jpg"
   <span class="fragment">
   <p>We leverage the similarity in ligand structure to accelerate the binding by training a diffusion model for molecular docking</p>
   </span>
-  <ul style="margin-left: 40px; list-style-type: none;">
-    <li class="fragment">- <strong>Neural Engine</strong>: Uses diffusion model for rapid docking</li>
-    <li class="fragment">- <strong>Utility Scoring</strong>: Assesses ligands on affinity, solubility, and toxicity, etc</li>
+  <ul style="margin-left: 40px;">
+    <li class="fragment"> <strong>Neural Engine</strong>: Uses diffusion model for rapid docking</li>
+    <li class="fragment"> <strong>Utility Scoring</strong>: Assesses ligands on affinity, solubility, and toxicity, etc</li>
   </ul>
 </div>
 
@@ -220,9 +214,10 @@ src = "images/sail-logo.jpg"
   <span class="fragment">
   <p>Accelerate pose search further:</p>
   </span>
-  <ul style="margin-left: 40px; list-style-type: none;">
-    <li class="fragment">- Local vs blind docking</li>
-    <li class="fragment">- Obtain centroid positions through ligand initializations</li>
+  <ul style="font-size: 24px; margin-left: 40px;">
+    <li class="fragment"> Local vs blind docking</li>
+    <li class="fragment"> Blind docking first during initialization, local docking during active screening process</li>
+    <li class="fragment"> Obtain centroid positions through ligand initializations for faster docking time</li>
   </ul>
 </div>
 
@@ -236,21 +231,67 @@ src = "images/sail-logo.jpg"
   </figure>
 </span>
 
+
 ---
 {{< slide auto-animate="" >}}
-## 5. Putting it all together
+## 5. Diffusion Model: Data collection
+<div style="text-align: left; font-size: 24px; margin-left: 30px;"> 
+    <span class="fragment"> 
+        <p><strong>Data Augmentation Techniques:</strong></p> 
+        <ul style="margin-left: 40px; font-size: 20px"> 
+            <li class="fragment"><strong>Molecular Dynamics (MD) Augmentation:</strong> Employed 59,330 dynamic frames of 14,387 protein-ligand complexes to model ligand flexibility, amounting to 75K training data.</li> 
+            <li class="fragment"><strong>Data Crawling:</strong> Curated 322K protein-ligand complexes from the PDBScan22 dataset, after filtering out unnatural ligands and problematic poses, to enhance structural diversity.</li> 
+            <li class="fragment"><strong>Pharmacophore Alignment:</strong> Generated up to 11M pharmacophore-consistent ligand pairs from the Papyrus dataset, significantly expanding the model's training data.</li> 
+        </ul> 
+    </span> 
+    <span class="fragment">
+        <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+            <div style="width: 49%;">
+                <img src="images/md.png" alt="MD Simulation Example" style="width: 100%; height: auto;">
+                <p style="text-align: center; font-size: 20px">Figure 1: MD Simulation Trajectories</p>
+            </div>
+            <div style="width: 49%;">
+                <img src="images/pharmacophore.png" alt="Pharmacophore Model Example" style="width: 100%; height: auto;">
+                <p style="text-align: center; font-size: 20px">Figure 2: Pharmacophore Modeling</p>
+            </div>
+        </div>
+    </span>
+</div>
 
-<div style="text-align: left; font-size: 24px; margin-left: 30px;">
-  <p>
-    <span class="fragment"> We perform active virtual screening on the inferred expert utility function.</span>
-    <span class="fragment"> Our procedure respects expert preference (both hard and soft constraint) and probabilistic model to come up with a good candidate set.</span>
-    <span class="fragment"> To search for poses required for objectives such as affinity, we accelerate the pose search by a neural search engine.</span>
-  </p>
+
+
+---
+{{< slide auto-animate="" >}}
+## 5. Diffusion Model: Training
+<div style="text-align: left; font-size: 24px; margin-left: 30px;"> 
+    <span class="fragment"> <p>Diffusion models are probabilistic generative models that transform data from a noisy distribution into a structured, meaningful output through a reverse process.</p> </span> 
+    <span class="fragment"> <p>Applying SDEs for controlled generative modeling:</p> </span> 
+    <ul style="margin-left: 40px;"> 
+        <li class="fragment"> Initiate with Gaussian noise on ligand coordinates</li> 
+        <li class="fragment"> Employ Euler-Maruyama to denoise step-by-step: <ul> 
+        <li style="font-size: 20px;">\(X_{t-\Delta t} = X_t + f(X_t, t) \Delta t + g(t) \sqrt{\Delta t} \cdot \epsilon\)</li> </ul> </li> 
+    <li class="fragment"> Optimize ligand structure discovery through iterative sampling steps via Euler</li> 
+    </ul> 
+</div>
+
+
+---
+{{< slide auto-animate="" >}}
+## 6. Contrained settings
+
+<div style="text-align: left; font-size: 24px; margin-left: 10px;">
+  <span class="fragment">
+  <p>This graph showcases the outcome of a PCA-based virtual screening process to identify and compare ligands based on their chemical similarity.</p>
+  </span>
+  <ul style="text-align: left; font-size: 20px; margin-left: 40px;">
+    <li class="fragment">PC1 and PC2: represent the principal components derived from PCA, summarizing complex ligand properties into a comprehensible two-dimensional space.</li>
+    <li class="fragment">Similarity Metric: using the Tanimoto coefficient, comparing chemical fingerprints.</li>
+  </ul>
 </div>
 
 <span class="fragment">
   <figure style="display: flex; flex-direction: column; align-items: center;">
-    <div style="display: flex; justify-content: center; width: 100%;">
+    <div style="display: flex; justify-content: center; width: 95%;">
         <img src="images/similarity.png" style="width: 50%;" alt="Virtual Screening with Multiple Query Ligands and Constrained Similarity">
     </div>
     <figcaption style="text-align: center; font-size: 20px; margin-top: 10px;">Virtual Screening with Multiple Query Ligands and Constrained Similarity</figcaption>
@@ -260,30 +301,41 @@ src = "images/sail-logo.jpg"
 
 ---
 {{< slide auto-animate="" >}}
-## 5. Putting it all together
-
-<div style="text-align: left; font-size: 28px; margin-top: 20px;">
-  <strong>Metrics for evaluation</strong>
+## 7. Putting it all together
+<div style="text-align: left; font-size: 24px; margin-left: 0px;">
+  <p>
+    <span class="fragment"> We perform active virtual screening on the inferred expert utility function.</span>
+    <span class="fragment"> Our procedure respects expert preference (both hard and soft constraint) and probabilistic model to come up with a good candidate set.</span>
+    <span class="fragment"> To search for poses required for objectives such as affinity, we accelerate the pose search by a neural search engine.</span>
+  </p>
 </div>
 
 <div style="text-align: left; font-size: 24px; margin-top: 20px;">
-  <strong>Regret</strong>
-
-  - <span class="fragment">*Definition:* Difference in affinity between the best possible ligand and the top ligand found by the model within the top_k \%\.</span>
-  
-  - <span class="fragment">*Formula:*</span> 
-    <span class="fragment">\[ \text{Regret} = A_{\text{best}} - A_{\text{model}} \]</span>
+  <span class="fragment"><strong>Metrics for evaluation</strong></span>
 </div>
 
-<div style="text-align: left; font-size: 24px; margin-top: 20px;">
-  <span class="fragment"><strong>Percent of Best Ligand Found</strong></span>
+<div style="text-align: left; font-size: 24px; margin-left: 10px;">
+  <span class="fragment">
+  <p><strong>Regret</strong></p>
+  </span>
+  <ul style="margin-left: 40px;">
+    <li class="fragment"><strong>Definition</strong>: Difference in affinity between the best possible ligand and the top ligand found by the model within the top_k \%\.</li>
+    <li class="fragment">\[ \text{Regret} = A_{\text{best}} - A_{\text{model}} \]</li>
+  </ul>
+</div>
 
-  - <span class="fragment">*Definition:* Percentage of screened ligands close in affinity to the best possible ligand. (top_k \%\)</span>
+<div style="text-align: left; font-size: 24px; margin-left: 10px;">
+  <span class="fragment">
+  <p><strong>Percent of Best Ligand Found</strong></p>
+  </span>
+  <ul style="margin-left: 40px;">
+    <li class="fragment"><strong>Definition</strong>: Percentage of screened ligands close in affinity to the best possible ligand. (top_k \%\)</li>
+  </ul>
 </div>
 
 ---
 {{< slide auto-animate="" >}}
-## 5. Putting it all together: Screening Results
+## 7. Putting it all together: Screening Results
 <span class="fragment">
   <figure style="display: flex; flex-direction: column; align-items: center;">
     <div style="display: flex; justify-content: center; width: 100%; gap: 70px; margin-top: -30px;">
@@ -296,7 +348,7 @@ src = "images/sail-logo.jpg"
 
 ---
 {{< slide auto-animate="" >}}
-## 5. Putting it all together: Screening Results
+## 7. Putting it all together: Screening Results
 <span class="fragment">
   <figure style="display: flex; flex-direction: column; align-items: center;">
     <div style="display: flex; justify-content: center; width: 100%; gap: 10px; margin-top: -20px;">
@@ -307,9 +359,8 @@ src = "images/sail-logo.jpg"
 
 ---
 {{< slide auto-animate="" >}}
-## 5. Putting it all together: Next steps
-- <p style="text-align: left; font-size: 32px; margin-top: 20px;">
-  <span class="fragment">Run virtual screening on bigger library (100k, 1M) compounds</span>
-
-- <p style="text-align: left; font-size: 32px; margin-top: 20px;">
-  <span class="fragment">Improve on performance of diffusion model</span>
+## 7. Putting it all together: Next steps
+  <ul style="margin-left: 40px;">
+    <li class="fragment"> Run virtual screening on bigger library (100k, 1M) compounds</li>
+    <li class="fragment"> Improve on performance of diffusion model</li>
+  </ul>
