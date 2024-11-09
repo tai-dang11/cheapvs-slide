@@ -2,11 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/~sttruong/reeval/</loc>
+    <loc>https://ai.stanford.edu/~sttruong/avs/</loc>
     <lastmod>2024-09-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/~sttruong/reeval/categories/</loc>
+    <loc>https://ai.stanford.edu/~sttruong/avs/categories/</loc>
   </url><url>
-    <loc>http://localhost:1313/~sttruong/reeval/tags/</loc>
+    <loc>https://ai.stanford.edu/~sttruong/avs/tags/</loc>
   </url>
 </urlset>

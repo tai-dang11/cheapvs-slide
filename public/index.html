@@ -1,15 +1,15 @@
 <!doctype html>
 <html lang="en">
   <head>
-	<meta name="generator" content="Hugo 0.137.1"><script src="/~sttruong/reeval/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=~sttruong/reeval/livereload" data-no-instant defer></script>
+	<meta name="generator" content="Hugo 0.130.0">
     <meta charset="utf-8">
 <title>Reliable and Efficient Amortized Model-based Evaluation</title>
 
 
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><link rel="stylesheet" href="/~sttruong/reeval/reveal-js/dist/reset.css">
-<link rel="stylesheet" href="/~sttruong/reeval/reveal-js/dist/reveal.css"><link rel="stylesheet" href="/~sttruong/reeval/css/serif.css" id="theme"><link rel="stylesheet" href="/~sttruong/reeval/highlight-js/default.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><link rel="stylesheet" href="/~sttruong/avs/reveal-js/dist/reset.css">
+<link rel="stylesheet" href="/~sttruong/avs/reveal-js/dist/reveal.css"><link rel="stylesheet" href="/~sttruong/avs/css/serif.css" id="theme"><link rel="stylesheet" href="/~sttruong/avs/highlight-js/default.min.css">
   </head>
   <body>
     
@@ -148,7 +148,7 @@
   
 <h2 id="2eliciting-expert-preferences-in-virtual-screening-2">2.Eliciting Expert Preferences in Virtual Screening</h2>
   <p style="font-size: 24px; text-align: left;">Eliciting preference can be viewed as a logistic regression:</p>
-  <ul style="margin-left: -200px; font-size: 24px">
+  <ul style="font-size: 24px">
     <li class="fragment"> \( p(y \mid x_1, x_2) = \sigma(f(x_1) - f(x_2)) \) where \( \text{sigmoid}(z) = \frac{1}{1 + e^{-z}} \).</li>
   </ul>
   <p class="fragment" style="font-size: 24px; text-align: left;">If we assume utility is a linear function of ligand features, we can use gradient descent to achieve:</p>
@@ -174,7 +174,7 @@
     <ul style="font-size: 22px;">
       <li class="fragment">\( U \): utility score indicating ligand suitability</li>
       <li class="fragment">\( W \): weights representing feature importance</li>
-      <li class="fragment">\( X \): ligand feature vector \(f(x_1) - f(x_2) \)</li>
+      <li class="fragment">\( X \): ligand feature vector (f(x_1) - f(x_2))</li>
     </ul>
   </li>
 </ul>
@@ -294,8 +294,8 @@
     <ul style="margin-left: 40px;"> 
         <li class="fragment"> Initiate with Gaussian noise on ligand coordinates</li> 
         <li class="fragment"> Employ Euler-Maruyama to denoise step-by-step: <ul> 
-          <li style="font-size: 20px;">\(X_{t-\Delta t} = X_t + f(X_t, t) \Delta t + g(t) \sqrt{\Delta t} \cdot \epsilon\)</li> </ul> </li> 
-        <li class="fragment"> Optimize ligand structure discovery through iterative sampling steps via Euler</li> 
+        <li style="font-size: 20px;">\(X_{t-\Delta t} = X_t + f(X_t, t) \Delta t + g(t) \sqrt{\Delta t} \cdot \epsilon\)</li> </ul> </li> 
+    <li class="fragment"> Optimize ligand structure discovery through iterative sampling steps via Euler</li> 
     </ul> 
 </div>
 </section>
@@ -351,21 +351,21 @@
 <div style="text-align: left; font-size: 24px; margin-top: 20px;">
   <span class="fragment"><strong>Metrics for evaluation</strong></span>
 </div>
-
 <div style="text-align: left; font-size: 24px; margin-left: 10px;">
-  <span class="fragment"><p><strong>Regret</strong></p></span>
+  <span class="fragment">
+  <p><strong>Regret</strong></p>
+  </span>
   <ul style="margin-left: 40px;">
-    <li class="fragment"><strong>Definition</strong>: Difference in affinity between the best possible ligand and the top ligand found by the model within the \( \text{top}_k \% \).</li>
-      <li class="fragment" style="font-size: 21px;"> \(\mathrm{Regret} = A_{\mathrm{best}} - A_{\mathrm{model}} \) </li> 
+    <li class="fragment"><strong>Definition</strong>: Difference in affinity between the best possible ligand and the top ligand found by the model within the top_k \%\.</li>
+    <li class="fragment">\[ \text{Regret} = A_{\text{best}} - A_{\text{model}} \]</li>
   </ul>
 </div>
-
 <div style="text-align: left; font-size: 24px; margin-left: 10px;">
   <span class="fragment">
   <p><strong>Percent of Best Ligand Found</strong></p>
   </span>
   <ul style="margin-left: 40px;">
-    <li class="fragment"><strong>Definition</strong>: Percentage of screened ligands close in affinity to the best possible ligand. (\(\text{top}_k \% \))</li>
+    <li class="fragment"><strong>Definition</strong>: Percentage of screened ligands close in affinity to the best possible ligand. (top_k \%\)</li>
   </ul>
 </div>
 </section>
@@ -413,24 +413,20 @@
       
 
     </div>
-<script type="text/javascript" src=/~sttruong/reeval/reveal-hugo/object-assign.js></script>
+<script type="text/javascript" src=/~sttruong/avs/reveal-hugo/object-assign.js></script>
 
 
-<script src="/~sttruong/reeval/reveal-js/dist/reveal.js"></script>
+<script src="/~sttruong/avs/reveal-js/dist/reveal.js"></script>
 
 
-  <script type="text/javascript" src="/~sttruong/reeval/reveal-js/plugin/markdown/markdown.js"></script>
+  <script type="text/javascript" src="/~sttruong/avs/reveal-js/plugin/markdown/markdown.js"></script>
   
-  <script type="text/javascript" src="/~sttruong/reeval/reveal-js/plugin/highlight/highlight.js"></script>
+  <script type="text/javascript" src="/~sttruong/avs/reveal-js/plugin/highlight/highlight.js"></script>
   
-  <script type="text/javascript" src="/~sttruong/reeval/reveal-js/plugin/zoom/zoom.js"></script>
+  <script type="text/javascript" src="/~sttruong/avs/reveal-js/plugin/zoom/zoom.js"></script>
   
-  <script type="text/javascript" src="/~sttruong/reeval/reveal-js/plugin/notes/notes.js"></script>
-  <script src="/~sttruong/reeval/reveal-js/plugin/math/math.js"></script>
-  <script>
-     Reveal.initialize({ plugins: [RevealMarkdown, RevealHighlight, RevealZoom, RevealNotes, RevealMath.KaTeX] });
-  </script>
-
+  <script type="text/javascript" src="/~sttruong/avs/reveal-js/plugin/notes/notes.js"></script>
+  
 <script type="text/javascript">
   
   
@@ -450,8 +446,7 @@
   var revealHugoDefaults = { center: true, controls: true, history: true, progress: true, transition: "slide" };
   var revealHugoSiteParams = {"custom_theme":"css/serif.css","enablesourcemap":true,"history":true,"margin":0.1,"slide_number":true};
   var revealHugoPageParams = {};
-  var options = Object.assign({}, camelize(revealHugoDefaults), camelize(revealHugoSiteParams), camelize(revealHugoPageParams), camelize(revealHugoPlugins));
-  Reveal.initialize(options);
+
   var revealHugoPlugins = {
     
     plugins: [RevealMarkdown,RevealHighlight,RevealZoom,RevealNotes]
