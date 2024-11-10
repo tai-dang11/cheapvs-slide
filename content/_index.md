@@ -48,7 +48,7 @@ For **a given protein** linked to a certain disease,
 
 <div style="margin-top: 20px; display: flex; justify-content: space-between; align-items: flex-start;">
   <div style="width: 50%;">
-    <h3 style="font-size: 36px;">Virtual screening presents several challenges:</h3>
+    <h3 style="font-size: 36px;">Virtual Screening Challenges:</h3>
     <ol style="font-size: 32px;">
       <li class="fragment" data-fragment-index="1"><b>Multiple, competing objectives</b> based on unknown, hard-to-quantify expert knowledge.</li>
       <li class="fragment" data-fragment-index="2"><b>Limited budget</b> to try all ligands from the library.</li>
@@ -57,8 +57,8 @@ For **a given protein** linked to a certain disease,
   </div>
 
   <div style="width: 50%;">
-    <h3 style="font-size: 36px; padding-left: 20px;">Our research aims to address these challenges:</h3>
-    <ol style="font-size: 32px; padding-left: 20px;">
+    <h3 style="font-size: 36px; padding-left: 30px;">Proposed solutions:</h3>
+    <ol style="font-size: 32px; padding-left: 30px;">
       <li class="fragment" data-fragment-index="1">Actively eliciting expert preferences for virtual screening with many objectives.</li>
       <li class="fragment" data-fragment-index="2">Active Virtual Screening.</li>
       <li class="fragment" data-fragment-index="3">Neural Search Engine with diffusion model.</li>
