@@ -3,7 +3,7 @@
   <head>
 	<meta name="generator" content="Hugo 0.137.1"><script src="/~sttruong/avs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=~sttruong/avs/livereload" data-no-instant defer></script>
     <meta charset="utf-8">
-<title>Reliable and Efficient Amortized Model-based Evaluation</title>
+<title>Accelerate Virtual Screening with Amortized Neural Search and Multi-Objective Bayesian Optimization</title>
 
 
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -17,34 +17,39 @@
       <div class="slides">
   
 
-    <div style="display: flex; justify-content: space-between; width: 100%;">
-  <img src="images/SOM_vert_Web_Color_LG.png" alt="Main Logo" style="height: 70px; margin-left: -150px;"> 
-  <img src="images/sail-logo.jpg" alt="Second Logo" style="height: 70px; margin-right: -180px;">
-</div>
-
+    
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
 <h3 id="accelerate-virtual-screening">Accelerate Virtual Screening</h3>
 <h3 id="with-amortized-neural-search">with Amortized Neural Search</h3>
-<h3 id="and-multi-objective-bayesian-optimization">and Multi-Objective Bayesian Optimization</h3>
+<h3 id="and-prefential-bayesian-optimization">and Prefential Bayesian Optimization</h3>
+<div style="display: flex; justify-content: space-between; width: 100%;">
+  <img src="images/SOM_vert_Web_Color_LG.png" alt="Main Logo" style="height: 70px; margin-left: -150px;"> 
+  <img src="images/sail-logo.jpg" alt="Second Logo" style="height: 70px; margin-right: -180px;">
+</div>
 </section>
 
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h2 id="1introduction-problem-set-up-of-virtual-screening">1.Introduction: Problem Set-up of Virtual Screening</h2>
-  <ul style="font-size: 24px;">
-    <li class="fragment">For <strong>a given protein</strong> linked to a certain disease,
-    <span class="fragment">we want to select a few small molecules (i.e., ligand)</span>
-    <span class="fragment">from a library of millions candidates</span>
-    <span class="fragment">such that the selected candidate will have the highest utility in disease treating.</span>
-    </li>
-  </ul>
-  <ul style="font-size: 24px;">
-    <li class="fragment">For modern libraries, it is feasible scaling up to billions or even trillions of compounds enhances the reach and impact of virtual screening.
-    </li>
-  </ul>
+<h3 id="1introduction-virtual-screening">1.Introduction: Virtual Screening</h3>
+<p>For <strong>a given protein</strong> linked to a certain disease,
+
+
+<span class='fragment ' >the goal of virtual screening is to select a <strong>few</strong> small molecules (i.e., ligand)</span>
+
+
+
+
+<span class='fragment ' >from a library of <strong>millions</strong> candidates</span>
+
+
+
+
+<span class='fragment ' >such that the selected candidate will have the <strong>highest utility</strong> in disease treating.</span>
+
+</p>
 <span class="fragment">
     <figure style="display: flex; flex-direction: column; align-items: center; width: 80%; margin-top: 0px; margin-left: 100px">
     <img src="images/vs.png">
@@ -54,7 +59,18 @@
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h2 id="1introduction-problem-set-up-of-virtual-screening-1">1.Introduction: Problem Set-up of Virtual Screening</h2>
+<h3 id="1introduction-virtual-screening-1">1.Introduction: Virtual Screening</h3>
+<p><span class="fragment">For modern libraries, it is feasible scaling up to billions or even trillions of compounds enhances the reach and impact of virtual screening.</span></p>
+<span class="fragment">
+    <figure style="display: flex; flex-direction: column; align-items: center; width: 80%; margin-top: 0px; margin-left: 100px">
+    <img src="images/vs.png">
+</span>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="1introduction-virtual-screening-2">1.Introduction: Virtual Screening</h3>
 <div style="display: flex; justify-content: space-between; align-items: flex-start;">
   <div style="width: 50%;">
     <h3 style="font-size: 28px; margin-bottom: 10px;">Virtual screening presents several challenges:</h3>
@@ -78,26 +94,22 @@
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h2 id="2eliciting-expert-preferences-in-virtual-screening">2.Eliciting Expert Preferences in Virtual Screening</h2>
-  <ul style="font-size: 24px;">
-    <li class="fragment">Depending on the specific disease and protein, experts have preferences about characteristics of candidate ligands,
-    <span class="fragment">trading off various criteria such as synthesizability, affinity, solubility, and side effects.</span>
-    </li>
-  </ul>
-  <ul style="font-size: 24px;">
-    <li class="fragment">Some characteristics are “must-have,” such as synthesizability,
-    <span class="fragment">while others are “nice-to-have.</span>
-    </li>
-  </ul>
+<h3 id="2eliciting-chemical-intuition">2.Eliciting Chemical Intuition</h3>
+<p>Depending on the specific disease and protein, experts have <strong>intuition</strong> about characteristics of candidate ligands,
+
+
+<span class='fragment ' >trading off various objectives such as synthesizability, affinity, solubility, and side effects.</span>
+
+</p>
 <span class="fragment">
   <div style="display: flex; justify-content: center; width: 100%; gap: -30px; margin-top: -100px;">
     <figure style="display: flex; flex-direction: column; align-items: center; width: 45%;">
       <img src="images/lig1.png" style="width: 100%;" alt="Aff: -10.11, PSA: 67.66">
-      <figcaption style="text-align: left; font-size: 20px; margin-top: -50px;">Affinity: -10.11, PSA: 67.66</figcaption>
+      <figcaption style="text-align: left; font-size: 20px; margin-top: -50px;">Affinity: -10.11, Solubility: 67.66</figcaption>
     </figure>
     <figure style="display: flex; flex-direction: column; align-items: center; width: 45%;">
       <img src="images/lig2.png" style="width: 100%;" alt="Aff: -10.11, PSA: 67.66">
-      <figcaption style="text-align: left; font-size: 20px; margin-top: -50px;">Affinity: -10.11, PSA: 67.66</figcaption>
+      <figcaption style="text-align: left; font-size: 20px; margin-top: -50px;">Affinity: -10.11, Solubility: 67.66</figcaption>
     </figure>
   </div>
 </span>
@@ -106,20 +118,19 @@
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h2 id="2eliciting-expert-preferences-in-virtual-screening-1">2.Eliciting Expert Preferences in Virtual Screening</h2>
-<ul>
-<li>
-<p style="font-size: 24px;">
-<span class="fragment">These implicit expert knowledge, encoded as preferences over ligands, are valuable to elicit for effective virtual screening.</span> 
-<span class="fragment">We can leverage toolkits from the field of machine learning from human preferences to tackle this challenge.</span>
-</li>
-</ul>
+<h3 id="2eliciting-chemical-intuition-1">2.Eliciting Chemical Intuition</h3>
+<p>These implicit expert knowledge, encoded as preferences over ligands, are valuable to elicit for effective virtual screening.
+
+
+<span class='fragment ' >We can leverage toolkits from the field of machine learning from human preferences to tackle this challenge.</span>
+
+</p>
 <span class="fragment">
 <table style="width: 80%; margin-top: 20px; border-collapse: collapse; text-align: center; font-size: 18px;">
   <tr>
     <th style="border: 1px solid #ddd; padding: 8px;">First ligand</th>
     <th style="border: 1px solid #ddd; padding: 8px;">Second ligand</th>
-    <th style="border: 1px solid #ddd; padding: 8px;">Preference (x1 > x2)</th>
+    <th style="border: 1px solid #ddd; padding: 8px;">Preference $(x_1 \succ x_2)$</th>
   </tr>
   <tr>
     <td style="border: 1px solid #ddd; padding: 8px;">[-7.81, 114.38, 0.51]</td>
@@ -146,50 +157,138 @@
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h2 id="2eliciting-expert-preferences-in-virtual-screening-2">2.Eliciting Expert Preferences in Virtual Screening</h2>
-  <p style="font-size: 24px; text-align: left;">Eliciting preference can be viewed as a Gaussian Process classification model:</p>
-  <ul style="margin-left: 40px; font-size: 22px">
-    <li class="fragment"> 
-      \(
-      p(y \mid x_1, x_2) = \Phi\left(f(\mathbf{X})\right)
-      \) where  \( \Phi(z) \) is the cumulative distribution function of the standard normal distribution and \( \mathbf{X} = \mathbf{f}(x_1) - \mathbf{f}(x_2) \).
-    </li>
-  </ul>
-  <p class="fragment" style="font-size: 24px; text-align: left;">By modeling utility with a Gaussian Process, we capture the uncertainty and non-linear relationships in expert preferences:</p>
-  <ul style="font-size: 24px; text-align: left; margin-left: -700px;">
-    <li class="fragment">Train accuracy: 0.95</li>
-    <li class="fragment">Test accuracy: 0.95</li>
-  </ul>
+<h3 id="2eliciting-chemical-intuition-2">2.Eliciting Chemical Intuition</h3>
+<p>Learning a preference model from binary preference data can be viewed as learning a classifier.</p>
+
+
+<span class='fragment ' ><p>$$p(y \mid x_1, x_2; f) = \frac{e^{f(x_1)}}{e^{f(x_1)} + e^{f(x_2)}}$$</p>
+</span>
+
+
+
+
+<span class='fragment ' ><p>$$= \frac{1}{1 + e^{-[f(x_1)-f(x_2)]}}$$</p>
+</span>
+
+
+
+
+<span class='fragment ' ><p>$$= \sigma(f(x_1)-f(x_2))$$</p>
+</span>
+
+
+
+
+<span class='fragment ' >where $\sigma(\cdot)$ is the sigmoid function.</span>
+
+
 </section>
 
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h2 id="2eliciting-expert-preferences-in-virtual-screening-3">2.Eliciting Expert Preferences in Virtual Screening</h2>
-<ul style="font-size: 24px;">
+<h3 id="2eliciting-chemical-intuition-3">2.Eliciting Chemical Intuition</h3>
+<p>
+
+<span class='fragment ' >The latent utility function $f$ can be modeled using various approaches.</span>
+
+
+
+
+<span class='fragment ' >One popular choice is the <strong>Gaussian Process (GP)</strong>, a non-parametric Bayesian method that defines a distribution over possible functions.</span>
+
+</p>
+<p style="color: green;">Add a visualization for functions induced by different kernel here.</p>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="2eliciting-chemical-intuition-4">2.Eliciting Chemical Intuition</h3>
+<p>
+
+<span class='fragment ' >By modeling utility with a Gaussian Process, we effectively capture both the uncertainty and the non-linear relationships inherent in expert preferences.</span>
+
+
+
+
+<span class='fragment ' >Learning GP Classifier can be done with standard machine learning toolbox such as <code>scikit-learn</code>.</span>
+
+</p>
+
+
+<span class='fragment ' >For example, when the synthetic oracle is the Auckley function, we obtain 95% train and test accuracy.</span>
+
+
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="2eliciting-chemical-intuition-5">2.Eliciting Chemical Intuition</h3>
+<p>Learning chemical intuition is done in a close-loop, where the computer interacts with the chemist in an active manner.
+
+
+<span class='fragment ' >Starting with distribution over function $f$ condition on the current data, $p(f | D)$, our procedure includes 4 iterative steps:</span>
+
+</p>
+
+
+<span class='fragment ' ><strong>Step 1:</strong> Sample two candidate utility: $f_1 \sim p(f|D), f_2 \sim p(f|D)$</span>
+
+
+
+
+<span class='fragment ' ><p><strong>Step 2:</strong> Find the best ligand under each utility function:</p>
+<p>$$x_1 = \arg\max_{x \in \mathcal{L}} f_1(x), x_2 = \arg\max_{x \in \mathcal{L}} f_2 (x)$ $$</p>
+</span>
+
+
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="2eliciting-chemical-intuition-6">2.Eliciting Chemical Intuition</h3>
+<p><strong>Step 3:</strong> Present the two candidate ligands $x_1$ and $x_2$ to the expert to obtain preference $y$.</p>
+
+
+<span class='fragment ' ><p><strong>Step 4:</strong> Update the model in the present of new data $\mathcal{D} \leftarrow \mathcal{D} \cup {(x_1, x_2, y)}$.</p>
+</span>
+
+
+<p style="color: green;">Add a graph showing our active elicitation method can quickly find the best candidate $x$ with a minimal amount of query.
+Add experiment showing that our method is robust with complex nonlinear function in high dimensional input.</p>
+<!-- 
+<ul>
   <li class="fragment"><strong>Initial Selection</strong>: Randomly select pairs of ligands from a library \( L \) of 7,000 compounds to explore the chemical space.</li>
   <li class="fragment"><strong>Adaptive Selection</strong>: Optimize future selections from \( L \) to reduce oracle queries, improving efficiency and modeling the latent function \( f \).</li>
   <li class="fragment"><strong>Reward Function</strong>: For utility \( U \) using Gaussian Process Classification \( U = f(\mathbf{X}) \), where:
-    <ul style="font-size: 22px;">
+    <ul style="font-size: 22px;"$>
       <li class="fragment">\( U \): utility score indicating ligand suitability</li>
       <li class="fragment">\( f \): latent function representing expert preferences</li>
       <li class="fragment">\( \mathbf{X} \): ligand feature difference vector \( \mathbf{f}(x_1) - \mathbf{f}(x_2) \)</li>
     </ul>
   </li>
-</ul>
+</ul> -->
 </section>
-
 
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h2 id="2next-steps">2.Next Steps</h2>
-  <p style="font-size: 24px; text-align: left;">Working with Chemists to encode expert preference as the objective function for virtual screening.</p>
-  <ul style="font-size: 24px;">
+<h3 id="2eliciting-chemical-intuition-7">2.Eliciting Chemical Intuition</h3>
+<p>We have demonstrated that our method can robustly identify candidate ligands that match a complex, latent utility function in a high-dimensional space with a minimal number of queries.</p>
+
+
+<span class='fragment ' >For the next step, we aim to collaborate with experts in the lab to understand their latent utility preferences via pairwise preference elicitation for virtual screening applications.</span>
+
+
+  <!-- <p style="font-size: 24px; text-align: left;">For the next step, working with Chemists to encode expert preference as the objective function for virtual screening.</p>
+  <ul>
     <li class="fragment">Provide a dataset of ligands characterized by properties such as solubility, toxicity, affinity, requesting chemists to choose their preferences.</li>
     <li class="fragment">Use a classification model to determine the optimal weights (W) that reflect chemist preferences.</li>
     <li class="fragment">Perform active virtual screening to iteratively refine the selection of compounds.</li>
-  </ul>
+  </ul> -->
 </section>
 
 <section data-noprocess data-shortcode-slide
@@ -198,7 +297,7 @@
 <h2 id="3-active-virtual-screening">3. Active Virtual Screening</h2>
   <p style="font-size: 24px; text-align: left;">Even with the right trade-off objective elicited from expert, exhaustively screening millions of candidate from the virtual screening library is practically infeasible.</p>
   <p style="font-size: 24px; text-align: left;">To address this problem, we can choose to screen ligand that looks promising, while avoid ligand that are highly certain to be a bad candidate.</p>
-  <ul style="font-size: 24px;">
+  <ul>
     <li class="fragment">Bayesian Optimization: Efficiently explores high-potential ligands.</li>
     <li class="fragment">Surrogate model (selection model): Gaussian Process, Neural net, Random forest</li>
     <li class="fragment">Acquisition function: UCB, Greedy, Thompson sampling</li>
@@ -209,7 +308,7 @@
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h2 id="4-neural-search-engine">4. Neural Search Engine</h2>
+<h3 id="4-neural-diffusion-search">4. Neural Diffusion Search</h3>
 <div style="text-align: left; font-size: 28px; margin-left: 30px;">
   <span class="fragment">
   <p>Traditional physics-based docking tools (e.g., Glide, Smina) are computationally expensive to evaluate ligand affinity.</p>
@@ -234,7 +333,7 @@
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h2 id="4-neural-search-engine-1">4. Neural Search Engine</h2>
+<h3 id="4-neural-diffusion-search-1">4. Neural Diffusion Search</h3>
 <div style="text-align: left; font-size: 28px; margin-left: 30px;">
   <span class="fragment">
   <p>Accelerate pose search further:</p>
@@ -259,8 +358,8 @@
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h2 id="4-neural-search-engine-data-collection">4. Neural Search Engine: Data collection</h2>
-<div style="text-align: left; font-size: 24px; margin-left: 30px;"> 
+<h3 id="4-neural-diffusion-search-2">4. Neural Diffusion Search</h3>
+<div style="margin-left: 30px;"> 
     <span class="fragment"> 
         <p><strong>Data Augmentation Techniques:</strong></p> 
         <ul style="margin-left: 40px; font-size: 20px"> 
@@ -272,11 +371,11 @@
     <span class="fragment">
         <div style="display: flex; justify-content: space-between; margin-top: 20px;">
             <div style="width: 49%;">
-                <img src="images/md.png" alt="MD Simulation Example" style="width: 100%; height: auto;">
-                <p style="text-align: center; font-size: 20px">Figure 1: MD Simulation Trajectories</p>
+                <img src="images/md.gif" alt="MD Simulation Example" style="width: 50%; height: auto; margin-left: 100px;">
+                <p style="text-align: center; font-size: 20px; margin-left: 00px; margin-top: -40px;">Figure 1: MD Simulation Trajectories</p>
             </div>
             <div style="width: 49%;">
-                <img src="images/pharmacophore.png" alt="Pharmacophore Model Example" style="width: 100%; height: auto;">
+                <img src="images/pharmacophore.png" alt="Pharmacophore Model Example" style="width: 80%; height: auto;">
                 <p style="text-align: center; font-size: 20px">Figure 2: Pharmacophore Modeling</p>
             </div>
         </div>
@@ -287,15 +386,15 @@
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h2 id="4-neural-search-engine-training">4. Neural Search Engine: Training</h2>
-<div style="text-align: left; font-size: 24px; margin-left: 30px;"> 
+<h3 id="4-neural-diffusion-search-3">4. Neural Diffusion Search</h3>
+<div style="margin-left: 30px;"> 
     <span class="fragment"> <p>Diffusion models are probabilistic generative models that transform data from a noisy distribution into a structured, meaningful output through a reverse process.</p> </span> 
     <span class="fragment"> <p>Applying SDEs for controlled generative modeling:</p> </span> 
     <ul style="margin-left: 40px;"> 
         <li class="fragment"> Initiate with Gaussian noise on ligand coordinates</li> 
         <li class="fragment"> Employ Euler-Maruyama to denoise step-by-step: <ul> 
-          <li style="font-size: 20px;">\(X_{t-\Delta t} = X_t + f(X_t, t) \Delta t + g(t) \sqrt{\Delta t} \cdot \epsilon\)</li> </ul> </li> 
-        <li class="fragment"> Optimize ligand structure discovery through iterative sampling steps via Euler</li> 
+        <li style="font-size: 20px;">$X_{t-\Delta t} = X_t + f(X_t, t) \Delta t + g(t) \sqrt{\Delta t} \cdot \epsilon$</li>
+    <li class="fragment"> Optimize ligand structure discovery through iterative sampling steps via Euler</li> 
     </ul> 
 </div>
 </section>
@@ -303,7 +402,7 @@
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h2 id="4-neural-search-engine-results">4. Neural Search Engine: Results</h2>
+<h3 id="4-neural-diffusion-search-4">4. Neural Diffusion Search</h3>
 <div style="text-align: left; font-size: 24px; margin-left: 30px;"> <span class="fragment"> <p><strong>Benchmark on Posebusters Dataset:</strong></p> </span> <p class="fragment">Posebusters Version 1 includes 428 protein-ligand structures, and Version 2 has 308, all released to the PDB after 2021. Performance is measured by the percentage of protein-ligand pairs with pocket-aligned ligand RMSD under 2 Å.</p> </div>
 <span class="fragment">
   <figure style="display: flex; flex-direction: column; align-items: center;">
@@ -317,7 +416,7 @@
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h2 id="5-putting-it-all-together-contrained-settings">5. Putting it all together: Contrained settings</h2>
+<h2 id="6-contrained-settings">6. Contrained settings</h2>
 <div style="text-align: left; font-size: 24px; margin-left: 10px;">
   <span class="fragment">
   <p>This graph showcases the outcome of a PCA-based virtual screening process to identify and compare ligands based on their chemical similarity.</p>
@@ -340,7 +439,7 @@
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h2 id="5-putting-it-all-together">5. Putting it all together</h2>
+<h2 id="7-putting-it-all-together">7. Putting it all together</h2>
 <div style="text-align: left; font-size: 24px; margin-left: 0px;">
   <p>
     <span class="fragment"> We perform active virtual screening on the inferred expert utility function.</span>
@@ -351,21 +450,21 @@
 <div style="text-align: left; font-size: 24px; margin-top: 20px;">
   <span class="fragment"><strong>Metrics for evaluation</strong></span>
 </div>
-
 <div style="text-align: left; font-size: 24px; margin-left: 10px;">
-  <span class="fragment"><p><strong>Regret</strong></p></span>
+  <span class="fragment">
+  <p><strong>Regret</strong></p>
+  </span>
   <ul style="margin-left: 40px;">
-    <li class="fragment"><strong>Definition</strong>: Difference in affinity between the best possible ligand and the top ligand found by the model within the \( \text{top}_k \% \).</li>
-      <li class="fragment" style="font-size: 21px;"> \(\mathrm{Regret} = A_{\mathrm{best}} - A_{\mathrm{model}} \) </li> 
+    <li class="fragment"><strong>Definition</strong>: Difference in affinity between the best possible ligand and the top ligand found by the model within the top_k \%\.</li>
+    <li class="fragment">\[ \text{Regret} = A_{\text{best}} - A_{\text{model}} \]</li>
   </ul>
 </div>
-
 <div style="text-align: left; font-size: 24px; margin-left: 10px;">
   <span class="fragment">
   <p><strong>Percent of Best Ligand Found</strong></p>
   </span>
   <ul style="margin-left: 40px;">
-    <li class="fragment"><strong>Definition</strong>: Percentage of screened ligands close in affinity to the best possible ligand. (\(\text{top}_k \% \))</li>
+    <li class="fragment"><strong>Definition</strong>: Percentage of screened ligands close in affinity to the best possible ligand. (top_k \%\)</li>
   </ul>
 </div>
 </section>
@@ -373,7 +472,7 @@
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h2 id="5-putting-it-all-together-screening-results">5. Putting it all together: Screening Results</h2>
+<h2 id="7-putting-it-all-together-screening-results">7. Putting it all together: Screening Results</h2>
 <span class="fragment">
   <figure style="display: flex; flex-direction: column; align-items: center;">
     <div style="display: flex; justify-content: center; width: 100%; gap: 70px; margin-top: -30px;">
@@ -387,7 +486,7 @@
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h2 id="5-putting-it-all-together-screening-results-1">5. Putting it all together: Screening Results</h2>
+<h2 id="7-putting-it-all-together-screening-results-1">7. Putting it all together: Screening Results</h2>
 <span class="fragment">
   <figure style="display: flex; flex-direction: column; align-items: center;">
     <div style="display: flex; justify-content: center; width: 100%; gap: 10px; margin-top: -20px;">
@@ -400,11 +499,13 @@
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h2 id="5-putting-it-all-together-next-steps">5. Putting it all together: Next steps</h2>
+<h2 id="7-putting-it-all-together-next-steps">7. Putting it all together: Next steps</h2>
   <ul style="margin-left: 40px;">
     <li class="fragment"> Run virtual screening on bigger library (100k, 1M) compounds</li>
     <li class="fragment"> Improve on performance of diffusion model</li>
   </ul></section>
+
+  
 
 
 </div>
@@ -424,12 +525,7 @@
   <script type="text/javascript" src="/~sttruong/avs/reveal-js/plugin/zoom/zoom.js"></script>
   
   <script type="text/javascript" src="/~sttruong/avs/reveal-js/plugin/notes/notes.js"></script>
-
-  <script src="/~sttruong/avs/reveal-js/plugin/math/math.js"></script>
-  <script>
-     Reveal.initialize({ plugins: [RevealMarkdown, RevealHighlight, RevealZoom, RevealNotes, RevealMath.KaTeX] });
-  </script>
-
+  
 <script type="text/javascript">
   
   
@@ -449,8 +545,6 @@
   var revealHugoDefaults = { center: true, controls: true, history: true, progress: true, transition: "slide" };
   var revealHugoSiteParams = {"custom_theme":"css/serif.css","enablesourcemap":true,"history":true,"margin":0.1,"slide_number":true};
   var revealHugoPageParams = {};
-  var options = Object.assign({}, camelize(revealHugoDefaults), camelize(revealHugoSiteParams), camelize(revealHugoPageParams), camelize(revealHugoPlugins));
-  Reveal.initialize(options);
 
   var revealHugoPlugins = {
     
@@ -466,6 +560,41 @@
 
   Reveal.initialize(options);
 </script>
+
+
+
+
+
+  
+  
+    
+  
+
+  
+  
+
+  
+  
+
+
+
+
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    },
+    svg: {
+      fontCache: 'global'
+    }
+  };
+</script>
+  
+
+<script type="text/javascript" id="MathJax-script" async src="/~sttruong/avs/tex-svg_7522271970123696654.js"></script>
+
+    
     
   </body>
 </html>
