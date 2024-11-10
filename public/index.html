@@ -424,7 +424,11 @@
   <script type="text/javascript" src="/~sttruong/avs/reveal-js/plugin/zoom/zoom.js"></script>
   
   <script type="text/javascript" src="/~sttruong/avs/reveal-js/plugin/notes/notes.js"></script>
-  
+  <script src="/~sttruong/reeval/reveal-js/plugin/math/math.js"></script>
+  <script>
+     Reveal.initialize({ plugins: [RevealMarkdown, RevealHighlight, RevealZoom, RevealNotes, RevealMath.KaTeX] });
+  </script>
+
 <script type="text/javascript">
   
   
@@ -444,7 +448,9 @@
   var revealHugoDefaults = { center: true, controls: true, history: true, progress: true, transition: "slide" };
   var revealHugoSiteParams = {"custom_theme":"css/serif.css","enablesourcemap":true,"history":true,"margin":0.1,"slide_number":true};
   var revealHugoPageParams = {};
-
+  var options = Object.assign({}, camelize(revealHugoDefaults), camelize(revealHugoSiteParams), camelize(revealHugoPageParams), camelize(revealHugoPlugins));
+  Reveal.initialize(options);
+  
   var revealHugoPlugins = {
     
     plugins: [RevealMarkdown,RevealHighlight,RevealZoom,RevealNotes]
