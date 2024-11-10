@@ -94,7 +94,7 @@ These implicit expert knowledge, encoded as preferences over ligands, are valuab
 {{% fragment %}}We can leverage toolkits from the field of machine learning from human preferences to tackle this challenge.{{% /fragment %}}
 
 <span class="fragment">
-<table style="width: 80%; margin-top: 20px; border-collapse: collapse; text-align: center; font-size: 18px;">
+<table style="width: 90%; margin-top: 20px; border-collapse: collapse; text-align: center; font-size: 24px;">
   <tr>
     <th style="border: 1px solid #ddd; padding: 8px;">First ligand</th>
     <th style="border: 1px solid #ddd; padding: 8px;">Second ligand</th>
@@ -117,7 +117,7 @@ These implicit expert knowledge, encoded as preferences over ligands, are valuab
   </tr>
 </table>
 
-<p style="font-size: 20px; text-align: center; margin-top: 15px;">
+<p style="font-size: 24px; text-align: center; margin-top: 15px;">
   <em>Each ligand is represented by a set of features, such as affinity, polar surface area, QED drug-likeness score</em>
 </p>
 </span>
