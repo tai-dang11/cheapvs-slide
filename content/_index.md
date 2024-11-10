@@ -269,7 +269,7 @@ outputs = ["Reveal"]
     <ul style="margin-left: 40px;"> 
         <li class="fragment"> Initiate with Gaussian noise on ligand coordinates</li> 
         <li class="fragment"> Employ Euler-Maruyama to denoise step-by-step: <ul> 
-        <li style="font-size: 20px;">\(X_{t-\Delta t} = X_t + f(X_t, t) \Delta t + g(t) \sqrt{\Delta t} \cdot \epsilon\)</li> </ul> </li> 
+        <li style="font-size: 20px;">$X_{t-\Delta t} = X_t + f(X_t, t) \Delta t + g(t) \sqrt{\Delta t} \cdot \epsilon$</li>
     <li class="fragment"> Optimize ligand structure discovery through iterative sampling steps via Euler</li> 
     </ul> 
 </div>
