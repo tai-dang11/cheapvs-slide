@@ -329,7 +329,7 @@ Diffusion models are probabilistic generative models that transform data from a 
 
 ---
 {{< slide auto-animate="" >}}
-### 7. Putting it all together: Contrained settings
+### 5. Putting it all together: Contrained settings
 
 {{% fragment %}}
 This graph showcases the outcome of a PCA-based virtual screening process to identify and compare ligands based on their chemical similarity.
@@ -349,7 +349,7 @@ This graph showcases the outcome of a PCA-based virtual screening process to ide
 
 ---
 {{< slide auto-animate="" >}}
-### 7. Putting it all together
+### 5. Putting it all together
 {{% fragment %}}We perform active virtual screening on the inferred expert utility function.{{% /fragment %}}
 {{% fragment %}}Our procedure respects expert preference (both hard and soft constraint) and probabilistic model to come up with a good candidate set.{{% /fragment %}}
 {{% fragment %}}To search for poses required for objectives such as affinity, we accelerate the pose search by a neural search engine.{{% /fragment %}}
@@ -357,7 +357,7 @@ This graph showcases the outcome of a PCA-based virtual screening process to ide
 ---
 {{< slide auto-animate="" >}}
 
-### 7. Putting it all together
+### 5. Putting it all together
 {{% fragment %}} 
 **Metrics for evaluation** 
 {{% /fragment %}}
@@ -381,7 +381,7 @@ This graph showcases the outcome of a PCA-based virtual screening process to ide
 
 ---
 {{< slide auto-animate="" >}}
-### 7. Putting it all together: Screening Results
+### 5. Putting it all together: Screening Results
 {{% fragment %}}
 <figure style="display: flex; flex-direction: column; align-items: center;">
   <div style="display: flex; justify-content: center; width: 100%; gap: 70px;">
@@ -393,7 +393,7 @@ This graph showcases the outcome of a PCA-based virtual screening process to ide
 
 ---
 {{< slide auto-animate="" >}}
-### 7. Putting it all together: Screening Results
+### 5. Putting it all together: Screening Results
 {{% fragment %}}
 <figure style="display: flex; flex-direction: column; align-items: center;">
   <div style="display: flex; justify-content: center; width: 100%; gap: 10px; margin-top: -20px;">
@@ -404,7 +404,7 @@ This graph showcases the outcome of a PCA-based virtual screening process to ide
 
 ---
 {{< slide auto-animate="" >}}
-### 7. Putting it all together: Next steps
+### 5. Putting it all together: Next steps
 <ul>
   <li class="fragment"> Run virtual screening on bigger library (100k, 1M) compounds</li>
   <li class="fragment"> Improve on performance of diffusion model</li>
