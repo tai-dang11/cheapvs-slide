@@ -96,8 +96,8 @@
       <figcaption style="text-align: left; font-size: 20px; margin-top: -50px;">Affinity: -10.11, PSA: 67.66</figcaption>
     </figure>
     <figure style="display: flex; flex-direction: column; align-items: center; width: 45%;">
-      <img src="images/lig2.png" style="width: 100%;" alt="Aff: -10.11, PSA: 67.66">
-      <figcaption style="text-align: left; font-size: 20px; margin-top: -50px;">Affinity: -10.11, PSA: 67.66</figcaption>
+      <img src="images/lig2.png" style="width: 100%;" alt="Aff: -6.71, PSA: 115.2">
+      <figcaption style="text-align: left; font-size: 20px; margin-top: -50px;">Aff: -6.71, PSA: 115.2</figcaption>
     </figure>
   </div>
 </span>
@@ -108,11 +108,9 @@
   
 <h2 id="2eliciting-expert-preferences-in-virtual-screening-1">2.Eliciting Expert Preferences in Virtual Screening</h2>
 <ul>
-<li>
 <p style="font-size: 24px;">
 <span class="fragment">These implicit expert knowledge, encoded as preferences over ligands, are valuable to elicit for effective virtual screening.</span> 
 <span class="fragment">We can leverage toolkits from the field of machine learning from human preferences to tackle this challenge.</span>
-</li>
 </ul>
 <span class="fragment">
 <table style="width: 80%; margin-top: 20px; border-collapse: collapse; text-align: center; font-size: 18px;">
@@ -168,7 +166,7 @@
   
 <h2 id="2eliciting-expert-preferences-in-virtual-screening-3">2.Eliciting Expert Preferences in Virtual Screening</h2>
 <ul style="font-size: 24px;">
-  <li class="fragment"><strong>Initial Selection</strong>: Randomly select pairs of ligands from a library \( L \) of 7,000 compounds to explore the chemical space.</li>
+  <li class="fragment"><strong>Initial Selection</strong>: Randomly select 200 pairs of ligands from a library \( L \) of 7,000 compounds to explore the chemical space.</li>
   <li class="fragment"><strong>Adaptive Selection</strong>: Optimize future selections from \( L \) to reduce oracle queries, improving efficiency and estimating the weight vector \( W \).</li>
   <li class="fragment"><strong>Reward Function</strong>: For utility \( U \) using logistic regression \( U = W \cdot X \), where:
     <ul style="font-size: 22px;">
@@ -196,8 +194,8 @@
       data-auto-animate="">
   
 <h2 id="3-active-virtual-screening">3. Active Virtual Screening</h2>
-  <p style="font-size: 24px; text-align: left;">Even with the right trade-off objective elicited from expert, exhaustively screening millions of candidate from the virtual screening library is practically infeasible.</p>
-  <p style="font-size: 24px; text-align: left;">To address this problem, we can choose to screen ligand that looks promising, while avoid ligand that are highly certain to be a bad candidate.</p>
+  <span class="fragment"><p style="font-size: 24px; text-align: left;">Even with the right trade-off objective elicited from expert, exhaustively screening millions of candidate from the virtual screening library is practically infeasible.</p></span>
+  <span class="fragment"><p style="font-size: 24px; text-align: left;">To address this problem, we can choose to screen ligand that looks promising, while avoid ligand that are highly certain to be a bad candidate.</p></span>
   <ul style="font-size: 24px;">
     <li class="fragment">Bayesian Optimization: Efficiently explores high-potential ligands.</li>
     <li class="fragment">Surrogate model (selection model): Gaussian Process, Neural net, Random forest</li>

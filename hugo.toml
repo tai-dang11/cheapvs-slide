@@ -1,4 +1,4 @@
-baseURL = 'https://ai.stanford.edu/~sttruong/reeval/'
+baseURL = 'https://ai.stanford.edu/~sttruong/avs/'
 languageCode = 'en-us'
 title = 'Reliable and Efficient Amortized Model-based Evaluation'
 theme = ["github.com/dzello/reveal-hugo"]
