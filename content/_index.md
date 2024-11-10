@@ -46,10 +46,10 @@ For **a given protein** linked to a certain disease,
 {{< slide auto-animate="" >}}
 ### 1.Introduction: Virtual Screening
 
-<div style="display: flex; justify-content: space-between; align-items: flex-start;">
+<div style="margin-top: 20px; display: flex; justify-content: space-between; align-items: flex-start;">
   <div style="width: 50%;">
-    <h3 style="font-size: 28px; margin-bottom: 10px;">Virtual screening presents several challenges:</h3>
-    <ol style="font-size: 24px; padding-left: 20px;">
+    <h3 style="font-size: 36px;">Virtual screening presents several challenges:</h3>
+    <ol style="font-size: 32px;">
       <li class="fragment" data-fragment-index="1"><b>Multiple, competing objectives</b> based on unknown, hard-to-quantify expert knowledge.</li>
       <li class="fragment" data-fragment-index="2"><b>Limited budget</b> to try all ligands from the library.</li>
       <li class="fragment" data-fragment-index="3">Some objectives (such as binding affinity) are expensive to evaluate even for a single ligand.</li>
@@ -57,8 +57,8 @@ For **a given protein** linked to a certain disease,
   </div>
 
   <div style="width: 50%;">
-    <h3 style="font-size: 28px; margin-bottom: 10px;">Our research aims to address these challenges:</h3>
-    <ol style="font-size: 24px; padding-left: 20px;">
+    <h3 style="font-size: 36px; padding-left: 20px;">Our research aims to address these challenges:</h3>
+    <ol style="font-size: 32px; padding-left: 20px;">
       <li class="fragment" data-fragment-index="1">Actively eliciting expert preferences for virtual screening with many objectives.</li>
       <li class="fragment" data-fragment-index="2">Active Virtual Screening.</li>
       <li class="fragment" data-fragment-index="3">Neural Search Engine with diffusion model.</li>
@@ -74,16 +74,16 @@ Depending on the specific disease and protein, experts have **intuition** about 
 {{% fragment %}}trading off various objectives such as synthesizability, affinity, solubility, and side effects.{{% /fragment %}}
 
 {{% fragment %}}
-  <div style="display: flex; justify-content: center; width: 100%; gap: -30px; margin-top: -100px;">
-    <figure style="display: flex; flex-direction: column; align-items: center; width: 45%;">
-      <img src="images/lig1.png" style="width: 100%;" alt="Aff: -10.11, PSA: 67.66">
-      <figcaption style="text-align: left; font-size: 20px; margin-top: -50px;">Affinity: -10.11, Solubility: 67.66</figcaption>
-    </figure>
-    <figure style="display: flex; flex-direction: column; align-items: center; width: 45%;">
-      <img src="images/lig2.png" style="width: 100%;" alt="Aff: -10.11, PSA: 67.66">
-      <figcaption style="text-align: left; font-size: 20px; margin-top: -50px;">Affinity: -10.11, Solubility: 67.66</figcaption>
-    </figure>
-  </div>
+<div style="display: flex; justify-content: center; width: 100%; gap: -30px; margin-top: -100px;">
+  <figure style="display: flex; flex-direction: column; align-items: center; width: 45%;">
+    <img src="images/lig1.png" style="width: 100%;" alt="Aff: -10.11, PSA: 67.66">
+    <figcaption style="text-align: left; font-size: 20px; margin-top: -50px;">Affinity: -10.11, Solubility: 67.66</figcaption>
+  </figure>
+  <figure style="display: flex; flex-direction: column; align-items: center; width: 45%;">
+    <img src="images/lig2.png" style="width: 100%;" alt="Aff: -10.11, PSA: 67.66">
+    <figcaption style="text-align: left; font-size: 20px; margin-top: -50px;">Affinity: -10.11, Solubility: 67.66</figcaption>
+  </figure>
+</div>
 {{% /fragment %}}
 
 
