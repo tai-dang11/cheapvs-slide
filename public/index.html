@@ -147,16 +147,15 @@
       data-auto-animate="">
   
 <h2 id="2eliciting-expert-preferences-in-virtual-screening-2">2.Eliciting Expert Preferences in Virtual Screening</h2>
-  <p style="font-size: 24px; text-align: left;">Eliciting preference can be viewed as a logistic regression:</p>
-  <ul style="margin-left: -200px; font-size: 24px">
-    <li class="fragment"> \( p(y \mid x_1, x_2) = \sigma(f(x_1) - f(x_2)) \) where \( \text{sigmoid}(z) = \frac{1}{1 + e^{-z}} \).</li>
+  <p style="font-size: 24px; text-align: left;">Eliciting preference can be viewed as a Gaussian Process classification model:</p>
+  <ul style="margin-left: 40px; font-size: 22px">
+    <li class="fragment"> 
+      \(
+      p(y \mid x_1, x_2) = \Phi\left(f(\mathbf{X})\right)
+      \) where  \( \Phi(z) \) is the cumulative distribution function of the standard normal distribution and \( \mathbf{X} = \mathbf{f}(x_1) - \mathbf{f}(x_2) \).
+    </li>
   </ul>
-  <p class="fragment" style="font-size: 24px; text-align: left;">If we assume utility is a linear function of ligand features, we can use gradient descent to achieve:</p>
-  <ul style="font-size: 24px; text-align: left; margin-left: -700px;">
-    <li class="fragment">Train accuracy: 0.95</li>
-    <li class="fragment">Test accuracy: 0.95</li>
-  </ul>
-  <p class="fragment" style="font-size: 24px; text-align: left;">Alternatively, using a Gaussian process yields the same results:</p>
+  <p class="fragment" style="font-size: 24px; text-align: left;">By modeling utility with a Gaussian Process, we capture the uncertainty and non-linear relationships in expert preferences:</p>
   <ul style="font-size: 24px; text-align: left; margin-left: -700px;">
     <li class="fragment">Train accuracy: 0.95</li>
     <li class="fragment">Test accuracy: 0.95</li>
@@ -169,16 +168,17 @@
 <h2 id="2eliciting-expert-preferences-in-virtual-screening-3">2.Eliciting Expert Preferences in Virtual Screening</h2>
 <ul style="font-size: 24px;">
   <li class="fragment"><strong>Initial Selection</strong>: Randomly select pairs of ligands from a library \( L \) of 7,000 compounds to explore the chemical space.</li>
-  <li class="fragment"><strong>Adaptive Selection</strong>: Optimize future selections from \( L \) to reduce oracle queries, improving efficiency and estimating the weight vector \( W \).</li>
-  <li class="fragment"><strong>Reward Function</strong>: For utility \( U \) using logistic regression \( U = W \cdot X \), where:
+  <li class="fragment"><strong>Adaptive Selection</strong>: Optimize future selections from \( L \) to reduce oracle queries, improving efficiency and modeling the latent function \( f \).</li>
+  <li class="fragment"><strong>Reward Function</strong>: For utility \( U \) using Gaussian Process Classification \( U = f(\mathbf{X}) \), where:
     <ul style="font-size: 22px;">
       <li class="fragment">\( U \): utility score indicating ligand suitability</li>
-      <li class="fragment">\( W \): weights representing feature importance</li>
-      <li class="fragment">\( X \): ligand feature vector \(f(x_1) - f(x_2) \)</li>
+      <li class="fragment">\( f \): latent function representing expert preferences</li>
+      <li class="fragment">\( \mathbf{X} \): ligand feature difference vector \( \mathbf{f}(x_1) - \mathbf{f}(x_2) \)</li>
     </ul>
   </li>
 </ul>
 </section>
+
 
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
