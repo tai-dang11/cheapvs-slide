@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-	<meta name="generator" content="Hugo 0.130.0">
+	<meta name="generator" content="Hugo 0.137.1"><script src="/~sttruong/avs/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=~sttruong/avs/livereload" data-no-instant defer></script>
     <meta charset="utf-8">
 <title>Reliable and Efficient Amortized Model-based Evaluation</title>
 
@@ -96,8 +96,8 @@
       <figcaption style="text-align: left; font-size: 20px; margin-top: -50px;">Affinity: -10.11, PSA: 67.66</figcaption>
     </figure>
     <figure style="display: flex; flex-direction: column; align-items: center; width: 45%;">
-      <img src="images/lig2.png" style="width: 100%;" alt="Aff: -6.71, PSA: 115.2">
-      <figcaption style="text-align: left; font-size: 20px; margin-top: -50px;">Aff: -6.71, PSA: 115.2</figcaption>
+      <img src="images/lig2.png" style="width: 100%;" alt="Aff: -10.11, PSA: 67.66">
+      <figcaption style="text-align: left; font-size: 20px; margin-top: -50px;">Affinity: -10.11, PSA: 67.66</figcaption>
     </figure>
   </div>
 </span>
@@ -108,9 +108,11 @@
   
 <h2 id="2eliciting-expert-preferences-in-virtual-screening-1">2.Eliciting Expert Preferences in Virtual Screening</h2>
 <ul>
+<li>
 <p style="font-size: 24px;">
 <span class="fragment">These implicit expert knowledge, encoded as preferences over ligands, are valuable to elicit for effective virtual screening.</span> 
 <span class="fragment">We can leverage toolkits from the field of machine learning from human preferences to tackle this challenge.</span>
+</li>
 </ul>
 <span class="fragment">
 <table style="width: 80%; margin-top: 20px; border-collapse: collapse; text-align: center; font-size: 18px;">
@@ -146,7 +148,7 @@
   
 <h2 id="2eliciting-expert-preferences-in-virtual-screening-2">2.Eliciting Expert Preferences in Virtual Screening</h2>
   <p style="font-size: 24px; text-align: left;">Eliciting preference can be viewed as a logistic regression:</p>
-  <ul style="font-size: 24px">
+  <ul style="margin-left: -200px; font-size: 24px">
     <li class="fragment"> \( p(y \mid x_1, x_2) = \sigma(f(x_1) - f(x_2)) \) where \( \text{sigmoid}(z) = \frac{1}{1 + e^{-z}} \).</li>
   </ul>
   <p class="fragment" style="font-size: 24px; text-align: left;">If we assume utility is a linear function of ligand features, we can use gradient descent to achieve:</p>
@@ -166,13 +168,13 @@
   
 <h2 id="2eliciting-expert-preferences-in-virtual-screening-3">2.Eliciting Expert Preferences in Virtual Screening</h2>
 <ul style="font-size: 24px;">
-  <li class="fragment"><strong>Initial Selection</strong>: Randomly select 200 pairs of ligands from a library \( L \) of 7,000 compounds to explore the chemical space.</li>
+  <li class="fragment"><strong>Initial Selection</strong>: Randomly select pairs of ligands from a library \( L \) of 7,000 compounds to explore the chemical space.</li>
   <li class="fragment"><strong>Adaptive Selection</strong>: Optimize future selections from \( L \) to reduce oracle queries, improving efficiency and estimating the weight vector \( W \).</li>
   <li class="fragment"><strong>Reward Function</strong>: For utility \( U \) using logistic regression \( U = W \cdot X \), where:
     <ul style="font-size: 22px;">
       <li class="fragment">\( U \): utility score indicating ligand suitability</li>
       <li class="fragment">\( W \): weights representing feature importance</li>
-      <li class="fragment">\( X \): ligand feature vector (f(x_1) - f(x_2))</li>
+      <li class="fragment">\( X \): ligand feature vector \(f(x_1) - f(x_2) \)</li>
     </ul>
   </li>
 </ul>
@@ -194,8 +196,8 @@
       data-auto-animate="">
   
 <h2 id="3-active-virtual-screening">3. Active Virtual Screening</h2>
-  <span class="fragment"><p style="font-size: 24px; text-align: left;">Even with the right trade-off objective elicited from expert, exhaustively screening millions of candidate from the virtual screening library is practically infeasible.</p></span>
-  <span class="fragment"><p style="font-size: 24px; text-align: left;">To address this problem, we can choose to screen ligand that looks promising, while avoid ligand that are highly certain to be a bad candidate.</p></span>
+  <p style="font-size: 24px; text-align: left;">Even with the right trade-off objective elicited from expert, exhaustively screening millions of candidate from the virtual screening library is practically infeasible.</p>
+  <p style="font-size: 24px; text-align: left;">To address this problem, we can choose to screen ligand that looks promising, while avoid ligand that are highly certain to be a bad candidate.</p>
   <ul style="font-size: 24px;">
     <li class="fragment">Bayesian Optimization: Efficiently explores high-potential ligands.</li>
     <li class="fragment">Surrogate model (selection model): Gaussian Process, Neural net, Random forest</li>
@@ -257,7 +259,7 @@
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h2 id="5-diffusion-model-data-collection">5. Diffusion Model: Data collection</h2>
+<h2 id="4-neural-search-engine-data-collection">4. Neural Search Engine: Data collection</h2>
 <div style="text-align: left; font-size: 24px; margin-left: 30px;"> 
     <span class="fragment"> 
         <p><strong>Data Augmentation Techniques:</strong></p> 
@@ -285,15 +287,15 @@
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h2 id="5-diffusion-model-training">5. Diffusion Model: Training</h2>
+<h2 id="4-neural-search-engine-training">4. Neural Search Engine: Training</h2>
 <div style="text-align: left; font-size: 24px; margin-left: 30px;"> 
     <span class="fragment"> <p>Diffusion models are probabilistic generative models that transform data from a noisy distribution into a structured, meaningful output through a reverse process.</p> </span> 
     <span class="fragment"> <p>Applying SDEs for controlled generative modeling:</p> </span> 
     <ul style="margin-left: 40px;"> 
         <li class="fragment"> Initiate with Gaussian noise on ligand coordinates</li> 
         <li class="fragment"> Employ Euler-Maruyama to denoise step-by-step: <ul> 
-        <li style="font-size: 20px;">\(X_{t-\Delta t} = X_t + f(X_t, t) \Delta t + g(t) \sqrt{\Delta t} \cdot \epsilon\)</li> </ul> </li> 
-    <li class="fragment"> Optimize ligand structure discovery through iterative sampling steps via Euler</li> 
+          <li style="font-size: 20px;">\(X_{t-\Delta t} = X_t + f(X_t, t) \Delta t + g(t) \sqrt{\Delta t} \cdot \epsilon\)</li> </ul> </li> 
+        <li class="fragment"> Optimize ligand structure discovery through iterative sampling steps via Euler</li> 
     </ul> 
 </div>
 </section>
@@ -301,7 +303,7 @@
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h2 id="5-diffusion-model-results">5. Diffusion Model: Results</h2>
+<h2 id="4-neural-search-engine-results">4. Neural Search Engine: Results</h2>
 <div style="text-align: left; font-size: 24px; margin-left: 30px;"> <span class="fragment"> <p><strong>Benchmark on Posebusters Dataset:</strong></p> </span> <p class="fragment">Posebusters Version 1 includes 428 protein-ligand structures, and Version 2 has 308, all released to the PDB after 2021. Performance is measured by the percentage of protein-ligand pairs with pocket-aligned ligand RMSD under 2 Å.</p> </div>
 <span class="fragment">
   <figure style="display: flex; flex-direction: column; align-items: center;">
@@ -315,7 +317,7 @@
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h2 id="6-contrained-settings">6. Contrained settings</h2>
+<h2 id="6-putting-it-all-together-contrained-settings">6. Putting it all together: Contrained settings</h2>
 <div style="text-align: left; font-size: 24px; margin-left: 10px;">
   <span class="fragment">
   <p>This graph showcases the outcome of a PCA-based virtual screening process to identify and compare ligands based on their chemical similarity.</p>
@@ -338,7 +340,7 @@
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h2 id="7-putting-it-all-together">7. Putting it all together</h2>
+<h2 id="6-putting-it-all-together">6. Putting it all together</h2>
 <div style="text-align: left; font-size: 24px; margin-left: 0px;">
   <p>
     <span class="fragment"> We perform active virtual screening on the inferred expert utility function.</span>
@@ -349,21 +351,21 @@
 <div style="text-align: left; font-size: 24px; margin-top: 20px;">
   <span class="fragment"><strong>Metrics for evaluation</strong></span>
 </div>
+
 <div style="text-align: left; font-size: 24px; margin-left: 10px;">
-  <span class="fragment">
-  <p><strong>Regret</strong></p>
-  </span>
+  <span class="fragment"><p><strong>Regret</strong></p></span>
   <ul style="margin-left: 40px;">
-    <li class="fragment"><strong>Definition</strong>: Difference in affinity between the best possible ligand and the top ligand found by the model within the top_k \%\.</li>
-    <li class="fragment">\[ \text{Regret} = A_{\text{best}} - A_{\text{model}} \]</li>
+    <li class="fragment"><strong>Definition</strong>: Difference in affinity between the best possible ligand and the top ligand found by the model within the \( \text{top}_k \% \).</li>
+      <li class="fragment" style="font-size: 21px;"> \(\mathrm{Regret} = A_{\mathrm{best}} - A_{\mathrm{model}} \) </li> 
   </ul>
 </div>
+
 <div style="text-align: left; font-size: 24px; margin-left: 10px;">
   <span class="fragment">
   <p><strong>Percent of Best Ligand Found</strong></p>
   </span>
   <ul style="margin-left: 40px;">
-    <li class="fragment"><strong>Definition</strong>: Percentage of screened ligands close in affinity to the best possible ligand. (top_k \%\)</li>
+    <li class="fragment"><strong>Definition</strong>: Percentage of screened ligands close in affinity to the best possible ligand. (\(\text{top}_k \% \))</li>
   </ul>
 </div>
 </section>
@@ -371,7 +373,7 @@
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h2 id="7-putting-it-all-together-screening-results">7. Putting it all together: Screening Results</h2>
+<h2 id="6-putting-it-all-together-screening-results">6. Putting it all together: Screening Results</h2>
 <span class="fragment">
   <figure style="display: flex; flex-direction: column; align-items: center;">
     <div style="display: flex; justify-content: center; width: 100%; gap: 70px; margin-top: -30px;">
@@ -385,7 +387,7 @@
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h2 id="7-putting-it-all-together-screening-results-1">7. Putting it all together: Screening Results</h2>
+<h2 id="6-putting-it-all-together-screening-results-1">6. Putting it all together: Screening Results</h2>
 <span class="fragment">
   <figure style="display: flex; flex-direction: column; align-items: center;">
     <div style="display: flex; justify-content: center; width: 100%; gap: 10px; margin-top: -20px;">
@@ -398,7 +400,7 @@
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h2 id="7-putting-it-all-together-next-steps">7. Putting it all together: Next steps</h2>
+<h2 id="6-putting-it-all-together-next-steps">6. Putting it all together: Next steps</h2>
   <ul style="margin-left: 40px;">
     <li class="fragment"> Run virtual screening on bigger library (100k, 1M) compounds</li>
     <li class="fragment"> Improve on performance of diffusion model</li>
@@ -424,7 +426,8 @@
   <script type="text/javascript" src="/~sttruong/avs/reveal-js/plugin/zoom/zoom.js"></script>
   
   <script type="text/javascript" src="/~sttruong/avs/reveal-js/plugin/notes/notes.js"></script>
-  <script src="/~sttruong/reeval/reveal-js/plugin/math/math.js"></script>
+
+  <script src="/~sttruong/avs/reveal-js/plugin/math/math.js"></script>
   <script>
      Reveal.initialize({ plugins: [RevealMarkdown, RevealHighlight, RevealZoom, RevealNotes, RevealMath.KaTeX] });
   </script>
@@ -450,7 +453,7 @@
   var revealHugoPageParams = {};
   var options = Object.assign({}, camelize(revealHugoDefaults), camelize(revealHugoSiteParams), camelize(revealHugoPageParams), camelize(revealHugoPlugins));
   Reveal.initialize(options);
-  
+
   var revealHugoPlugins = {
     
     plugins: [RevealMarkdown,RevealHighlight,RevealZoom,RevealNotes]
