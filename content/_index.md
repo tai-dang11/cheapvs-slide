@@ -327,11 +327,10 @@ Data augmentation techniques allow us to build a richer, more comprehensive data
 ---
 {{< slide auto-animate="" >}}
 ### 4. Neural Diffusion Search: Training Results
-{{% fragment %}} **Benchmark on Posebusters Dataset**:
-{{% /fragment %}}
+**Benchmark on Posebusters Dataset**:
 
-{{% fragment %}}Posebusters Version 1 includes 428 protein-ligand structures, and Version 2 has 308, all released to the PDB after 2021. Performance is measured by the percentage of protein-ligand pairs with pocket-aligned ligand RMSD under 2 Å.
-{{% /fragment %}}
+{{% fragment %}}Posebusters Version 1 includes 428 protein-ligand structures, and Version 2 has 308, all released to the PDB after 2021. {{% /fragment %}}
+{{% fragment %}}Performance is measured by the percentage of protein-ligand pairs with pocket-aligned ligand RMSD under 2 Å.{{% /fragment %}}
 
 {{% fragment %}}
 <figure style="text-align: center; margin-top: -20px;">
