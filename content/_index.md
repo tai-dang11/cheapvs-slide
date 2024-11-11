@@ -221,6 +221,8 @@ We have demonstrated that our method can robustly identify candidate ligands tha
 ---
 {{< slide auto-animate="" >}}
 ### 4. Neural Diffusion Search: Diffusion Model
+{{% fragment %}}For dokcing model, we use **diffusion models**, rather than traditional tools like Glide or Smina, to improve speed and efficiency.{{% /fragment %}}
+
 {{% fragment %}}**Diffusion models** are a type of machine learning model used to generate data by starting with noise and gradually creating a meaningful pattern.{{% /fragment %}}
 
 <ul>
