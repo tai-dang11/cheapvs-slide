@@ -26,16 +26,8 @@ For **a given protein** linked to a certain disease,
 {{% fragment %}}from a library of **millions** candidates{{% /fragment %}}
 {{% fragment %}}such that the selected candidate will have the **highest utility** in disease treating.{{% /fragment %}}
 
-{{% fragment %}}
-<figure style="display: flex; flex-direction: column; align-items: center; width: 80%; margin-top: 0px; margin-left: 100px">
-<img src="images/vs.png">
-{{% /fragment %}}
+{{% fragment %}}For modern libraries, it is feasible scaling up to billions or even trillions of compounds enhances the reach and impact of virtual screening.{{% /fragment %}}
 
----
-{{< slide auto-animate="" >}}
-### 1.Introduction: Virtual Screening
-
-<span class="fragment">For modern libraries, it is feasible scaling up to billions or even trillions of compounds enhances the reach and impact of virtual screening.</span>
 
 {{% fragment %}}
 <figure style="display: flex; flex-direction: column; align-items: center; width: 80%; margin-top: 0px; margin-left: 100px">
@@ -80,8 +72,8 @@ Depending on the specific disease and protein, experts have **intuition** about 
     <figcaption style="text-align: left; font-size: 20px; margin-top: -50px;">Affinity: -10.11, Solubility: 67.66</figcaption>
   </figure>
   <figure style="display: flex; flex-direction: column; align-items: center; width: 45%;">
-    <img src="images/lig2.png" style="width: 100%;" alt="Aff: -10.11, PSA: 67.66">
-    <figcaption style="text-align: left; font-size: 20px; margin-top: -50px;">Affinity: -10.11, Solubility: 67.66</figcaption>
+    <img src="images/lig2.png" style="width: 100%;" alt="Aff: -6.3, Solubility: 128.37">
+    <figcaption style="text-align: left; font-size: 20px; margin-top: -50px;">Affinity: -6.3, Solubility: 128.37</figcaption>
   </figure>
 </div>
 {{% /fragment %}}
