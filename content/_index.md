@@ -146,7 +146,7 @@ Learning a preference model from binary preference data can be viewed as learnin
 {{% fragment %}}The latent utility function $f$ can be modeled using various approaches.{{% /fragment %}}
 {{% fragment %}} One popular choice is the **Gaussian Process (GP)**, a non-parametric Bayesian method that defines a distribution over possible functions.{{% /fragment %}}
 
-<p style="color: green;">Add a visualization for functions induced by different kernel here.</p>
+<!-- <p style="color: green;">Add a visualization for functions induced by different kernel here.</p> -->
 
 
 ---
@@ -155,7 +155,7 @@ Learning a preference model from binary preference data can be viewed as learnin
 
 {{% fragment %}}By modeling utility with a Gaussian Process, we effectively capture both the uncertainty and the non-linear relationships inherent in expert preferences.{{% /fragment %}}
 {{% fragment %}}Learning GP Classifier can be done with standard machine learning toolbox such as `scikit-learn`.{{% /fragment %}}
-{{% fragment %}}For example, when the synthetic oracle is the Auckley function, we obtain 95% train and test accuracy.{{% /fragment %}}
+{{% fragment %}}For example, when the synthetic oracle is the Auckley function, we obtain 85% train and test accuracy.{{% /fragment %}}
 
 ---
 {{< slide auto-animate="" >}}
@@ -170,7 +170,7 @@ Learning chemical intuition is done in a close-loop, where the computer interact
 {{% fragment %}}**Step 2:** Find the best ligand under each utility function:
 
 ```math
-x_1 = \arg\max_{x \in \mathcal{L}} f_1(x), x_2 = \arg\max_{x \in \mathcal{L}} f_2 (x)$ 
+x_1 = \arg\max_{x \in \mathcal{L}} f_1(x), x_2 = \arg\max_{x \in \mathcal{L}} f_2 (x)
 ```
 {{% /fragment %}}
 
@@ -181,13 +181,39 @@ x_1 = \arg\max_{x \in \mathcal{L}} f_1(x), x_2 = \arg\max_{x \in \mathcal{L}} f_
 {{% fragment %}}**Step 4:** Update the model in the present of new data $\mathcal{D} \leftarrow \mathcal{D} \cup \{(x_1, x_2, y)\}$.
 {{% /fragment %}}
 
+<!-- ---
+{{< slide auto-animate="" >}}
+### 2.Eliciting Chemical Intuition
+{{% fragment %}}**Step 1:** Initialize
+<ul>
+  <li class="fragment">Collect a small set of expert preference data to train a GP surrogate model.</li>
+</ul>
+{{% /fragment %}}
+
+{{% fragment %}}**Step 2:** Predict & Select
+<ul>
+  <li class="fragment">Use the GP to predict preferences for unlabeled candidates.</li>
+  <li class="fragment">Select top options via acquisition function (i.e Thompson Sampling, UCB).</li>
+</ul>
+{{% /fragment %}}
+
+{{% fragment %}}**Step 3:** Iterate
+<ul>
+  <li class="fragment">Refine the surrogate model with the limited initial data to efficiently identify the most preferred solutions.</li>
+</ul>
+{{% /fragment %}} -->
+
 ---
 {{< slide auto-animate="" >}}
 ### 2.Eliciting Chemical Intuition
 
-<p style="color: green;">Add a graph showing our active elicitation method can quickly find the best candidate $x$ with a minimal amount of query.
-Add experiment showing that our method is robust with complex nonlinear function in high dimensional input.</p>
+<!-- <p style="color: green;">Add a graph showing our active elicitation method can quickly find the best candidate $x$ with a minimal amount of query.
+Add experiment showing that our method is robust with complex nonlinear function in high dimensional input.</p> -->
+{{% fragment %}}
+<img src="images/elicatation_acc.png" alt="Active Virtual Screening Diagram" style="display: block; margin: 0 auto; width: 55%;" class="fragment">
+<p style="text-align: center; font-size: 20px">Observed accuracy plot for high-dimensional data with objectives: QED, affinity, polar surface area, and molecular weight.</p>
 
+{{% /fragment %}}
 
 ---
 {{< slide auto-animate="" >}}
@@ -217,6 +243,7 @@ We have demonstrated that our method can robustly identify candidate ligands tha
 {{% fragment %}}
 <img src="images/avs.png" alt="Active Virtual Screening Diagram" style="display: block; margin: 0 auto; width: 65%;" class="fragment">
 {{% /fragment %}}
+
 
 ---
 {{< slide auto-animate="" >}}

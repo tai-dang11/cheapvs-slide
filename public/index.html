@@ -198,7 +198,7 @@
 <span class='fragment ' >One popular choice is the <strong>Gaussian Process (GP)</strong>, a non-parametric Bayesian method that defines a distribution over possible functions.</span>
 
 </p>
-<p style="color: green;">Add a visualization for functions induced by different kernel here.</p>
+<!-- <p style="color: green;">Add a visualization for functions induced by different kernel here.</p> -->
 </section>
 
 <section data-noprocess data-shortcode-slide
@@ -217,7 +217,7 @@
 
 
 
-<span class='fragment ' >For example, when the synthetic oracle is the Auckley function, we obtain 95% train and test accuracy.</span>
+<span class='fragment ' >For example, when the synthetic oracle is the Auckley function, we obtain 85% train and test accuracy.</span>
 
 </p>
 </section>
@@ -240,7 +240,7 @@
 
 
 <span class='fragment ' ><p><strong>Step 2:</strong> Find the best ligand under each utility function:</p>
-<p>$$x_1 = \arg\max_{x \in \mathcal{L}} f_1(x), x_2 = \arg\max_{x \in \mathcal{L}} f_2 (x)$ $$</p>
+<p>$$x_1 = \arg\max_{x \in \mathcal{L}} f_1(x), x_2 = \arg\max_{x \in \mathcal{L}} f_2 (x)$$</p>
 </span>
 
 
@@ -256,14 +256,57 @@
 </span>
 
 
+<!-- ---
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+### 2.Eliciting Chemical Intuition
+
+
+<span class='fragment ' ><p><strong>Step 1:</strong> Initialize</p>
+<ul>
+  <li class="fragment">Collect a small set of expert preference data to train a GP surrogate model.</li>
+</ul>
+</span>
+
+
+
+
+
+<span class='fragment ' ><p><strong>Step 2:</strong> Predict &amp; Select</p>
+<ul>
+  <li class="fragment">Use the GP to predict preferences for unlabeled candidates.</li>
+  <li class="fragment">Select top options via acquisition function (i.e Thompson Sampling, UCB).</li>
+</ul>
+</span>
+
+
+
+
+
+<span class='fragment ' ><p><strong>Step 3:</strong> Iterate</p>
+<ul>
+  <li class="fragment">Refine the surrogate model with the limited initial data to efficiently identify the most preferred solutions.</li>
+</ul>
+</span>
+
+ -->
 </section>
 
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
 <h3 id="2eliciting-chemical-intuition-6">2.Eliciting Chemical Intuition</h3>
-<p style="color: green;">Add a graph showing our active elicitation method can quickly find the best candidate $x$ with a minimal amount of query.
-Add experiment showing that our method is robust with complex nonlinear function in high dimensional input.</p>
+<!-- <p style="color: green;">Add a graph showing our active elicitation method can quickly find the best candidate $x$ with a minimal amount of query.
+Add experiment showing that our method is robust with complex nonlinear function in high dimensional input.</p> -->
+
+
+<span class='fragment ' ><img src="images/elicatation_acc.png" alt="Active Virtual Screening Diagram" style="display: block; margin: 0 auto; width: 55%;" class="fragment">
+<p style="text-align: center; font-size: 20px">Observed accuracy plot for high-dimensional data with objectives: QED, affinity, polar surface area, and molecular weight.</p>
+</span>
+
+
 </section>
 
 <section data-noprocess data-shortcode-slide
