@@ -282,21 +282,6 @@ Why Use Diffusion Models for Molecules?
 </figure>
 {{% /fragment %}}
 
-<!-- ---
-{{< slide auto-animate="" >}}
-### 4. Neural Diffusion Search
-
-{{% fragment %}}
-Diffusion models are probabilistic generative models that transform data from a noisy distribution into a structured, meaningful output through a reverse process.{{% /fragment %}}
-
-{{% fragment %}}Applying SDEs for controlled generative modeling:{{% /fragment %}}
-<ul> 
-    <li class="fragment"> Initiate with Gaussian noise on ligand coordinates</li> 
-    <li class="fragment"> Employ Euler-Maruyama to denoise step-by-step: <ul> 
-      <li>$X_{t-\Delta t} = X_t + f(X_t, t) \Delta t + g(t) \sqrt{\Delta t} \cdot \epsilon$</ul> </li>
-    <li class="fragment"> Optimize ligand structure discovery through iterative sampling steps via Euler</li> 
-</ul>  -->
-
 ---
 {{< slide auto-animate="" >}}
 ### 4. Neural Diffusion Search: Training Data
@@ -335,8 +320,8 @@ Data augmentation techniques allow us to build a richer, more comprehensive data
 {{% fragment %}}
 <div style="display: flex; justify-content: space-between; margin-top: 20px;">
     <div style="width: 49%;">
-        <img src="images/md.gif" alt="MD Simulation Example" style="width: 55%; height: auto; margin-left: 100px; margin-top: -20px;">
-        <p style="text-align: center; font-size: 20px; margin-left: 00px; margin-top: -40px;">Figure 1: MD Simulation Trajectories</p>
+        <img src="images/md1.gif" alt="MD Simulation Example" style="width: 55%; height: auto; margin-left: 100px; margin-top: -20px;">
+        <p style="text-align: center; font-size: 20px; margin-left: -130px; margin-top: -40px;">Figure 1: MD Simulation Trajectories</p>
     </div>
     <div style="width: 49%;">
         <img src="images/pharmacophore.png" alt="Pharmacophore Model Example" style="width: 80%; height: auto;">
