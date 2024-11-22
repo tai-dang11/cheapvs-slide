@@ -160,16 +160,6 @@ Data augmentation techniques create a richer dataset, boosting model performance
 
 ---
 {{< slide auto-animate="" >}}
-### 1. Diffusion Model: Results
-**Benchmark on Posebusters Dataset**:
-{{% fragment %}}
-<figure style="text-align: center; margin-top: -20px;">
-  <img src="images/docking_results.png" alt="Docking Results" style="width: 100%; max-width: 1000px;">
-</figure>
-{{% /fragment %}}
-
----
-{{< slide auto-animate="" >}}
 ### 1. Diffusion Model: Neural Search for Docking
 {{% fragment %}}Traditional docking tools are slow, limiting the efficiency of application of virtual screening.
 {{% /fragment %}}
