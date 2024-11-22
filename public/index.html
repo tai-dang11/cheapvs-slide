@@ -21,53 +21,39 @@
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h3 id="accelerate-virtual-screening">Accelerate Virtual Screening</h3>
-<h3 id="with-amortized-neural-search">with Amortized Neural Search</h3>
-<h3 id="and-prefential-bayesian-optimization">and Prefential Bayesian Optimization</h3>
+<!-- ### Accelerate Virtual Screening 
+### with Amortized Neural Search 
+### and Prefential Bayesian Optimization -->
+<h3 id="accelerate-virtual-screening-in-drug-discovery">Accelerate Virtual Screening in Drug Discovery</h3>
+<h3 id="with-neural-diffusion-search">with Neural Diffusion Search</h3>
 <div style="display: flex; justify-content: space-between; width: 30%;">
   <img src="images/SOM_vert_Web_Color_LG.png" alt="Main Logo" style="height: 85px; margin-left: 0px; margin-top: 200px"> 
   <img src="images/sail-logo.jpg" alt="Second Logo" style="height: 85px; margin-left: 50px; margin-top: 200px">
+  <img src="images/rhf.png" alt="Third Logo" style="height: 85px; margin-left: 80px; margin-top: 200px">
 </div>
 </section>
 
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h3 id="1introduction-virtual-screening">1.Introduction: Virtual Screening</h3>
-<p>For <strong>a given protein</strong> linked to a certain disease,
-
-
-<span class='fragment ' >the goal of virtual screening is to select a <strong>few</strong> small molecules (i.e., ligand)</span>
-
-
-
-
-<span class='fragment ' >from a library of <strong>millions</strong> candidates</span>
-
-
-
-
-<span class='fragment ' >such that the selected candidate will have the <strong>highest utility</strong> in disease treating.</span>
-
-</p>
-
-
-<span class='fragment ' >For modern libraries, it is feasible scaling up to billions or even trillions of compounds enhances the reach and impact of virtual screening.</span>
-
-
-
-
-<span class='fragment ' ><figure style="display: flex; flex-direction: column; align-items: center; width: 80%; margin-top: 0px; margin-left: 100px">
-<img src="images/vs.png">
-</span>
-
-
+<h3 id="outline">Outline</h3>
+<ul>
+<li>Protein-ligand docking with Diffusion Models</li>
+<li>Active Virtual Screening</li>
+<li>Incorporating Chemical Intuition</li>
+</ul>
 </section>
 
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h3 id="1introduction-virtual-screening-1">1.Introduction: Virtual Screening</h3>
+<h3 id="overview">Overview</h3>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="overview-navigating-challenges-and-solutions-in-virtual-screening">Overview: Navigating Challenges and Solutions in Virtual Screening</h3>
 <div style="margin-top: 20px; display: flex; justify-content: space-between; align-items: flex-start;">
   <div style="width: 50%;">
     <h3 style="font-size: 36px;">Virtual Screening Challenges:</h3>
@@ -91,24 +77,108 @@
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h3 id="2eliciting-chemical-intuition">2.Eliciting Chemical Intuition</h3>
-<p>Depending on the specific disease and protein, experts have <strong>intuition</strong> about characteristics of candidate ligands,
+<h3 id="outline-1">Outline</h3>
+<ul>
+<li>Protein-ligand docking with Diffusion Models</li>
+<li><span style="opacity: 0.5;">Active Virtual Screening</span></li>
+<li><span style="opacity: 0.5;">Incorporating Chemical Intuition</span></li>
+</ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="1-diffusion-model-noise-to-pattern">1. Diffusion Model: Noise to pattern</h3>
 
 
-<span class='fragment ' >trading off various objectives such as synthesizability, affinity, solubility, and side effects.</span>
-
-</p>
+<span class='fragment ' ><strong>Diffusion models</strong> are a type of machine learning model used to generate data by starting with noise and gradually creating a meaningful pattern.</span>
 
 
-<span class='fragment ' ><div style="display: flex; justify-content: center; width: 100%; gap: -30px; margin-top: -100px;">
-  <figure style="display: flex; flex-direction: column; align-items: center; width: 45%;">
-    <img src="images/lig1.png" style="width: 100%;" alt="Aff: -10.11, PSA: 67.66">
-    <figcaption style="text-align: left; font-size: 20px; margin-top: -50px;">Affinity: -10.11, Solubility: 67.66</figcaption>
-  </figure>
-  <figure style="display: flex; flex-direction: column; align-items: center; width: 45%;">
-    <img src="images/lig2.png" style="width: 100%;" alt="Aff: -6.3, Solubility: 128.37">
-    <figcaption style="text-align: left; font-size: 20px; margin-top: -50px;">Affinity: -6.3, Solubility: 128.37</figcaption>
-  </figure>
+
+
+<span class='fragment ' ><figure style="display: flex; flex-direction: column; align-items: center; width: 80%; margin-left: 80px;"> 
+  <img src="images/cat.webp" alt="Diffusion Process" style="width: 30%;"> 
+  <figcaption style="text-align: center; font-size: 24px; margin-top: 10px;">Transforming noise into meaningful structures.</figcaption> 
+</figure> 
+</span>
+
+
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="1-diffusion-model-why-used-for-docking">1. Diffusion Model: Why used for docking?</h3>
+<p>Why Use Diffusion Models for Molecules?</p>
+
+
+<span class='fragment ' ><figure style="display: flex; flex-direction: column; align-items: center; width: 100%; margin-top: 0px;">
+  <img src="images/molecular_diffusion.png" alt="Molecular Diffusion Process" style="width: 100%;">
+  <figcaption style="text-align: center; font-size: 24px; margin-top: 0px;">From random points to a structured 3D molecule.</figcaption>
+</figure>
+</span>
+
+
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="1-diffusion-model-training-data">1. Diffusion Model: Training Data</h3>
+
+
+<span class='fragment ' ><p>The PDB database alone is limited:</p>
+<ul>
+  <li class="fragment">Contains only ~17,000 protein-ligand pairs</li>
+  <li class="fragment">Limited protein diversity, with around 5,000 unique proteins</li>
+</ul>
+</span>
+
+
+
+
+<span class='fragment ' ><p>To train a robust diffusion model, <strong>millions of diverse data points</strong> are essential. Data augmentation expands:</p>
+<ul>
+  <li class="fragment"><b>Ligand Diversity</b>: Includes a wider range of chemical structures and properties</li>
+  <li class="fragment"><b>Protein Diversity</b>: Covers various binding sites, increasing model generalization</li>
+</ul>
+</span>
+
+
+
+
+<span class='fragment ' ><p>Data augmentation techniques allow us to build a richer, more comprehensive dataset to improve model accuracy and performance.</p>
+</span>
+
+
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="1-diffusion-model-training-data-1">1. Diffusion Model: Training Data</h3>
+
+
+<span class='fragment ' ><p><strong>Data Augmentation Techniques</strong>:</p>
+<ul style="font-size: 26px"> 
+    <li class="fragment"><b>Molecular Dynamics:</b> Employed 59,330 dynamic frames of 14,387 protein-ligand complexes to model ligand flexibility, amounting to 75K training data.</li> 
+    <li class="fragment"><b>Data Crawling:</b> Curated 322K protein-ligand complexes, yielding 80K unique proteins.</li>
+    <li class="fragment"><b>Pharmacophore Alignment:</b> Generated up to 11M pharmacophore-consistent ligand pairs, significantly expanding the ligand training data.</li> 
+</ul> 
+</span>
+
+
+
+
+<span class='fragment ' ><div style="display: flex; justify-content: space-between; margin-top: 20px;">
+    <div style="width: 49%;">
+        <img src="images/md1.gif" alt="MD Simulation Example" style="width: 55%; height: auto; margin-left: 100px; margin-top: -20px;">
+        <p style="text-align: center; font-size: 20px; margin-left: -130px; margin-top: -40px;">Figure 1: MD Simulation Trajectories</p>
+    </div>
+    <div style="width: 49%;">
+        <img src="images/pharmacophore.png" alt="Pharmacophore Model Example" style="width: 80%; height: auto;">
+        <p style="text-align: center; font-size: 20px; margin-top: 80px;">Figure 2: Pharmacophore Modeling</p>
+    </div>
 </div>
 </span>
 
@@ -118,192 +188,23 @@
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h3 id="2eliciting-chemical-intuition-1">2.Eliciting Chemical Intuition</h3>
-<p>These implicit expert knowledge, encoded as preferences over ligands, are valuable to elicit for effective virtual screening.
-
-
-<span class='fragment ' >We can leverage toolkits from the field of machine learning from human preferences to tackle this challenge.</span>
-
-</p>
-<span class="fragment">
-<table style="width: 90%; margin-top: 20px; border-collapse: collapse; text-align: center; font-size: 24px;">
-  <tr>
-    <th style="border: 1px solid #ddd; padding: 8px;">First ligand</th>
-    <th style="border: 1px solid #ddd; padding: 8px;">Second ligand</th>
-    <th style="border: 1px solid #ddd; padding: 8px;">Preference $(x_1 \succ x_2)$</th>
-  </tr>
-  <tr>
-    <td style="border: 1px solid #ddd; padding: 8px;">[-7.81, 114.38, 0.51]</td>
-    <td style="border: 1px solid #ddd; padding: 8px;">[-8.12, 116.28, 0.47]</td>
-    <td style="border: 1px solid #ddd; padding: 8px;">0</td>
-  </tr>
-  <tr>
-    <td style="border: 1px solid #ddd; padding: 8px;">[-10.45, 186.17, 0.29]</td>
-    <td style="border: 1px solid #ddd; padding: 8px;">[-8.12, 116.28, 0.47]</td>
-    <td style="border: 1px solid #ddd; padding: 8px;">1</td>
-  </tr>
-  <tr>
-    <td style="border: 1px solid #ddd; padding: 8px;">[-6.18, 35.32, 0.83]</td>
-    <td style="border: 1px solid #ddd; padding: 8px;">[-8.12, 116.28, 0.47]</td>
-    <td style="border: 1px solid #ddd; padding: 8px;">0</td>
-  </tr>
-</table>
-<p style="font-size: 24px; text-align: center; margin-top: 15px;">
-  <em>Each ligand is represented by a set of features, such as affinity, polar surface area, QED drug-likeness score</em>
-</p>
-</span>
-</section>
-
-<section data-noprocess data-shortcode-slide
-      data-auto-animate="">
-  
-<h3 id="2eliciting-chemical-intuition-2">2.Eliciting Chemical Intuition</h3>
-<p>Learning a preference model from binary preference data can be viewed as learning a classifier.</p>
-
-
-<span class='fragment ' ><p>$$p(y \mid x_1, x_2; f) = \frac{e^{f(x_1)}}{e^{f(x_1)} + e^{f(x_2)}}$$</p>
-</span>
-
-
-
-
-<span class='fragment ' ><p>$$= \frac{1}{1 + e^{-[f(x_1)-f(x_2)]}}$$</p>
-</span>
-
-
-
-
-<span class='fragment ' ><p>$$= \sigma(f(x_1)-f(x_2))$$</p>
-</span>
-
-
-
-
-<span class='fragment ' >where $\sigma(\cdot)$ is the sigmoid function.</span>
-
-
-</section>
-
-<section data-noprocess data-shortcode-slide
-      data-auto-animate="">
-  
-<h3 id="2eliciting-chemical-intuition-3">2.Eliciting Chemical Intuition</h3>
+<h3 id="1-diffusion-model-results">1. Diffusion Model: Results</h3>
+<p><strong>Benchmark on Posebusters Dataset</strong>:</p>
 <p>
 
-<span class='fragment ' >The latent utility function $f$ can be modeled using various approaches.</span>
+<span class='fragment ' >Posebusters: Version 1 (428 structures) and Version 2 (308 structures), released post-2021 in PDB.</span>
 
 
 
 
-<span class='fragment ' >One popular choice is the <strong>Gaussian Process (GP)</strong>, a non-parametric Bayesian method that defines a distribution over possible functions.</span>
-
-</p>
-<!-- <p style="color: green;">Add a visualization for functions induced by different kernel here.</p> -->
-</section>
-
-<section data-noprocess data-shortcode-slide
-      data-auto-animate="">
-  
-<h3 id="2eliciting-chemical-intuition-4">2.Eliciting Chemical Intuition</h3>
-<p>
-
-<span class='fragment ' >By modeling utility with a Gaussian Process, we effectively capture both the uncertainty and the non-linear relationships inherent in expert preferences.</span>
-
-
-
-
-<span class='fragment ' >Learning GP Classifier can be done with standard machine learning toolbox such as <code>scikit-learn</code>.</span>
-
-
-
-
-<span class='fragment ' >For example, when the synthetic oracle is the Auckley function, we obtain 85% train and test accuracy.</span>
-
-</p>
-</section>
-
-<section data-noprocess data-shortcode-slide
-      data-auto-animate="">
-  
-<h3 id="2eliciting-chemical-intuition-5">2.Eliciting Chemical Intuition</h3>
-<p>Learning chemical intuition is done in a close-loop, where the computer interacts with the chemist in an active manner.
-
-
-<span class='fragment ' >Starting with distribution over function $f$ condition on the current data, $p(f | D)$, our procedure includes 4 iterative steps:</span>
+<span class='fragment ' >Performance: % of ligand pairs with $RMSD &lt; 2 Å$ in pocket alignment.</span>
 
 </p>
 
 
-<span class='fragment ' ><strong>Step 1:</strong> Sample two candidate utility: $f_1 \sim p(f|D), f_2 \sim p(f|D)$</span>
-
-
-
-
-<span class='fragment ' ><p><strong>Step 2:</strong> Find the best ligand under each utility function:</p>
-<p>$$x_1 = \arg\max_{x \in \mathcal{L}} f_1(x), x_2 = \arg\max_{x \in \mathcal{L}} f_2 (x)$$</p>
-</span>
-
-
-
-
-<span class='fragment ' ><p><strong>Step 3:</strong> Present the two candidate ligands $x_1$ and $x_2$ to the expert to obtain preference $y$.</p>
-</span>
-
-
-
-
-<span class='fragment ' ><p><strong>Step 4:</strong> Update the model in the present of new data $\mathcal{D} \leftarrow \mathcal{D} \cup {(x_1, x_2, y)}$.</p>
-</span>
-
-
-<!-- ---
-
-<section data-noprocess data-shortcode-slide
-      data-auto-animate="">
-  
-### 2.Eliciting Chemical Intuition
-
-
-<span class='fragment ' ><p><strong>Step 1:</strong> Initialize</p>
-<ul>
-  <li class="fragment">Collect a small set of expert preference data to train a GP surrogate model.</li>
-</ul>
-</span>
-
-
-
-
-
-<span class='fragment ' ><p><strong>Step 2:</strong> Predict &amp; Select</p>
-<ul>
-  <li class="fragment">Use the GP to predict preferences for unlabeled candidates.</li>
-  <li class="fragment">Select top options via acquisition function (i.e Thompson Sampling, UCB).</li>
-</ul>
-</span>
-
-
-
-
-
-<span class='fragment ' ><p><strong>Step 3:</strong> Iterate</p>
-<ul>
-  <li class="fragment">Refine the surrogate model with the limited initial data to efficiently identify the most preferred solutions.</li>
-</ul>
-</span>
-
- -->
-</section>
-
-<section data-noprocess data-shortcode-slide
-      data-auto-animate="">
-  
-<h3 id="2eliciting-chemical-intuition-6">2.Eliciting Chemical Intuition</h3>
-<!-- <p style="color: green;">Add a graph showing our active elicitation method can quickly find the best candidate $x$ with a minimal amount of query.
-Add experiment showing that our method is robust with complex nonlinear function in high dimensional input.</p> -->
-
-
-<span class='fragment ' ><img src="images/elicatation_acc.png" alt="Active Virtual Screening Diagram" style="display: block; margin: 0 auto; width: 55%;" class="fragment">
-<p style="text-align: center; font-size: 20px">Observed accuracy plot for high-dimensional data with objectives: QED, affinity, polar surface area, and molecular weight.</p>
+<span class='fragment ' ><figure style="text-align: center; margin-top: -20px;">
+  <img src="images/docking_results.png" alt="Docking Results" style="width: 100%; max-width: 1000px;">
+</figure>
 </span>
 
 
@@ -312,11 +213,88 @@ Add experiment showing that our method is robust with complex nonlinear function
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h3 id="2eliciting-chemical-intuition-7">2.Eliciting Chemical Intuition</h3>
-<p>We have demonstrated that our method can robustly identify candidate ligands that match a complex, latent utility function in a high-dimensional space with a minimal number of queries.</p>
+<h3 id="1-diffusion-model-neural-search-for-docking">1. Diffusion Model: Neural Search for Docking</h3>
 
 
-<span class='fragment ' >For the next step, we aim to collaborate with experts in the lab to understand their latent utility preferences via pairwise preference elicitation for virtual screening applications.</span>
+<span class='fragment ' ><p>Traditional docking tools are slow, limiting the efficiency of application of virtual screening.</p>
+</span>
+
+
+<ul> 
+  <li class="fragment"><b>Traditional Tools</b> (e.g., Glide, Smina): ~15mins per pose</li> 
+  <li class="fragment"><b>Chai</b> (AlphaFold3-like): ~2 mins for 5 poses (7.5x faster)</li> 
+  <li class="fragment"><b>Our Diffusion Model</b>: ~5s for 64 poses (180x faster)</li> 
+</ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="1-diffusion-model-improve-speed-with-local-docking">1. Diffusion Model: Improve Speed with Local Docking</h3>
+
+
+<span class='fragment ' >Our approach works with both blind and local docking, with local docking being 2.5x faster than blind docking and 450x faster than Glide while still retanining accuracy.</span>
+
+
+
+
+<span class='fragment ' ><figure style="display: flex; flex-direction: column; align-items: center;">
+  <div style="display: flex; justify-content: center; width: 100%; gap: 200px;">
+      <img src="images/blind.gif" style="width: 40%; margin-right: 10px;" alt="Blind Docking">
+      <img src="images/local.gif" style="width: 40%;" alt="Local Docking">
+  </div>
+  <figcaption style="text-align: center; font-size: 20px; margin-top: 0px;">Blind Docking (left) vs. Local Docking (right) (using 1SYN structure)</figcaption>
+</figure>
+</span>
+
+
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="1-diffusion-model-next-steps">1. Diffusion Model: Next steps</h3>
+<ul>
+  <li class="fragment"> Improve on performance of diffusion model to reach SOTA level (i.e finetuninig AlphaFold3 variants)</li>
+</ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="outline-2">Outline</h3>
+<ul>
+<li><span style="opacity: 0.5;">Protein-ligand docking with Diffusion Models</span></li>
+<li>Active Virtual Screening</li>
+<li><span style="opacity: 0.5;">Incorporating Chemical Intuition</span></li>
+</ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="2virtual-screening-overview">2.Virtual Screening: Overview</h3>
+<p>For <strong>a given protein</strong> linked to a certain disease,
+
+
+<span class='fragment ' >the goal of virtual screening is to select a <strong>few</strong> small molecules (i.e., ligand)</span>
+
+
+
+
+<span class='fragment ' >from a library of <strong>millions</strong> candidates</span>
+
+
+
+
+<span class='fragment ' >such that the selected candidate will have the <strong>highest utility</strong> in disease treating.</span>
+
+</p>
+
+
+<span class='fragment ' ><figure style="display: flex; flex-direction: column; align-items: center; width: 80%; margin-top: 0px; margin-left: 100px">
+<img src="images/vs.png">
+</span>
 
 
 </section>
@@ -357,7 +335,7 @@ Add experiment showing that our method is robust with complex nonlinear function
 </ul>
 
 
-<span class='fragment ' ><img src="images/avs.png" alt="Active Virtual Screening Diagram" style="display: block; margin: 0 auto; width: 65%;" class="fragment">
+<span class='fragment ' ><img src="images/avs1.png" alt="Active Virtual Screening Diagram" style="display: block; margin: 0 auto; width: 65%;" class="fragment">
 </span>
 
 
@@ -366,210 +344,7 @@ Add experiment showing that our method is robust with complex nonlinear function
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h3 id="4-neural-diffusion-search-diffusion-model">4. Neural Diffusion Search: Diffusion Model</h3>
-
-
-<span class='fragment ' >For docking tasks, we use <strong>diffusion models</strong>, rather than traditional tools like Glide or Smina, to improve speed and efficiency.</span>
-
-
-
-
-<span class='fragment ' ><strong>Diffusion models</strong> are a type of machine learning model used to generate data by starting with noise and gradually creating a meaningful pattern.</span>
-
-
-<ul>
-  <li class="fragment">Begin with a "noisy" version of data (e.g., a blurry image)</li>
-  <li class="fragment"><b>Remove Noise step-by-step</b>, making the data clearer over time</li>
-  <li class="fragment">The final result is a well-defined, meaningful pattern (e.g., a clear image)</li>
-</ul>
-
-
-<span class='fragment ' ><figure style="display: flex; flex-direction: column; align-items: center; width: 80%; margin-left: 50px;">
-  <img src="images/cat.webp" alt="Diffusion Process" style="width: 30%;">
-  <figcaption style="text-align: center; font-size: 24px; margin-top: 10px;">Diffusion sampling process.</figcaption>
-</figure>
-</span>
-
-
-</section>
-
-<section data-noprocess data-shortcode-slide
-      data-auto-animate="">
-  
-<h3 id="4-neural-diffusion-search-diffusion-model-1">4. Neural Diffusion Search: Diffusion Model</h3>
-<p>Why Use Diffusion Models for Molecules?</p>
-<ul>
-  <li class="fragment">Starting with random points in 3D space, like a cloud of dots.</li>
-  <li class="fragment">The diffusion model gradually arranges these points, step-by-step, into a meaningful 3D molecular structure.</li>
-  <li class="fragment">The result is a 3D structure that represents a molecule.</li>
-</ul>
-
-
-<span class='fragment ' ><figure style="display: flex; flex-direction: column; align-items: center; width: 100%; margin-top: 0px;">
-  <img src="images/molecular_diffusion.png" alt="Molecular Diffusion Process" style="width: 100%;">
-  <figcaption style="text-align: center; font-size: 24px; margin-top: 0px;">From random points to a structured 3D molecule.</figcaption>
-</figure>
-</span>
-
-
-</section>
-
-<section data-noprocess data-shortcode-slide
-      data-auto-animate="">
-  
-<h3 id="4-neural-diffusion-search-training-data">4. Neural Diffusion Search: Training Data</h3>
-
-
-<span class='fragment ' ><p>The PDB database alone is limited:</p>
-<ul>
-  <li class="fragment">Contains only ~17,000 protein-ligand pairs</li>
-  <li class="fragment">Limited protein diversity, with around 5,000 unique proteins</li>
-</ul>
-</span>
-
-
-
-
-<span class='fragment ' ><p>To train a robust diffusion model, <strong>millions of diverse data points</strong> are essential. Data augmentation expands:</p>
-<ul>
-  <li class="fragment"><b>Ligand Diversity</b>: Includes a wider range of chemical structures and properties</li>
-  <li class="fragment"><b>Protein Diversity</b>: Covers various binding sites, increasing model generalization</li>
-</ul>
-</span>
-
-
-
-
-<span class='fragment ' ><p>Data augmentation techniques allow us to build a richer, more comprehensive dataset to improve model accuracy and performance.</p>
-</span>
-
-
-</section>
-
-<section data-noprocess data-shortcode-slide
-      data-auto-animate="">
-  
-<h3 id="4-neural-diffusion-search-training-data-1">4. Neural Diffusion Search: Training Data</h3>
-
-
-<span class='fragment ' ><p><strong>Data Augmentation Techniques</strong>:</p>
-<ul style="font-size: 26px"> 
-    <li class="fragment"><b>Molecular Dynamics:</b> Employed 59,330 dynamic frames of 14,387 protein-ligand complexes to model ligand flexibility, amounting to 75K training data.</li> 
-    <li class="fragment"><b>Data Crawling:</b> Curated 322K protein-ligand complexes, yielding 80K unique proteins.</li>
-    <li class="fragment"><b>Pharmacophore Alignment:</b> Generated up to 11M pharmacophore-consistent ligand pairs, significantly expanding the ligand training data.</li> 
-</ul> 
-</span>
-
-
-
-
-<span class='fragment ' ><div style="display: flex; justify-content: space-between; margin-top: 20px;">
-    <div style="width: 49%;">
-        <img src="images/md1.gif" alt="MD Simulation Example" style="width: 55%; height: auto; margin-left: 100px; margin-top: -20px;">
-        <p style="text-align: center; font-size: 20px; margin-left: -130px; margin-top: -40px;">Figure 1: MD Simulation Trajectories</p>
-    </div>
-    <div style="width: 49%;">
-        <img src="images/pharmacophore.png" alt="Pharmacophore Model Example" style="width: 80%; height: auto;">
-        <p style="text-align: center; font-size: 20px; margin-top: 80px;">Figure 2: Pharmacophore Modeling</p>
-    </div>
-</div>
-</span>
-
-
-</section>
-
-<section data-noprocess data-shortcode-slide
-      data-auto-animate="">
-  
-<h3 id="4-neural-diffusion-search-training-results">4. Neural Diffusion Search: Training Results</h3>
-<p><strong>Benchmark on Posebusters Dataset</strong>:</p>
-<p>
-
-<span class='fragment ' >Posebusters Version 1 includes 428 protein-ligand structures, and Version 2 has 308, all released to the PDB after 2021.</span>
-
-
-
-
-<span class='fragment ' >Performance is measured by the percentage of protein-ligand pairs with pocket-aligned ligand $RMSD&lt;2 Å$.</span>
-
-</p>
-
-
-<span class='fragment ' ><figure style="text-align: center; margin-top: -20px;">
-  <img src="images/docking_results.png" alt="Docking Results" style="width: 100%; max-width: 1000px;">
-</figure>
-</span>
-
-
-</section>
-
-<section data-noprocess data-shortcode-slide
-      data-auto-animate="">
-  
-<h3 id="4-neural-diffusion-search">4. Neural Diffusion Search</h3>
-<p>
-
-<span class='fragment ' >Traditional docking tools are slow, making it challenging for virtual screening.</span>
-
-
-
-
-<span class='fragment ' >For example, evaluating a single ligand&rsquo;s binding to a protein can take significant time.</span>
-
-</p>
-<ul>
-  <li class="fragment"> <b>Traditional Tools</b> (e.g., Glide, Smina): Up to 15 mins per pose</li>
-  <li class="fragment"> <b>Chai</b>: 1 min for 5 poses</li>
-</ul>
-
-
-<span class='fragment ' ><p>Our diffusion model accelerates docking by learning from patterns in ligand structures, making it possible to quickly evaluate many poses with high accuracy</p>
-</span>
-
-
-<ul>
-  <li class="fragment"> <b>Neural Engine</b>: Leverages diffusion models to speed up docking by recognizing molecular patterns (~5 seconds for 64 poses)</li>
-  <li class="fragment"> <b>Utility Scoring</b>: Evaluates ligands based on multiple criteria, such as affinity, solubility, and toxicity</li>
-</ul>
-</section>
-
-<section data-noprocess data-shortcode-slide
-      data-auto-animate="">
-  
-<h3 id="4-neural-diffusion-search-1">4. Neural Diffusion Search</h3>
-<p>
-
-<span class='fragment ' >To speed up virtual screening, we begin with blind docking to find potential binding sites,</span>
-
-
-
-
-<span class='fragment ' >then switch to local docking on these areas during active screening.</span>
-
-
-
-
-<span class='fragment ' >This approach, along with optimized ligand initialization at key positions, significantly reduces computation time while maintaining accuracy (~2 seconds for 64 poses).</span>
-
-</p>
-
-
-<span class='fragment ' ><figure style="display: flex; flex-direction: column; align-items: center;">
-  <div style="display: flex; justify-content: center; width: 100%; gap: 200px;">
-      <img src="images/blind.gif" style="width: 30%; margin-right: 10px;" alt="Blind Docking">
-      <img src="images/local.gif" style="width: 30%;" alt="Local Docking">
-  </div>
-  <figcaption style="text-align: center; font-size: 20px; margin-top: 0px;">Blind Docking (left) vs. Local Docking (right)</figcaption>
-</figure>
-</span>
-
-
-</section>
-
-<section data-noprocess data-shortcode-slide
-      data-auto-animate="">
-  
-<h3 id="5-putting-it-all-together-contrained-settings">5. Putting it all together: Contrained settings</h3>
+<h3 id="3-active-virtual-screening-contrained-settings">3. Active Virtual Screening: Contrained settings</h3>
 <p>
 
 <span class='fragment ' >In virtual screening, our goal is to find effective ligands efficiently. Traditional methods can be slow, especially with large, diverse libraries.</span>
@@ -590,7 +365,7 @@ Add experiment showing that our method is robust with complex nonlinear function
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h3 id="5-putting-it-all-together-contrained-settings-1">5. Putting it all together: Contrained settings</h3>
+<h3 id="3-active-virtual-screening-contrained-settings-1">3. Active Virtual Screening: Contrained settings</h3>
 <p>
 
 <span class='fragment ' >Using constrained settings, we can limit our search to clusters of chemically similar ligands,</span>
@@ -612,13 +387,13 @@ Add experiment showing that our method is robust with complex nonlinear function
 </span>
 
 
-</section>
+<!-- ---
 
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h3 id="5-putting-it-all-together">5. Putting it all together</h3>
-<p>
+### 5. Putting it all together
+
 
 <span class='fragment ' >We perform active virtual screening on the inferred expert utility function.</span>
 
@@ -632,29 +407,30 @@ Add experiment showing that our method is robust with complex nonlinear function
 
 <span class='fragment ' >To search for poses required for objectives such as affinity, we accelerate the pose search by a neural search engine.</span>
 
-</p>
+ -->
 </section>
 
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h3 id="5-putting-it-all-together-1">5. Putting it all together</h3>
+<h3 id="3-active-virtual-screening-evaluation-metrics">3. Active Virtual Screening: Evaluation Metrics</h3>
 
 
 <span class='fragment ' ><p><strong>Metrics for evaluation</strong></p>
 </span>
 
 
-
+<!-- 
 
 <span class='fragment ' ><p><strong>Regret</strong></p>
 </span>
 
 
+
 <ul>
   <li class="fragment"><b>Definition</b>: Difference in affinity between the best possible ligand and the top ligand found by the model within the $top_k \%$.</li>
   <li class="fragment">$\text{Regret} = A_{\text{best}} - A_{\text{model}}$</li>
-</ul>
+</ul> -->
 
 
 <span class='fragment ' ><p><strong>Percent of Best Ligand Found</strong></p>
@@ -669,14 +445,15 @@ Add experiment showing that our method is robust with complex nonlinear function
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h3 id="5-putting-it-all-together-screening-results">5. Putting it all together: Screening Results</h3>
+<h3 id="3-active-virtual-screening-screening-results">3. Active Virtual Screening: Screening Results</h3>
 
 
 <span class='fragment ' ><figure style="display: flex; flex-direction: column; align-items: center;">
   <div style="display: flex; justify-content: center; width: 100%; gap: 70px;">
       <img src="images/percent.png" style="width: 33%; max-width: 450px;">
-      <img src="images/regret.png" style="width: 33%; max-width: 450px;">
+      <img src="images/time1.png" style="width: 70%; max-width: 700px;">
   </div>
+  <figcaption style="text-align: center; font-size: 20px; margin-top: 0px;">Efficiently identifying high-affinity ligands: Screening 5% of a 7000-ligand library</figcaption>
 </figure>
 </span>
 
@@ -686,27 +463,255 @@ Add experiment showing that our method is robust with complex nonlinear function
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h3 id="5-putting-it-all-together-screening-results-1">5. Putting it all together: Screening Results</h3>
-
-
-<span class='fragment ' ><figure style="display: flex; flex-direction: column; align-items: center;">
-  <div style="display: flex; justify-content: center; width: 100%; gap: 10px; margin-top: -20px;">
-      <img src="images/time.png" style="width: 70%; max-width: 650px;">
-  </div>
-</figure>
-</span>
-
-
-</section>
-
-<section data-noprocess data-shortcode-slide
-      data-auto-animate="">
-  
-<h3 id="5-putting-it-all-together-next-steps">5. Putting it all together: Next steps</h3>
+<h3 id="3-active-virtual-screening-next-steps">3. Active Virtual Screening: Next steps</h3>
 <ul>
   <li class="fragment"> Run virtual screening on bigger library (100k, 1M) compounds</li>
-  <li class="fragment"> Improve on performance of diffusion model</li>
-</ul></section>
+</ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="outline-3">Outline</h3>
+<ul>
+<li><span style="opacity: 0.5;">Protein-ligand docking with Diffusion Models</span></li>
+<li><span style="opacity: 0.5;">Active Virtual Screening</span></li>
+<li>Incorporating Chemical Intuition</li>
+</ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="4eliciting-chemical-intuition-overview">4.Eliciting Chemical Intuition: Overview</h3>
+<p>
+
+<span class='fragment ' >In drug discovery, selecting candidate ligands goes beyond targeting high-affinity molecules.</span>
+
+
+
+
+<span class='fragment ' >Experts use their deep chemical intuition to balance competing properties such as synthesizability, solubility, and potential side effects.</span>
+
+
+
+
+<span class='fragment ' >This approach ensures ligands are not only effective but also practical and safe for therapeutic use.</span>
+
+</p>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="4eliciting-chemical-intuition">4.Eliciting Chemical Intuition</h3>
+<p>Depending on the specific disease and protein, experts have <strong>intuition</strong> about characteristics of candidate ligands,
+
+
+<span class='fragment ' >trading off various objectives such as synthesizability, affinity, solubility, and side effects.</span>
+
+</p>
+
+
+<span class='fragment ' ><div style="display: flex; justify-content: center; width: 100%; gap: -30px; margin-top: -100px;">
+  <figure style="display: flex; flex-direction: column; align-items: center; width: 45%;">
+    <img src="images/lig1.png" style="width: 100%;" alt="Aff: -10.11, PSA: 67.66">
+    <figcaption style="text-align: left; font-size: 20px; margin-top: -50px;">Affinity: -10.11, Solubility: 67.66</figcaption>
+  </figure>
+  <figure style="display: flex; flex-direction: column; align-items: center; width: 45%;">
+    <img src="images/lig2.png" style="width: 100%;" alt="Aff: -6.3, Solubility: 128.37">
+    <figcaption style="text-align: left; font-size: 20px; margin-top: -50px;">Affinity: -6.3, Solubility: 128.37</figcaption>
+  </figure>
+</div>
+</span>
+
+
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="4eliciting-chemical-intuition-1">4.Eliciting Chemical Intuition</h3>
+<p>These implicit expert knowledge, encoded as preferences over ligands, are valuable to elicit for effective virtual screening.
+
+
+<span class='fragment ' >We can leverage toolkits from the field of machine learning from human preferences to tackle this challenge.</span>
+
+</p>
+<span class="fragment">
+<table style="width: 90%; margin-top: 20px; border-collapse: collapse; text-align: center; font-size: 24px;">
+  <tr>
+    <th style="border: 1px solid #ddd; padding: 8px;">First ligand</th>
+    <th style="border: 1px solid #ddd; padding: 8px;">Second ligand</th>
+    <th style="border: 1px solid #ddd; padding: 8px;">Preference $(x_1 \succ x_2)$</th>
+  </tr>
+  <tr>
+    <td style="border: 1px solid #ddd; padding: 8px;">[-7.81, 114.38, 0.51]</td>
+    <td style="border: 1px solid #ddd; padding: 8px;">[-8.12, 116.28, 0.47]</td>
+    <td style="border: 1px solid #ddd; padding: 8px;">0</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid #ddd; padding: 8px;">[-10.45, 186.17, 0.29]</td>
+    <td style="border: 1px solid #ddd; padding: 8px;">[-8.12, 116.28, 0.47]</td>
+    <td style="border: 1px solid #ddd; padding: 8px;">1</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid #ddd; padding: 8px;">[-6.18, 35.32, 0.83]</td>
+    <td style="border: 1px solid #ddd; padding: 8px;">[-8.12, 116.28, 0.47]</td>
+    <td style="border: 1px solid #ddd; padding: 8px;">0</td>
+  </tr>
+</table>
+<p style="font-size: 24px; text-align: center; margin-top: 15px;">
+  <em>Each ligand is represented by a set of features, such as affinity, polar surface area, QED drug-likeness score</em>
+</p>
+</span>
+<!-- ---
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+### 4.Eliciting Chemical Intuition
+
+Learning a preference model from binary preference data can be viewed as learning a classifier. 
+
+  
+
+<span class='fragment ' ><p>$$p(y \mid x_1, x_2; f) = \frac{e^{f(x_1)}}{e^{f(x_1)} + e^{f(x_2)}}$$</p>
+</span>
+
+
+
+  
+
+<span class='fragment ' ><p>$$= \frac{1}{1 + e^{-[f(x_1)-f(x_2)]}}$$</p>
+</span>
+
+
+
+  
+
+<span class='fragment ' ><p>$$= \sigma(f(x_1)-f(x_2))$$</p>
+</span>
+
+
+
+
+
+<span class='fragment ' >where $\sigma(\cdot)$ is the sigmoid function.</span>
+
+ -->
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="4eliciting-chemical-intuition-2">4.Eliciting Chemical Intuition</h3>
+<p>
+
+<span class='fragment ' >The latent utility function $f$ can be modeled using various approaches.</span>
+
+
+
+
+<span class='fragment ' >One popular choice is the <strong>Gaussian Process (GP)</strong>, a non-parametric Bayesian method that defines a distribution over possible functions.</span>
+
+</p>
+<!-- <p style="color: green;">Add a visualization for functions induced by different kernel here.</p> -->
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="4eliciting-chemical-intuition-3">4.Eliciting Chemical Intuition</h3>
+<!-- 
+
+<span class='fragment ' >By modeling utility with a Gaussian Process, we effectively capture both the uncertainty and the non-linear relationships inherent in expert preferences.</span>
+
+ -->
+<p>
+
+<span class='fragment ' >Learning GP Classifier can be done with standard machine learning toolbox such as <code>scikit-learn</code>.</span>
+
+
+
+
+<span class='fragment ' >For example, when the synthetic oracle is the Auckley function, we obtain 85% train and test accuracy.</span>
+
+</p>
+
+
+<span class='fragment ' ><img src="images/ackley.png" alt="ackley" style="display: block; margin: 0 auto; width: 45%;" class="fragment">
+<p style="text-align: center; font-size: 20px">Synthetic Auckley function</p>
+</span>
+
+
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="4eliciting-chemical-intuition-process">4.Eliciting Chemical Intuition: Process</h3>
+<p>Learning chemical intuition is done in a close-loop, where the computer interacts with the chemist in an active manner.
+
+
+<span class='fragment ' >Starting with distribution over function $f$ condition on the current data, $p(f | D)$, our procedure includes 4 iterative steps:</span>
+
+</p>
+
+
+<span class='fragment ' ><strong>Step 1:</strong> Sample two candidate utility: $f_1 \sim p(f|D), f_2 \sim p(f|D)$</span>
+
+
+
+
+<span class='fragment ' ><p><strong>Step 2:</strong> Find the best ligand under each utility function:</p>
+<p>$$x_1 = \arg\max_{x \in \mathcal{L}} f_1(x), x_2 = \arg\max_{x \in \mathcal{L}} f_2 (x)$$</p>
+</span>
+
+
+
+
+<span class='fragment ' ><p><strong>Step 3:</strong> Present the two candidate ligands $x_1$ and $x_2$ to the expert to obtain preference $y$.</p>
+</span>
+
+
+
+
+<span class='fragment ' ><p><strong>Step 4:</strong> Update the model in the present of new data $\mathcal{D} \leftarrow \mathcal{D} \cup {(x_1, x_2, y)}$.</p>
+</span>
+
+
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="4eliciting-chemical-intuition-synthetic-results">4.Eliciting Chemical Intuition: Synthetic results</h3>
+
+
+<span class='fragment ' ><img src="images/elicitation.png" alt="Active Virtual Screening Diagram" style="display: block; margin: 0 auto; width: 55%;" class="fragment">
+<p style="text-align: center; font-size: 20px">Observed accuracy plot for high-dimensional data with objectives: QED, affinity, polar surface area, and molecular weight.</p>
+</span>
+
+
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="4eliciting-chemical-intuition-next-steps">4.Eliciting Chemical Intuition: Next Steps</h3>
+<!-- We have demonstrated that our method can robustly identify candidate ligands that match a complex, latent utility function in a high-dimensional space with a minimal number of queries. -->
+<ul>
+  <li class="fragment">We aim to collaborate with experts in the lab to understand their latent utility preferences via pairwise preference elicitation for virtual screening applications.</li>
+</ul>
+
+
+<span class='fragment ' ><img src="images/human.png" alt="Active Virtual Screening Diagram" style="display: block; margin: 0 auto; width: 55%;" class="fragment">
+<p style="text-align: center; font-size: 20px">Incoporating chemist intuition in virtual screening loop.</p>
+</span>
+
+
+</section>
 
   
 
@@ -767,6 +772,11 @@ Add experiment showing that our method is robust with complex nonlinear function
 
 
 
+
+  
+  
+    
+  
 
   
   
