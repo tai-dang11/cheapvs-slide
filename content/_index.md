@@ -15,9 +15,9 @@ codeFences = true
 ### with Neural Diffusion Search 
 
 <div style="display: flex; justify-content: space-between; width: 30%;">
-  <img src="images/SOM_vert_Web_Color_LG.png" alt="Main Logo" style="height: 85px; margin-left: 0px; margin-top: 200px"> 
-  <img src="images/sail-logo.jpg" alt="Second Logo" style="height: 85px; margin-left: 50px; margin-top: 200px">
-  <img src="images/rhf.png" alt="Third Logo" style="height: 85px; margin-left: 80px; margin-top: 200px">
+  <img src="images/rhf.png" alt="Third Logo" style="height: 85px; margin-left: 0px; margin-top: 200px">
+  <img src="images/SOM_vert_Web_Color_LG.png" alt="Main Logo" style="height: 85px; margin-left: 50px; margin-top: 200px"> 
+  <img src="images/sail-logo.jpg" alt="Second Logo" style="height: 85px; margin-left: 85px; margin-top: 200px">
 </div>
 
 ---
@@ -30,32 +30,43 @@ codeFences = true
 ---
 {{< slide auto-animate="" >}}
 ### Overview
+<!-- {{% fragment %}} -->
+<!-- <figure style="text-align: center; margin-top: -20px; position: relative;">
+  <img src="images/overview.png" alt="Docking Results" style="width: 50%; max-width: 1000px;">
+  <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 38%; background: white;" class="fragment fade-out"></div>
+</figure>
+{{% /fragment %}} -->
+<figure style="text-align: center; margin-top: -30px; position: relative;">
+    <img src="images/overview.png" alt="Overview Image" style="width: 55%; max-width: 1000px;">
+  <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 73%; background: white;" class="fragment fade-out"></div>
+  <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 38%; background: white;" class="fragment fade-out"></div>
 
-
+</figure>
 
 ---
 {{< slide auto-animate="" >}}
-### Overview: Navigating Challenges and Solutions in Virtual Screening
+### Overview: Streamlining Virtual Screening with Advanced Techniques
 
 <div style="margin-top: 20px; display: flex; justify-content: space-between; align-items: flex-start;">
   <div style="width: 50%;">
-    <h3 style="font-size: 36px;">Virtual Screening Challenges:</h3>
+    <h3 style="font-size: 36px;">Challenges:</h3>
     <ol style="font-size: 32px;">
-      <li class="fragment" data-fragment-index="1"><b>Multiple, competing objectives</b> based on unknown, hard-to-quantify expert knowledge.</li>
-      <li class="fragment" data-fragment-index="2"><b>Limited budget</b> to try all ligands from the library.</li>
-      <li class="fragment" data-fragment-index="3">Some objectives (such as binding affinity) are expensive to evaluate even for a single ligand.</li>
+      <li class="fragment" data-fragment-index="1"><b>Training efficient docking models</b> with limited resources.</li>
+      <li class="fragment" data-fragment-index="2"><b>Conducting virtual screening</b> within budget constraints.</li>
+      <li class="fragment" data-fragment-index="3"><b>Incorporating multiple objectives</b> beyond affinity.</li>
     </ol>
   </div>
 
   <div style="width: 50%;">
-    <h3 style="font-size: 36px; padding-left: 30px;">Proposed solutions:</h3>
+    <h3 style="font-size: 36px; padding-left: 30px;">Solutions:</h3>
     <ol style="font-size: 32px; padding-left: 30px;">
-      <li class="fragment" data-fragment-index="1">Actively eliciting expert preferences for virtual screening with many objectives.</li>
-      <li class="fragment" data-fragment-index="2">Active Virtual Screening.</li>
-      <li class="fragment" data-fragment-index="3">Neural Search Engine with diffusion model.</li>
+      <li class="fragment" data-fragment-index="1">Enhance docking model through diffusion model.</li>
+      <li class="fragment" data-fragment-index="2">Optimize ligand selection through active screening.</li>
+      <li class="fragment" data-fragment-index="3">Utilize a neural search engine for multi-objective screening.</li>
     </ol>
   </div>
 </div>
+
 
 
 ---
@@ -93,23 +104,19 @@ Why Use Diffusion Models for Molecules?
 {{< slide auto-animate="" >}}
 ### 1. Diffusion Model: Training Data
 {{% fragment %}}
-The PDB database alone is limited:
-<ul>
-  <li class="fragment">Contains only ~17,000 protein-ligand pairs</li>
-  <li class="fragment">Limited protein diversity, with around 5,000 unique proteins</li>
-</ul>
+The PDB database is limited:
+- Contains only ~17,000 protein-ligand pairs.
+- Features around 5,000 unique proteins.
 {{% /fragment %}}
 
 {{% fragment %}}
-To train a robust diffusion model, **millions of diverse data points** are essential. Data augmentation expands:
-<ul>
-  <li class="fragment"><b>Ligand Diversity</b>: Includes a wider range of chemical structures and properties</li>
-  <li class="fragment"><b>Protein Diversity</b>: Covers various binding sites, increasing model generalization</li>
-</ul>
+For robust diffusion model training, millions of diverse data points are needed. Data augmentation enhances:
+- **Ligand Diversity**: Broader chemical structure and property range.
+- **Protein Diversity**: Wider variety of binding sites for better model generalization.
 {{% /fragment %}}
 
 {{% fragment %}}
-Data augmentation techniques allow us to build a richer, more comprehensive dataset to improve model accuracy and performance.
+Data augmentation techniques create a richer dataset, boosting model performance.
 {{% /fragment %}}
 
 ---
@@ -141,10 +148,20 @@ Data augmentation techniques allow us to build a richer, more comprehensive data
 {{< slide auto-animate="" >}}
 ### 1. Diffusion Model: Results
 **Benchmark on Posebusters Dataset**:
-
 {{% fragment %}}Posebusters: Version 1 (428 structures) and Version 2 (308 structures), released post-2021 in PDB.{{% /fragment %}}
 {{% fragment %}}Performance: % of ligand pairs with $RMSD < 2 Å$ in pocket alignment.{{% /fragment %}}
 
+{{% fragment %}}
+<figure style="text-align: center; margin-top: -20px; position: relative;">
+  <img src="images/docking_results.png" alt="Docking Results" style="width: 100%; max-width: 1000px;">
+  <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 36%; background: white;" class="fragment fade-out"></div>
+</figure>
+{{% /fragment %}}
+
+---
+{{< slide auto-animate="" >}}
+### 1. Diffusion Model: Results
+**Benchmark on Posebusters Dataset**:
 {{% fragment %}}
 <figure style="text-align: center; margin-top: -20px;">
   <img src="images/docking_results.png" alt="Docking Results" style="width: 100%; max-width: 1000px;">
@@ -204,10 +221,8 @@ For **a given protein** linked to a certain disease,
 {{% fragment %}}from a library of **millions** candidates{{% /fragment %}}
 {{% fragment %}}such that the selected candidate will have the **highest utility** in disease treating.{{% /fragment %}}
 
-
-
 {{% fragment %}}
-<figure style="display: flex; flex-direction: column; align-items: center; width: 80%; margin-top: 0px; margin-left: 100px">
+<figure style="display: flex; flex-direction: column; align-items: center; width: 90%; margin-top: 0px; margin-left: 60px">
 <img src="images/vs.png">
 {{% /fragment %}}
 
@@ -231,7 +246,6 @@ For **a given protein** linked to a certain disease,
 {{% fragment %}}
 <img src="images/avs1.png" alt="Active Virtual Screening Diagram" style="display: block; margin: 0 auto; width: 65%;" class="fragment">
 {{% /fragment %}}
-
 
 ---
 {{< slide auto-animate="" >}}
@@ -462,13 +476,31 @@ x_1 = \arg\max_{x \in \mathcal{L}} f_1(x), x_2 = \arg\max_{x \in \mathcal{L}} f_
 ---
 {{< slide auto-animate="" >}}
 ### 4.Eliciting Chemical Intuition: Next Steps
-<!-- We have demonstrated that our method can robustly identify candidate ligands that match a complex, latent utility function in a high-dimensional space with a minimal number of queries. -->
 
 <ul>
   <li class="fragment">We aim to collaborate with experts in the lab to understand their latent utility preferences via pairwise preference elicitation for virtual screening applications.</li>
 </ul>
 
 {{% fragment %}}
-<img src="images/human.png" alt="Active Virtual Screening Diagram" style="display: block; margin: 0 auto; width: 55%;" class="fragment">
-<p style="text-align: center; font-size: 20px">Incoporating chemist intuition in virtual screening loop.</p>
+<img src="images/human.png" alt="Active Virtual Screening Diagram" style="display: block; margin: 0 auto; width: 65%;" class="fragment">
+<p style="text-align: center; font-size: 24px">Incorporating chemists' intuition into the virtual screening loop.</p>
 {{% /fragment %}}
+
+---
+{{< slide auto-animate="" >}}
+### 5. Conclusion
+<ul>
+  <li class="fragment">Enhance docking speed to achieve 8x faster performance than the current SOTA.</li>
+  <li class="fragment">Conduct active virtual screening on a library of 7,000 compounds, achieving a success rate of ~25%.</li>
+  <li class="fragment">Develop a synthetic function to test multi-objective preferences and identify top compounds.</li>
+</ul>
+
+
+---
+{{< slide auto-animate="" >}}
+### 6. Next steps
+<ul> 
+  <li class="fragment">Improve our virtual screening experiments so it's realistic (i.e., multi-objectives)</li> 
+  <li class="fragment">Build on top of state-of-the-art models such as AlphaFold3</li> 
+  <li class="fragment">Test on real data (e.g., from Glenn's lab)</li> 
+</ul>
