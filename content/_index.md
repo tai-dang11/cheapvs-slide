@@ -103,10 +103,9 @@ For **a given protein** linked to a certain disease,
 {{% fragment %}}
 <figure style="display: flex; flex-direction: column; align-items: center; width: 90%; margin-top: 0px; margin-left: 60px">
 <img src="figures/vs.png">
-<figcaption style="text-align: center; font-size: 20px; margin-top: 0px;">
+<figcaption style="text-align: center; font-size: 24px; margin-top: 0px;">
     Traditional Virtual Screening Process
-    <br>
-    <span style="font-size: 16px;">Source: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8188596/">Graff et al., 2021</a></span>
+    <span style="font-size: 22px;"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8188596/">(Graff et al., 2021)</a></span>
 </figcaption>
 {{% /fragment %}}
 
@@ -127,11 +126,10 @@ For **a given protein** linked to a certain disease,
 {{% fragment %}}an approach that balances exploring new candidates and exploiting known promising ones to efficiently find optimal solutions.{{% /fragment %}}
   
 {{% fragment %}}
-<img src="figures/avs.png" alt="Active Virtual Screening Diagram" style="display: block; margin: 0 auto; width: 65%;" class="fragment">
-<figcaption style="text-align: center; font-size: 20px; margin-top: 0px;">
+<img src="figures/avs.png" alt="Active Virtual Screening Diagram" style="display: block; margin: 0 auto; width: 75%;" class="fragment">
+<figcaption style="text-align: center; font-size: 24px; margin-top: 20px;">
     Active Virtual Screening Process
-    <br>
-    <span style="font-size: 16px;">Source: <a href="https://openreview.net/pdf?id=7d7Gpiyc2TU">Graff et al., 2021</a></span>
+    <span style="font-size: 22px;"><a href="https://openreview.net/pdf?id=7d7Gpiyc2TU">(Graff et al., 2021)</a></span>
 </figcaption>
 {{% /fragment %}}
 
