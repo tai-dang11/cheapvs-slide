@@ -233,7 +233,7 @@ Synthetic Utility Landscapes
 {{% fragment %}}
 <figure style="display: flex; flex-direction: column; align-items: center;">
   <div style="display: flex; justify-content: center; width: 100%; gap: 70px;">
-      <img src="figures/regret.png" style="width: 70%; max-width: 1000px;">
+      <img src="figures/regret.png" style="width: 65%; max-width: 1000px;">
   </div>
   <figcaption style="text-align: center; font-size: 20px; margin-top: 0px;">Preferential Multi-Objective Optimization results on synthetic functions with different docking models.</figcaption>
 </figure>
@@ -417,7 +417,7 @@ Data augmentation techniques create a richer dataset, boosting model performance
     </div>
     <div style="width: 49%;">
         <img src="figures/pharmacophore.png" alt="Pharmacophore Model Example" style="width: 80%; height: auto;">
-        <p style="text-align: center; font-size: 20px; margin-top: 80px;">Figure 2: Pharmacophore Modeling</p>
+        <p style="text-align: center; font-size: 20px; margin-top: 10px;">Figure 2: Pharmacophore Modeling</p>
     </div>
 </div>
 {{% /fragment %}}
