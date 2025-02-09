@@ -1,4 +1,4 @@
-baseURL = 'https://ai.stanford.edu/~sttruong/avs/'
+baseURL = 'https://ai.stanford.edu/~taidang/cheapvs/'
 languageCode = 'en-us'
 title = 'Accelerate Virtual Screening with Amortized Neural Search and Multi-Objective Bayesian Optimization'
 theme = ["github.com/dzello/reveal-hugo"]

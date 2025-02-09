@@ -249,7 +249,7 @@ We have demonstrated that our method can robustly identify candidate ligands tha
 </ul>
   
 {{% fragment %}}
-<img src="images/avs.png" alt="Active Virtual Screening Diagram" style="display: block; margin: 0 auto; width: 65%;" class="fragment">
+<img src="images/cheapvs.png" alt="Active Virtual Screening Diagram" style="display: block; margin: 0 auto; width: 65%;" class="fragment">
 {{% /fragment %}}
 
 
