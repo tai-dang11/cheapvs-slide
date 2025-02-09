@@ -8,9 +8,15 @@ codeFences = true
 +++
 {{< slide auto-animate="" >}}
 <div style="text-align: left;">
-  <h3 style="font-size: 1.5em;">Preferential Multi-Objective Bayesian Optimization</h3>
-  <h3 style="font-size: 1.5em;">for Drug Discovery</h3>
+  <h3 style="font-size: 1.5em;">Preferential Multi-Objective Bayesian Optimization for Drug Discovery</h3>
 </div>
+
+<p style="font-size: 30px;">
+Tai Dang<sup>1,3</sup>,Hung Pham<sup>2</sup>,Sang Truong<sup>1</sup>, Ari Glenn<sup>1</sup>, Wendy Nguyen<sup>3</sup>, Edward A Pham<sup>1</sup>, Jeffrey S. Glenn<sup>1</sup>, Sanmi Koyejo<sup>1</sup>, Thang Luong<sup>1</sup> 
+</p>
+<p style="font-size: 30px;">
+<sup>1</sup>Stanford University, <sup>2</sup>Imperial College London, <sup>3</sup>RHF.AI
+</p>
 
 <div style="display: flex; justify-content: space-between; width: 30%;">
   <img src="images/rhf.png" alt="Third Logo" style="height: 85px; margin-left: 10px; margin-top: 250px">
@@ -40,15 +46,15 @@ Traditional large-scale docking consumes extensive computational resources, maki
 ### Overview
 <section>
   <figure style="text-align: center; margin-top: 100px; position: relative;">
-    <img src="images/overview_nopointer.png" alt="Overview Image" style="width: 95%; max-width: 1000px;">
-    <div style="position: absolute; top: 0; left: 29.5%; width: 70%; height: 100%; background: white;" class="fragment fade-out"></div>
+    <img src="figures/overview_nopointer.png" alt="Overview Image" style="width: 95%; max-width: 1000px;">
+    <div style="position: absolute; top: 0; left: 28.5%; width: 70%; height: 100%; background: white;" class="fragment fade-out"></div>
     <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 56%; background: white;" class="fragment fade-out"></div>
     <div style="position: absolute; bottom: 0; left: 0; width: 45.9%; height: 55%; background: white;"></div>
   </figure>
 
   <figure style="text-align: center; margin-top: -579px; position: relative;" class="fragment fade-in">
-    <img src="images/overview.png" alt="Overview Image" style="width: 95%; max-width: 1000px;">
-    <div style="position: absolute; bottom: 0; left: 0; width: 37.9%; height: 55%; background: white;" class="fragment fade-out"></div>
+    <img src="figures/overview.png" alt="Overview Image" style="width: 95%; max-width: 1000px;">
+    <div style="position: absolute; bottom: 0; left: 0; width: 37.3%; height: 55%; background: white;" class="fragment fade-out"></div>
   </figure>
 </section>
 
@@ -96,7 +102,7 @@ For **a given protein** linked to a certain disease,
 
 {{% fragment %}}
 <figure style="display: flex; flex-direction: column; align-items: center; width: 90%; margin-top: 0px; margin-left: 60px">
-<img src="images/vs.png">
+<img src="figures/vs.png">
 <figcaption style="text-align: center; font-size: 20px; margin-top: 0px;">
     Traditional Virtual Screening Process
     <br>
@@ -121,7 +127,7 @@ For **a given protein** linked to a certain disease,
 {{% fragment %}}an approach that balances exploring new candidates and exploiting known promising ones to efficiently find optimal solutions.{{% /fragment %}}
   
 {{% fragment %}}
-<img src="images/cheapvs1.png" alt="Active Virtual Screening Diagram" style="display: block; margin: 0 auto; width: 65%;" class="fragment">
+<img src="figures/cheapvs1.png" alt="Active Virtual Screening Diagram" style="display: block; margin: 0 auto; width: 65%;" class="fragment">
 {{% /fragment %}}
 
 ---
@@ -170,7 +176,7 @@ Learning a preference model from binary preference data can be viewed as learnin
 {{< slide auto-animate="" >}}
 ### Overview
 <figure style="text-align: center; margin-top: 0px; position: relative;" class="fragment fade-in">
-  <img src="images/overview.png" alt="Overview Image" style="width: 95%; max-width: 1000px;">
+  <img src="figures/overview.png" alt="Overview Image" style="width: 95%; max-width: 1000px;">
 </figure>
 
 ---
@@ -195,7 +201,7 @@ Synthetic Utility Landscapes
 {{% fragment %}}
 <figure style="display: flex; flex-direction: column; align-items: center;">
   <div style="display: flex; justify-content: center; width: 100%; gap: 70px;">
-      <img src="images/synthetic_funcs.png" style="width: 100%; max-width: 1000px;">
+      <img src="figures/synthetic_funcs.png" style="width: 100%; max-width: 1000px;">
   </div>
   <figcaption style="text-align: center; font-size: 20px; margin-top: 0px;">Synthetic functions landscape.</figcaption>
 </figure>
@@ -227,7 +233,7 @@ Synthetic Utility Landscapes
 {{% fragment %}}
 <figure style="display: flex; flex-direction: column; align-items: center;">
   <div style="display: flex; justify-content: center; width: 100%; gap: 70px;">
-      <img src="images/regret.png" style="width: 70%; max-width: 1000px;">
+      <img src="figures/regret.png" style="width: 70%; max-width: 1000px;">
   </div>
   <figcaption style="text-align: center; font-size: 20px; margin-top: 0px;">Preferential Multi-Objective Optimization results on synthetic functions with different docking models.</figcaption>
 </figure>
@@ -261,11 +267,11 @@ Synthetic Utility Landscapes
 {{% fragment %}}
 <div style="display: flex; justify-content: center; width: 100%; gap: -30px; margin-top: -100px;">
   <figure style="display: flex; flex-direction: column; align-items: center; width: 45%;">
-    <img src="images/lig1.png" style="width: 100%;" alt="Aff: -10.11, PSA: 67.66">
+    <img src="figures/lig1.png" style="width: 100%;" alt="Aff: -10.11, PSA: 67.66">
     <figcaption style="text-align: left; font-size: 20px; margin-top: -50px;">Affinity: -10.11, Solubility: 67.66</figcaption>
   </figure>
   <figure style="display: flex; flex-direction: column; align-items: center; width: 45%;">
-    <img src="images/lig2.png" style="width: 100%;" alt="Aff: -6.3, Solubility: 128.37">
+    <img src="figures/lig2.png" style="width: 100%;" alt="Aff: -6.3, Solubility: 128.37">
     <figcaption style="text-align: left; font-size: 20px; margin-top: -50px;">Affinity: -6.3, Solubility: 128.37</figcaption>
   </figure>
 </div>
@@ -308,7 +314,7 @@ Synthetic Utility Landscapes
 ---
 {{< slide auto-animate="" >}}
 ### 3.CheapVS
-<img src="images/app.png" alt="app" style="display: block; margin: 0px auto 0 auto; width: 70%;">
+<img src="figures/app.png" alt="app" style="display: block; margin: 0px auto 0 auto; width: 70%;">
 <figcaption style="text-align: center; font-size: 28px; margin-top: 10px;">App for interacting with Chemists.
 
 
@@ -330,14 +336,14 @@ BO Optimization for EGFR
 ---
 {{< slide auto-animate="" >}}
 ### 3.CheapVS: Results
-<img src="images/cheapvs_main.png" alt="cheapvs_main" style="display: block; margin: 50px auto 0 auto; width: 60%;">
+<img src="figures/cheapvs_main.png" alt="cheapvs_main" style="display: block; margin: 50px auto 0 auto; width: 60%;">
 <figcaption style="text-align: left; font-size: 23.5px; margin-top: 10px;">Performance of CheapVS in identifying EGFR drugs. The plot compares docking models and objectives. Multi-objective optimization outperforms the rest, identifying up to 16 of 37 approved drugs.
 </figcaption> 
 
 ---
 {{< slide auto-animate="" >}}
 ### 3.CheapVS: GP Elicitation
-<img src="images/elicitation.png" alt="cheapvs_main" style="display: block; margin: 50px auto 0 auto; width: 60%;">
+<img src="figures/elicitation.png" alt="cheapvs_main" style="display: block; margin: 50px auto 0 auto; width: 60%;">
 <figcaption style="text-align: left; font-size: 23.5px; margin-top: 10px;">Predictive utility scores after BO on expert preference elicitation. The box plot contrasts drugs vs. non-drugs, while heatmaps show utility across two objectives. Results align with medicinal chemistry ranges.
 
 ---
@@ -355,7 +361,7 @@ BO Optimization for EGFR
 
 {{% fragment %}}
 <figure style="display: flex; flex-direction: column; align-items: center; width: 80%; margin-left: 80px;"> 
-  <img src="images/cat.gif" alt="Diffusion Process" style="width: 30%;"> 
+  <img src="figures/cat.gif" alt="Diffusion Process" style="width: 30%;"> 
   <figcaption style="text-align: center; font-size: 24px; margin-top: 10px;">Transforming noise into meaningful structures.</figcaption> 
 </figure> 
 {{% /fragment %}}
@@ -367,7 +373,7 @@ Why Use Diffusion Models for Molecules?
 
 {{% fragment %}}
 <figure style="display: flex; flex-direction: column; align-items: center; width: 100%; margin-top: 0px;">
-  <img src="images/molecular_diffusion.png" alt="Molecular Diffusion Process" style="width: 100%;">
+  <img src="figures/molecular_diffusion.png" alt="Molecular Diffusion Process" style="width: 100%;">
   <figcaption style="text-align: center; font-size: 24px; margin-top: 0px;">From random points to a structured 3D molecule.</figcaption>
 </figure>
 {{% /fragment %}}
@@ -406,11 +412,11 @@ Data augmentation techniques create a richer dataset, boosting model performance
 {{% fragment %}}
 <div style="display: flex; justify-content: space-between; margin-top: 20px;">
     <div style="width: 49%;">
-        <img src="images/md1.gif" alt="MD Simulation Example" style="width: 55%; height: auto; margin-left: 100px; margin-top: -20px;">
+        <img src="figures/md1.gif" alt="MD Simulation Example" style="width: 55%; height: auto; margin-left: 100px; margin-top: -20px;">
         <p style="text-align: center; font-size: 20px; margin-left: -130px; margin-top: -40px;">Figure 1: MD Simulation Trajectories</p>
     </div>
     <div style="width: 49%;">
-        <img src="images/pharmacophore.png" alt="Pharmacophore Model Example" style="width: 80%; height: auto;">
+        <img src="figures/pharmacophore.png" alt="Pharmacophore Model Example" style="width: 80%; height: auto;">
         <p style="text-align: center; font-size: 20px; margin-top: 80px;">Figure 2: Pharmacophore Modeling</p>
     </div>
 </div>
@@ -426,7 +432,7 @@ Data augmentation techniques create a richer dataset, boosting model performance
 
 {{% fragment %}}
 <figure style="text-align: center; margin-top: -20px; position: relative;">
-  <img src="images/docking_results.png" alt="Docking Results" style="width: 100%; max-width: 1000px;">
+  <img src="figures/docking_results.png" alt="Docking Results" style="width: 100%; max-width: 1000px;">
 </figure>
 {{% /fragment %}}
 
@@ -458,7 +464,3 @@ Data augmentation techniques create a richer dataset, boosting model performance
   <li class="fragment">Listwise preference for providing richer preference information</li>
   <li class="fragment">Build on top of state-of-the-art models such as AlphaFold3</li> 
 </ul>
-
----
-{{< slide auto-animate="" >}}
-### 7. Thank You & QnA
