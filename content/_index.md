@@ -122,12 +122,17 @@ For **a given protein** linked to a certain disease,
 
 ---
 {{< slide auto-animate="" >}}
-### 2. Active Virtual Screening
+### 1. Problem Setup
 {{% fragment %}}To prioritize high-potential ligands, we use **Preferential Bayesian Optimization**,{{% /fragment %}}
 {{% fragment %}}an approach that balances exploring new candidates and exploiting known promising ones to efficiently find optimal solutions.{{% /fragment %}}
   
 {{% fragment %}}
-<img src="figures/cheapvs1.png" alt="Active Virtual Screening Diagram" style="display: block; margin: 0 auto; width: 65%;" class="fragment">
+<img src="figures/avs.png" alt="Active Virtual Screening Diagram" style="display: block; margin: 0 auto; width: 65%;" class="fragment">
+<figcaption style="text-align: center; font-size: 20px; margin-top: 0px;">
+    Active Virtual Screening Process
+    <br>
+    <span style="font-size: 16px;">Source: <a href="https://openreview.net/pdf?id=7d7Gpiyc2TU">Graff et al., 2021</a></span>
+</figcaption>
 {{% /fragment %}}
 
 ---
