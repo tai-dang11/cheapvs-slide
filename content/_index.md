@@ -55,13 +55,13 @@ A Unified Workflow for Efficient Virtual Screening
   <div style="font-size: 1.2em;">&rarr;</div>
 
   <div style="text-align: center; width: 22%;">
-    <p style="font-size: 0.8em; margin-bottom: 0.2em;"><strong>3. Docking Module</strong></p>
+    <p style="font-size: 0.8em; margin-bottom: 0.2em;"><strong>2. Docking Module</strong></p>
     <p style="font-size: 0.8em; margin-bottom: 0.3em;">Diffusion-based Docking</p>
   </div>
   <div style="font-size: 1.2em;">&rarr;</div>
   
   <div style="text-align: center; width: 22%;">
-    <p style="font-size: 0.9em; margin-bottom: 0.2em;"><strong>2. Active Preference Model</strong></p>
+    <p style="font-size: 0.9em; margin-bottom: 0.2em;"><strong>3. Active Preference Model</strong></p>
     <p style="font-size: 0.8em; margin-bottom: 0.3em;">BO + Chemist Feedback</p>
   </div>
   <div style="font-size: 1.2em;">&rarr;</div>
@@ -326,8 +326,7 @@ Key: Preferential BO effectively learns complex utility landscapes in synthetic 
 ---
 {{< slide auto-animate="" >}}
 ### 3.CheapVS
-Having validated our approach on synthetic benchmarks, we now bring real chemists into the loop for preference elicitation.
-{{% fragment %}}In drug discovery, selecting candidate ligands goes beyond targeting high-affinity molecules. {{% /fragment %}}
+In drug discovery, selecting candidate ligands goes beyond targeting high-affinity molecules.
 {{% fragment %}}Experts use their deep chemical intuition to balance competing properties such as synthesizability, solubility, and potential side effects. {{% /fragment %}}
 {{% fragment %}}This approach ensures ligands are not only effective but also practical and safe for therapeutic use.{{% /fragment %}}
 
