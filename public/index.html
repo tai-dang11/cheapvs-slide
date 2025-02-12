@@ -78,6 +78,34 @@ Tai Dang<sup>1,2</sup>,Hung Pham<sup>3</sup>,Sang Truong<sup>2</sup>, Ari Glenn<
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
+<h3 id="overview-end-to-end-pipeline">Overview: End-to-End Pipeline</h3>
+<p>A Unified Workflow for Efficient Virtual Screening</p>
+<div style="display: flex; justify-content: center; align-items: center; margin-top: 0.5em; gap: 0.5em; flex-wrap: nowrap;">
+  <div style="text-align: center; width: 18%;">
+    <p style="font-size: 0.9em; margin-bottom: 0.2em;"><strong>1. Input</strong></p>
+    <p style="font-size: 0.8em; margin-bottom: 0.3em;">Ligand library</p>
+  </div>
+  <div style="font-size: 1.2em;">&rarr;</div>
+  <div style="text-align: center; width: 22%;">
+    <p style="font-size: 0.8em; margin-bottom: 0.2em;"><strong>3. Docking Module</strong></p>
+    <p style="font-size: 0.8em; margin-bottom: 0.3em;">Diffusion-based Docking</p>
+  </div>
+  <div style="font-size: 1.2em;">&rarr;</div>
+  <div style="text-align: center; width: 22%;">
+    <p style="font-size: 0.9em; margin-bottom: 0.2em;"><strong>2. Active Preference Model</strong></p>
+    <p style="font-size: 0.8em; margin-bottom: 0.3em;">BO + Chemist Feedback</p>
+  </div>
+  <div style="font-size: 1.2em;">&rarr;</div>
+  <div style="text-align: center; width: 18%;">
+    <p style="font-size: 0.9em; margin-bottom: 0.2em;"><strong>4. Decision</strong></p>
+    <p style="font-size: 0.8em; margin-bottom: 0.3em;">Top Candidates</p>
+  </div>
+</div>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
 <h3 id="overview">Overview</h3>
 <section>
   <figure style="text-align: center; margin-top: 100px; position: relative;">
@@ -287,6 +315,30 @@ Tai Dang<sup>1,2</sup>,Hung Pham<sup>3</sup>,Sang Truong<sup>2</sup>, Ari Glenn<
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
+<h3 id="2-virtual-screening-on-synthetic-functions">2. Virtual Screening on Synthetic Functions</h3>
+
+
+<span class='fragment ' ><p><strong>Problem:</strong> We need to validate our Bayesian Optimization approach in a controlled setting before using real-world molecules.</p>
+</span>
+
+
+
+
+<span class='fragment ' ><p><strong>Solution:</strong> Synthetic benchmarks let us systematically measure convergence and exploration-exploitation balance.</p>
+</span>
+
+
+
+
+<span class='fragment ' ><p><strong>How This Fits In:</strong> This step verifies the core optimization engine before we bring in real chemists.</p>
+</span>
+
+
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
 <h3 id="2-active-virtual-screening-experiment-setup">2. Active Virtual Screening: Experiment Setup</h3>
 <p>Synthetic Utility Landscapes</p>
 <ul>
@@ -342,11 +394,18 @@ Tai Dang<sup>1,2</sup>,Hung Pham<sup>3</sup>,Sang Truong<sup>2</sup>, Ari Glenn<
 
 
 <span class='fragment ' ><figure style="display: flex; flex-direction: column; align-items: center;">
-  <div style="display: flex; justify-content: center; width: 100%; gap: 70px;">
+  <div style="display: flex; justify-content: center; width: 95%; gap: 70px;">
       <img src="figures/regret.png" style="width: 60%; max-width: 1000px;">
   </div>
-  <figcaption style="text-align: center; font-size: 20px; margin-top: 0px;">Preferential Multi-Objective Optimization results on synthetic functions with different docking models.</figcaption>
 </figure>
+</span>
+
+
+
+
+<span class='fragment ' ><div style="border: 2px solid #333; background-color: rgb(255, 203, 208); padding: 12px; margin-top: 0px; width: calc(100% - 100px); margin-left: 35px; text-align: center; font-size: 0.8em; font-weight: bold; border-radius: 15px;">
+Key: Preferential BO effectively learns complex utility landscapes in synthetic benchmarks.
+</div>
 </span>
 
 
@@ -367,8 +426,33 @@ Tai Dang<sup>1,2</sup>,Hung Pham<sup>3</sup>,Sang Truong<sup>2</sup>, Ari Glenn<
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h3 id="3chemist-guided-active-preferential-virtual-screening-overview">3.Chemist-guided Active Preferential Virtual Screening: Overview</h3>
-<p>
+<h3 id="3-cheapvs-chemist-guided-active-preferential-virtual-screening-framework">3. CheapVS: Chemist-guided Active Preferential Virtual Screening Framework</h3>
+
+
+<span class='fragment ' ><p><strong>Problem:</strong> Affinity alone isn’t enough; real chemists balance multiple properties (toxicity, solubility, etc.).</p>
+</span>
+
+
+
+
+<span class='fragment ' ><p><strong>Solution:</strong> We introduce pairwise preference elicitation to capture expert intuition.</p>
+</span>
+
+
+
+
+<span class='fragment ' ><p><strong>How This Fits In:</strong> After validating the optimization engine on synthetics, now we incorporate human knowledge to refine the search for real protein targets.</p>
+</span>
+
+
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="3cheapvs">3.CheapVS</h3>
+<p>Having validated our approach on synthetic benchmarks, we now bring real chemists into the loop for preference elicitation.
+
 
 <span class='fragment ' >In drug discovery, selecting candidate ligands goes beyond targeting high-affinity molecules.</span>
 
@@ -388,7 +472,7 @@ Tai Dang<sup>1,2</sup>,Hung Pham<sup>3</sup>,Sang Truong<sup>2</sup>, Ari Glenn<
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h3 id="3cheapvs">3.CheapVS</h3>
+<h3 id="3cheapvs-1">3.CheapVS</h3>
 <p>
   Depending on the disease and target protein, experts have <b>intuition</b> about ligand characteristics,  
   
@@ -422,7 +506,7 @@ Tai Dang<sup>1,2</sup>,Hung Pham<sup>3</sup>,Sang Truong<sup>2</sup>, Ari Glenn<
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h3 id="3cheapvs-1">3.CheapVS</h3>
+<h3 id="3cheapvs-2">3.CheapVS</h3>
 <p>
 
 <span class='fragment ' >These implicit expert knowledge, encoded as preferences over ligands, are valuable to elicit for effective virtual screening.</span>
@@ -460,14 +544,15 @@ Tai Dang<sup>1,2</sup>,Hung Pham<sup>3</sup>,Sang Truong<sup>2</sup>, Ari Glenn<
   <em>Each ligand is represented by a set of features, such as affinity, polar surface area, QED drug-likeness score</em>
 </p>
 </span>
-</section>
+<!-- ---
 
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h3 id="3cheapvs-2">3.CheapVS</h3>
+### 3.CheapVS
 <img src="figures/app.png" alt="app" style="display: block; margin: 0px auto 0 auto; width: 70%;">
 <figcaption style="text-align: center; font-size: 28px; margin-top: 10px;">App for interacting with Chemists.
+ -->
 </section>
 
 <section data-noprocess data-shortcode-slide
@@ -490,9 +575,16 @@ Tai Dang<sup>1,2</sup>,Hung Pham<sup>3</sup>,Sang Truong<sup>2</sup>, Ari Glenn<
       data-auto-animate="">
   
 <h3 id="3cheapvs-results">3.CheapVS: Results</h3>
-<img src="figures/cheapvs_main.png" alt="cheapvs_main" style="display: block; margin: 50px auto 0 auto; width: 53%;">
-<figcaption style="text-align: left; font-size: 23.5px; margin-top: 10px;">Performance of CheapVS in identifying EGFR drugs. The plot compares docking models and objectives. Multi-objective optimization outperforms the rest, identifying up to 16 of 37 approved drugs.
+<img src="figures/cheapvs_main.png" alt="cheapvs_main" style="display: block; margin: 20px auto 0 auto; width: 53%;">
 </figcaption> 
+
+
+<span class='fragment ' ><div style="border: 2px solid #333; background-color: rgb(255, 203, 208); padding: 12px; margin-top: 15px; width: calc(100% - 280px); margin-left: 150px; text-align: center; font-size: 0.8em; font-weight: bold; border-radius: 15px;">
+Key: Performance of CheapVS in identifying EGFR drugs. Multi-objective optimization outperforms the rest, identifying up to 16 of 37 approved drugs.
+</div>
+</span>
+
+
 </section>
 
 <section data-noprocess data-shortcode-slide
@@ -513,6 +605,30 @@ Tai Dang<sup>1,2</sup>,Hung Pham<sup>3</sup>,Sang Truong<sup>2</sup>, Ari Glenn<
 <li><span style="opacity: 0.5;">Chemist-guided Active Preferential Virtual Screening</span></li>
 <li>Protein-ligand docking with Diffusion Models</li>
 </ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="4-protein-ligand-docking-with-diffusion-models">4. Protein-Ligand Docking with Diffusion Models</h3>
+
+
+<span class='fragment ' ><p><strong>Problem:</strong> Traditional docking tools (Vina) are computationally expensive, slowing down active virtual screening.</p>
+</span>
+
+
+
+
+<span class='fragment ' ><p><strong>Solution:</strong> A diffusion-based docking model drastically reduces runtime and can handle flexible ligand conformations.</p>
+</span>
+
+
+
+
+<span class='fragment ' ><p><strong>How This Fits In:</strong> This docking module slots into our iterative loop (active screening + chemist feedback), speeding up each evaluate-and-choose cycle.</p>
+</span>
+
+
 </section>
 
 <section data-noprocess data-shortcode-slide
@@ -660,22 +776,25 @@ Tai Dang<sup>1,2</sup>,Hung Pham<sup>3</sup>,Sang Truong<sup>2</sup>, Ari Glenn<
       data-auto-animate="">
   
 <h3 id="4-diffusion-model-neural-search-for-docking">4. Diffusion Model: Neural Search for Docking</h3>
-
-
-<span class='fragment ' ><p>Traditional docking tools are slow, limiting the efficiency of application of virtual screening.</p>
-</span>
-
-
-<ul> 
+<p>Traditional docking tools are slow, limiting the efficiency of application of VS.</p>
+<ul style="font-size: 0.8em;"> 
   <li class="fragment"><b>Traditional Tools</b> (e.g., Vina, Smina): ~2mins per pose</li> 
   <li class="fragment"><b>Chai</b> (AlphaFold3-like): ~1.5 mins for 1 pose (1.3x faster)</li> 
   <li class="fragment"><b>Our Diffusion Model</b>: ~25s for 128 poses (4.9x faster)</li> 
 </ul>
 
 
-<span class='fragment ' ><figure style="text-align: center; margin-top: 0px; position: relative;">
-  <img src="figures/time_regret.png" style="width: 55%; max-width: 800px;">
+<span class='fragment ' ><figure style="text-align: center; margin-top: -20px; position: relative;">
+  <img src="figures/time_regret.png" style="width: 53%; max-width: 800px;">
 </figure>
+</span>
+
+
+
+
+<span class='fragment ' ><div style="border: 2px solid #333; background-color: rgb(255, 203, 208); padding: 12px; margin-top: -25px; width: calc(100% - 300px); margin-left: 150px; text-align: center; font-size: 0.8em; font-weight: bold; border-radius: 15px;">
+Key: EDM-S minimizes regret faster and is significantly more efficient than Chai-1 and Vina, highlighting the power of lightweight docking in VS.
+</div>
 </span>
 
 
