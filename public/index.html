@@ -25,15 +25,15 @@
   <h3 style="font-size: 1.5em;">Preferential Multi-Objective Bayesian Optimization for Drug Discovery</h3>
 </div>
 <p style="font-size: 30px;">
-Tai Dang<sup>1,3</sup>,Hung Pham<sup>2</sup>,Sang Truong<sup>1</sup>, Ari Glenn<sup>1</sup>, Wendy Nguyen<sup>3</sup>, Edward A Pham<sup>1</sup>, Jeffrey S. Glenn<sup>1</sup>, Sanmi Koyejo<sup>1</sup>, Thang Luong<sup>1</sup> 
+Tai Dang<sup>1,2</sup>,Hung Pham<sup>3</sup>,Sang Truong<sup>2</sup>, Ari Glenn<sup>2</sup>, Wendy Nguyen<sup>1</sup>, Edward A Pham<sup>2</sup>, Jeffrey S. Glenn<sup>2</sup>, Sanmi Koyejo<sup>2</sup>, Thang Luong<sup>1</sup> 
 </p>
 <p style="font-size: 30px;">
-<sup>1</sup>Stanford University, <sup>2</sup>Imperial College London, <sup>3</sup>RHF.AI
+<sup>1</sup>RHF.AI, <sup>2</sup>Stanford University, <sup>3</sup>Imperial College London
 </p>
 <div style="display: flex; justify-content: space-between; width: 30%;">
-  <img src="images/rhf.png" alt="Third Logo" style="height: 85px; margin-left: 10px; margin-top: 250px">
-  <img src="images/SOM_vert_Web_Color_LG.png" alt="Main Logo" style="height: 85px; margin-left: 60px; margin-top: 250px"> 
-  <img src="images/sail-logo.jpg" alt="Second Logo" style="height: 85px; margin-left: 75px; margin-top: 250px">
+  <img src="figures/rhf.png" alt="Third Logo" style="height: 85px; margin-left: 10px; margin-top: 250px">
+  <img src="figures/SOM_vert_Web_Color_LG.png" alt="Main Logo" style="height: 85px; margin-left: 60px; margin-top: 250px"> 
+  <img src="figures/sail-logo.jpg" alt="Second Logo" style="height: 85px; margin-left: 75px; margin-top: 250px">
 </div>
 </section>
 
@@ -82,13 +82,13 @@ Tai Dang<sup>1,3</sup>,Hung Pham<sup>2</sup>,Sang Truong<sup>1</sup>, Ari Glenn<
 <section>
   <figure style="text-align: center; margin-top: 100px; position: relative;">
     <img src="figures/overview_nopointer.png" alt="Overview Image" style="width: 95%; max-width: 1000px;">
-    <div style="position: absolute; top: 0; left: 28.5%; width: 70%; height: 100%; background: white;" class="fragment fade-out"></div>
+    <div style="position: absolute; top: 0; left: 29.5%; width: 70%; height: 100%; background: white;" class="fragment fade-out"></div>
     <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 56%; background: white;" class="fragment fade-out"></div>
     <div style="position: absolute; bottom: 0; left: 0; width: 45.9%; height: 55%; background: white;"></div>
   </figure>
   <figure style="text-align: center; margin-top: -579px; position: relative;" class="fragment fade-in">
     <img src="figures/overview.png" alt="Overview Image" style="width: 95%; max-width: 1000px;">
-    <div style="position: absolute; bottom: 0; left: 0; width: 37.3%; height: 55%; background: white;" class="fragment fade-out"></div>
+    <div style="position: absolute; bottom: 0; left: 0; width: 38%; height: 55%; background: white;" class="fragment fade-out"></div>
   </figure>
 </section>
 </section>
@@ -343,7 +343,7 @@ Tai Dang<sup>1,3</sup>,Hung Pham<sup>2</sup>,Sang Truong<sup>1</sup>, Ari Glenn<
 
 <span class='fragment ' ><figure style="display: flex; flex-direction: column; align-items: center;">
   <div style="display: flex; justify-content: center; width: 100%; gap: 70px;">
-      <img src="figures/regret.png" style="width: 65%; max-width: 1000px;">
+      <img src="figures/regret.png" style="width: 60%; max-width: 1000px;">
   </div>
   <figcaption style="text-align: center; font-size: 20px; margin-top: 0px;">Preferential Multi-Objective Optimization results on synthetic functions with different docking models.</figcaption>
 </figure>
@@ -490,7 +490,7 @@ Tai Dang<sup>1,3</sup>,Hung Pham<sup>2</sup>,Sang Truong<sup>1</sup>, Ari Glenn<
       data-auto-animate="">
   
 <h3 id="3cheapvs-results">3.CheapVS: Results</h3>
-<img src="figures/cheapvs_main.png" alt="cheapvs_main" style="display: block; margin: 50px auto 0 auto; width: 60%;">
+<img src="figures/cheapvs_main.png" alt="cheapvs_main" style="display: block; margin: 50px auto 0 auto; width: 53%;">
 <figcaption style="text-align: left; font-size: 23.5px; margin-top: 10px;">Performance of CheapVS in identifying EGFR drugs. The plot compares docking models and objectives. Multi-objective optimization outperforms the rest, identifying up to 16 of 37 approved drugs.
 </figcaption> 
 </section>
@@ -499,7 +499,7 @@ Tai Dang<sup>1,3</sup>,Hung Pham<sup>2</sup>,Sang Truong<sup>1</sup>, Ari Glenn<
       data-auto-animate="">
   
 <h3 id="3cheapvs-gp-elicitation">3.CheapVS: GP Elicitation</h3>
-<img src="figures/elicitation.png" alt="cheapvs_main" style="display: block; margin: 50px auto 0 auto; width: 60%;">
+<img src="figures/elicitation.png" alt="cheapvs_main" style="display: block; margin: 50px auto 0 auto; width: 55%;">
 <figcaption style="text-align: left; font-size: 23.5px; margin-top: 10px;">Predictive utility scores after BO on expert preference elicitation. The box plot contrasts drugs vs. non-drugs, while heatmaps show utility across two objectives. Results align with medicinal chemistry ranges.
 </section>
 
@@ -619,6 +619,22 @@ Tai Dang<sup>1,3</sup>,Hung Pham<sup>2</sup>,Sang Truong<sup>1</sup>, Ari Glenn<
       data-auto-animate="">
   
 <h3 id="4-diffusion-model-results">4. Diffusion Model: Results</h3>
+
+
+<span class='fragment ' ><figure style="text-align: center; margin-top: 0px; position: relative;">
+  <img src="figures/box_affinity.png" style="width: 50%; max-width: 700px;">
+  <p style="text-align: left; font-size: 20px; margin-top: 10px;">Box plot of binding affinities (kcal/mol) for different docking models. Vina achieves the lowest median binding affinity, followed by EDM-S, while Chai exhibits the weakest binding.
+</p>
+</figure>
+</span>
+
+
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="4-diffusion-model-results-1">4. Diffusion Model: Results</h3>
 <p><strong>Benchmark on Posebusters Dataset</strong>:
 
 
@@ -651,10 +667,18 @@ Tai Dang<sup>1,3</sup>,Hung Pham<sup>2</sup>,Sang Truong<sup>1</sup>, Ari Glenn<
 
 
 <ul> 
-  <li class="fragment"><b>Traditional Tools</b> (e.g., Vina, Smina): ~5mins per pose</li> 
-  <li class="fragment"><b>Chai</b> (AlphaFold3-like): ~1 mins for 1 pose (5x faster)</li> 
-  <li class="fragment"><b>Our Diffusion Model</b>: ~10s for 128 poses (90x faster)</li> 
+  <li class="fragment"><b>Traditional Tools</b> (e.g., Vina, Smina): ~2mins per pose</li> 
+  <li class="fragment"><b>Chai</b> (AlphaFold3-like): ~1.5 mins for 1 pose (1.3x faster)</li> 
+  <li class="fragment"><b>Our Diffusion Model</b>: ~25s for 128 poses (4.9x faster)</li> 
 </ul>
+
+
+<span class='fragment ' ><figure style="text-align: center; margin-top: 0px; position: relative;">
+  <img src="figures/time_regret.png" style="width: 55%; max-width: 800px;">
+</figure>
+</span>
+
+
 </section>
 
 <section data-noprocess data-shortcode-slide

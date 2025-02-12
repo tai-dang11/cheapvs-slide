@@ -368,5 +368,5 @@ section.has-dark-background, section.has-dark-background h1, section.has-dark-ba
 /* Reduce the left and right padding in the main slides container */
 .reveal .slides {
   padding-left: 0em !important;
-  padding-right: 5em !important;
+  padding-right: 7em !important;
 }
