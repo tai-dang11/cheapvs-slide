@@ -511,11 +511,17 @@ Data augmentation techniques create a richer dataset, boosting model performance
 <div style="display: flex; justify-content: space-between; margin-top: 20px;">
     <div style="width: 49%;">
         <img src="figures/md1.gif" alt="MD Simulation Example" style="width: 55%; height: auto; margin-left: 100px; margin-top: -20px;">
-        <p style="text-align: center; font-size: 20px; margin-left: -130px; margin-top: -40px;">Figure 1: MD Simulation Trajectories</p>
+        <p style="text-align: center; font-size: 20px; margin-left: -130px; margin-top: -40px;">
+          Figure 1: MD Simulation Trajectories  
+          (<a href="https://www.deshawresearch.com/" target="_blank" style="color: #007bff; text-decoration: none;">Source</a>)
+        </p>
     </div>
-    <div style="width: 49%;">
-        <img src="figures/pharmacophore.png" alt="Pharmacophore Model Example" style="width: 80%; height: auto;">
-        <p style="text-align: center; font-size: 20px; margin-top: 10px;">Figure 2: Pharmacophore Modeling</p>
+    <div style="width: 23%; margin-top: -45px; margin-right: 180px; white-space: nowrap;">
+        <img src="figures/pharmacophore.png" alt="Pharmacophore Model Example" style="height: auto;">
+        <p style="text-align: center; font-size: 20px; margin-top: -30px: ellipsis; margin-top: -30px; margin-left: -60px">
+            Figure 2: Pharmacophore Modeling  
+            (<a href="https://www.researchgate.net/figure/Example-of-a-shared-feature-pharmacophore-model-that-was-generated-by-LigandScout-21_fig1_251702792" target="_blank" style="color: #007bff; text-decoration: none;">Source</a>)
+        </p>
     </div>
 </div>
 {{% /fragment %}}
