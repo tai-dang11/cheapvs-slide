@@ -554,20 +554,19 @@ Data augmentation techniques create a richer dataset, boosting model performance
 ---
 {{< slide auto-animate="" >}}
 ### 4. Diffusion Model: Neural Search for Docking
-Traditional docking tools are slow, limiting the efficiency of application of VS.
-<ul style="font-size: 0.8em;"> 
+<ul style="font-size: 0.9em;"> 
   <li class="fragment"><b>Traditional Tools</b> (e.g., Vina, Smina): ~2mins per pose</li> 
   <li class="fragment"><b>Chai</b> (AlphaFold3-like): ~1.5 mins for 1 pose (1.3x faster)</li> 
   <li class="fragment"><b>Our Diffusion Model</b>: ~25s for 128 poses (4.9x faster)</li> 
 </ul>
 {{% fragment %}}
-<figure style="text-align: center; margin-top: -20px; position: relative;">
+<figure style="text-align: center; margin-top: -10px; position: relative;">
   <img src="figures/time_regret.png" style="width: 53%; max-width: 800px;">
 </figure>
 {{% /fragment %}}
 
 {{% fragment %}}
-<div style="border: 2px solid #333; background-color: rgb(255, 203, 208); padding: 12px; margin-top: -25px; width: calc(100% - 300px); margin-left: 150px; text-align: center; font-size: 0.8em; font-weight: bold; border-radius: 15px;">
+<div style="border: 2px solid #333; background-color: rgb(255, 203, 208); padding: 12px; margin-top: -15px; width: calc(100% - 300px); margin-left: 150px; text-align: center; font-size: 0.8em; font-weight: bold; border-radius: 15px;">
 Key: EDM-S minimizes regret faster and is significantly more efficient than Chai-1 and Vina, highlighting the power of lightweight docking in VS.
 </div>
 {{% /fragment %}}
