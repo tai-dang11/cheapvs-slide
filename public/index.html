@@ -43,7 +43,6 @@ Tai Dang<sup>1,2</sup>,Hung Pham<sup>3</sup>,Sang Truong<sup>2</sup>, Ari Glenn<
 <h3 id="outline">Outline</h3>
 <ul>
 <li>Problem Setup</li>
-<li>Virtual Screening on Synthetic Functions</li>
 <li>Chemist-guided Active Preferential Virtual Screening</li>
 <li>Protein-ligand docking with Diffusion Models</li>
 </ul>
@@ -246,36 +245,6 @@ Tai Dang<sup>1,2</sup>,Hung Pham<sup>3</sup>,Sang Truong<sup>2</sup>, Ari Glenn<
       data-auto-animate="">
   
 <h3 id="1-problem-setup-3">1. Problem Setup</h3>
-<p>Learning a preference model from binary preference data can be viewed as learning a classifier.</p>
-
-
-<span class='fragment ' ><p>$$p(y \mid x_1, x_2; f) = \frac{e^{f(x_1)}}{e^{f(x_1)} + e^{f(x_2)}}$$</p>
-</span>
-
-
-
-
-<span class='fragment ' ><p>$$= \frac{1}{1 + e^{-[f(x_1)-f(x_2)]}}$$</p>
-</span>
-
-
-
-
-<span class='fragment ' ><p>$$= \sigma(f(x_1)-f(x_2))$$</p>
-</span>
-
-
-
-
-<span class='fragment ' >where $\sigma(\cdot)$ is the sigmoid function.</span>
-
-
-</section>
-
-<section data-noprocess data-shortcode-slide
-      data-auto-animate="">
-  
-<h3 id="1-problem-setup-4">1. Problem Setup</h3>
 <p><b>Goal:</b> Identify the top <i>k</i> candidate ligands for a given protein from a library.</p>
 <li class="fragment"><b>Step 1:</b> Start with a ligand library $\mathcal{L} = \{ l_1, \dots, l_N \}$ and a empty dataset $\mathcal{D}$.  </li>
 <li class="fragment"><b>Step 2:</b> Select a subset $\mathcal{D}_i = \{ l_i, l_k, l_f, \dots \}$  using an acquisition function $\alpha$, update the dataset $\mathcal{D} \leftarrow \mathcal{D} \cup \mathcal{D}_i$
@@ -295,9 +264,43 @@ Tai Dang<sup>1,2</sup>,Hung Pham<sup>3</sup>,Sang Truong<sup>2</sup>, Ari Glenn<
       data-auto-animate="">
   
 <h3 id="overview-1">Overview</h3>
-<figure style="text-align: center; margin-top: 0px; position: relative;" class="fragment fade-in">
-  <img src="figures/overview.png" alt="Overview Image" style="width: 95%; max-width: 1000px;">
+<figure style="text-align: center; margin-top: -50px; position: relative;" class="fragment fade-in">
+  <img src="figures/presentation_overview.png" alt="Overview Image" style="width: 80%; max-width: 1000px;">
 </figure>
+<!-- ---
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+### 1. Problem Setup
+Learning a preference model from binary preference data can be viewed as learning a classifier. 
+
+  
+
+<span class='fragment ' ><p>$$p(y \mid x_1, x_2; f) = \frac{e^{f(x_1)}}{e^{f(x_1)} + e^{f(x_2)}}$$</p>
+</span>
+
+
+
+  
+
+<span class='fragment ' ><p>$$= \frac{1}{1 + e^{-[f(x_1)-f(x_2)]}}$$</p>
+</span>
+
+
+
+  
+
+<span class='fragment ' ><p>$$= \sigma(f(x_1)-f(x_2))$$</p>
+</span>
+
+
+
+
+
+<span class='fragment ' >where $\sigma(\cdot)$ is the sigmoid function.</span>
+
+ -->
 </section>
 
 <section data-noprocess data-shortcode-slide
@@ -306,118 +309,6 @@ Tai Dang<sup>1,2</sup>,Hung Pham<sup>3</sup>,Sang Truong<sup>2</sup>, Ari Glenn<
 <h3 id="outline-2">Outline</h3>
 <ul>
 <li><span style="opacity: 0.5;">Problem Setup</span></li>
-<li>Virtual Screening on Synthetic Functions</li>
-<li><span style="opacity: 0.5;">Chemist-guided Active Preferential Virtual Screening</span></li>
-<li><span style="opacity: 0.5;">Protein-ligand docking with Diffusion Models</span></li>
-</ul>
-</section>
-
-<section data-noprocess data-shortcode-slide
-      data-auto-animate="">
-  
-<h3 id="2-virtual-screening-on-synthetic-functions">2. Virtual Screening on Synthetic Functions</h3>
-
-
-<span class='fragment ' ><p><strong>Problem:</strong> We need to validate our Bayesian Optimization approach in a controlled setting before using real-world molecules.</p>
-</span>
-
-
-
-
-<span class='fragment ' ><p><strong>Solution:</strong> Synthetic benchmarks let us systematically measure convergence and exploration-exploitation balance.</p>
-</span>
-
-
-
-
-<span class='fragment ' ><p><strong>How This Fits In:</strong> This step verifies the core optimization engine before we bring in real chemists.</p>
-</span>
-
-
-</section>
-
-<section data-noprocess data-shortcode-slide
-      data-auto-animate="">
-  
-<h3 id="2-active-virtual-screening-experiment-setup">2. Active Virtual Screening: Experiment Setup</h3>
-<p>Synthetic Utility Landscapes</p>
-<ul>
-  <li class="fragment">Testing synthetic functions helps refine the approach before human experiments.</li>
-  <li class="fragment">Benchmarks: Ackley, Alpine1, Hartmann, Dropwave, Qeifail, Levy.</li>
-  <li class="fragment">Each benchmark outputs a scalar utility for preference-based learning.</li>
-  <li class="fragment">Simulated objectives: affinity, rotatable bonds, molecular weight, LogP.</li>
-  <li class="fragment">20K-ligand subset used for computational efficiency.</li>
-</ul>
-
-
-<span class='fragment ' ><figure style="display: flex; flex-direction: column; align-items: center;">
-  <div style="display: flex; justify-content: center; width: 100%; gap: 70px;">
-      <img src="figures/synthetic_funcs.png" style="width: 100%; max-width: 1000px;">
-  </div>
-  <figcaption style="text-align: center; font-size: 20px; margin-top: 0px;">Synthetic functions landscape.</figcaption>
-</figure>
-</span>
-
-
-</section>
-
-<section data-noprocess data-shortcode-slide
-      data-auto-animate="">
-  
-<h3 id="2-active-virtual-screening-evaluation-metrics">2. Active Virtual Screening: Evaluation Metrics</h3>
-<p><strong>Metrics for evaluation</strong>
-
-
-<span class='fragment ' ><p><strong>Regret</strong></p>
-</span>
-
-</p>
-<ul>
-  <li class="fragment">$R_i = U^* - U(i)$</li>
-  <li class="fragment">Where $U^*$ is the highest possible utility in the library and $U(i)$ is the highest utility found by the model at iteration $i$</li>
-</ul>
-
-
-<span class='fragment ' ><p><strong>Percent of Best Ligand Found</strong></p>
-</span>
-
-
-<ul>
-  <li class="fragment"><b>Definition</b>: Percentage of screened ligands close in affinity to the best possible ligand. ($top_k \%$)</li>
-</ul>
-</section>
-
-<section data-noprocess data-shortcode-slide
-      data-auto-animate="">
-  
-<h3 id="2-active-virtual-screening-screening-results">2. Active Virtual Screening: Screening Results</h3>
-
-
-<span class='fragment ' ><figure style="display: flex; flex-direction: column; align-items: center;">
-  <div style="display: flex; justify-content: center; width: 95%; gap: 70px;">
-      <img src="figures/regret.png" style="width: 60%; max-width: 1000px;">
-  </div>
-</figure>
-</span>
-
-
-
-
-<span class='fragment ' ><div style="border: 2px solid #333; background-color: rgb(255, 203, 208); padding: 12px; margin-top: 0px; width: calc(100% - 100px); margin-left: 35px; text-align: center; font-size: 0.8em; font-weight: bold; border-radius: 15px;">
-Key: Preferential BO effectively learns complex utility landscapes in synthetic benchmarks.
-</div>
-</span>
-
-
-</section>
-
-<section data-noprocess data-shortcode-slide
-      data-auto-animate="">
-  
-<h3 id="outline-3">Outline</h3>
-<ul>
-<li><span style="opacity: 0.5;">Problem Setup</span></li>
-<li><span style="opacity: 0.5;">Virtual Screening on Synthetic Functions</span></li>
 <li>Chemist-guided Active Preferential Virtual Screening</li>
 <li><span style="opacity: 0.5;">Protein-ligand docking with Diffusion Models</span></li>
 </ul>
@@ -426,7 +317,7 @@ Key: Preferential BO effectively learns complex utility landscapes in synthetic 
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h3 id="3-cheapvs-chemist-guided-active-preferential-virtual-screening-framework">3. CheapVS: Chemist-guided Active Preferential Virtual Screening Framework</h3>
+<h3 id="2-cheapvs-chemist-guided-active-preferential-virtual-screening-framework">2. CheapVS: Chemist-guided Active Preferential Virtual Screening Framework</h3>
 
 
 <span class='fragment ' ><p><strong>Problem:</strong> Affinity alone isn’t enough; real chemists balance multiple properties (toxicity, solubility, etc.).</p>
@@ -439,18 +330,12 @@ Key: Preferential BO effectively learns complex utility landscapes in synthetic 
 </span>
 
 
-
-
-<span class='fragment ' ><p><strong>How This Fits In:</strong> After validating the optimization engine on synthetics, now we incorporate human knowledge to refine the search for real protein targets.</p>
-</span>
-
-
 </section>
 
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h3 id="3cheapvs">3.CheapVS</h3>
+<h3 id="2cheapvs">2.CheapVS</h3>
 <p>In drug discovery, selecting candidate ligands goes beyond targeting high-affinity molecules.
 
 
@@ -467,7 +352,7 @@ Key: Preferential BO effectively learns complex utility landscapes in synthetic 
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h3 id="3cheapvs-1">3.CheapVS</h3>
+<h3 id="2cheapvs-1">2.CheapVS</h3>
 <p>
   Depending on the disease and target protein, experts have <b>intuition</b> about ligand characteristics,  
   
@@ -501,7 +386,7 @@ Key: Preferential BO effectively learns complex utility landscapes in synthetic 
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h3 id="3cheapvs-2">3.CheapVS</h3>
+<h3 id="2cheapvs-2">2.CheapVS</h3>
 <p>
 
 <span class='fragment ' >These implicit expert knowledge, encoded as preferences over ligands, are valuable to elicit for effective virtual screening.</span>
@@ -539,28 +424,19 @@ Key: Preferential BO effectively learns complex utility landscapes in synthetic 
   <em>Each ligand is represented by a set of features, such as affinity, polar surface area, QED drug-likeness score</em>
 </p>
 </span>
-<!-- ---
-
-<section data-noprocess data-shortcode-slide
-      data-auto-animate="">
-  
-### 3.CheapVS
-<img src="figures/app.png" alt="app" style="display: block; margin: 0px auto 0 auto; width: 70%;">
-<figcaption style="text-align: center; font-size: 28px; margin-top: 10px;">App for interacting with Chemists.
- -->
 </section>
 
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h3 id="3cheapvs-experiment-setup">3.CheapVS: Experiment Setup</h3>
-<p>BO Optimization for EGFR</p>
-<p><b>EGFR (Epidermal Growth Factor Receptor)</b> is a protein that regulates cell growth. Mutations in EGFR are linked to cancers.</p>
+<h3 id="2cheapvs-experiment-setup">2.CheapVS: Experiment Setup</h3>
+<p>BO Optimization for EGFR and DRD2</p>
+<p><b>EGFR (Epidermal Growth Factor Receptor)</b> is a protein that regulates cell growth. Mutations in EGFR are linked to cancers. <b>DRD2 (Dopamine Receptor D2)</b> is the protein target of many psychotic disorders (such as depression, schizophrenia).</p>
   <ul>
     <li class="fragment">Screening library: 100K molecules.</li>
-    <li class="fragment">37 FDA-approved or late-stage drugs as goal-optimal molecules.</li>
+    <li class="fragment">37 and 58 FDA-approved or late-stage drugs as goal-optimal molecules.</li>
     <li class="fragment">Expert-labeled preferences for multi-objective optimization.</li>
-    <li class="fragment">4 Objectives: Affinity, Molecular Weight, Lipophilicity, Half-life.</li>
+    <li class="fragment">Multi Objectives: 4 for EGFR, 5 for DRD2.</li>
     <li class="fragment">BO samples 1%, adds 0.5% per iteration (10 iterations, 6% total).</li>
   </ul>
 </section>
@@ -569,13 +445,21 @@ Key: Preferential BO effectively learns complex utility landscapes in synthetic 
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h3 id="3cheapvs-results">3.CheapVS: Results</h3>
-<img src="figures/cheapvs_main.png" alt="cheapvs_main" style="display: block; margin: 20px auto 0 auto; width: 53%;">
+<h3 id="2cheapvs-3">2.CheapVS</h3>
+<img src="figures/app.png" alt="app" style="display: block; margin: 0px auto 0 auto; width: 70%;">
+<figcaption style="text-align: center; font-size: 28px; margin-top: 10px;">App for interacting with Chemists.
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="2cheapvs-results">2.CheapVS: Results</h3>
+<img src="figures/cheapvs_main.png" alt="cheapvs_main" style="display: block; margin: 20px auto 0 auto; width: 50%;">
 </figcaption> 
 
 
 <span class='fragment ' ><div style="border: 2px solid #333; background-color: rgb(255, 203, 208); padding: 12px; margin-top: 15px; width: calc(100% - 280px); margin-left: 150px; text-align: center; font-size: 0.8em; font-weight: bold; border-radius: 15px;">
-Key: Performance of CheapVS in identifying EGFR drugs. Multi-objective optimization outperforms the rest, identifying up to 16 of 37 approved drugs.
+Key: Incorporating expert preferences outperforms affinity-only methods, emphasizing the critical role of chemical intuition in drug discovery.
 </div>
 </span>
 
@@ -585,7 +469,7 @@ Key: Performance of CheapVS in identifying EGFR drugs. Multi-objective optimizat
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h3 id="3cheapvs-gp-elicitation">3.CheapVS: GP Elicitation</h3>
+<h3 id="2cheapvs-gp-elicitation">2.CheapVS: GP Elicitation</h3>
 <img src="figures/elicitation.png" alt="cheapvs_main" style="display: block; margin: 50px auto 0 auto; width: 55%;">
 <figcaption style="text-align: left; font-size: 23.5px; margin-top: 10px;">Predictive utility scores after BO on expert preference elicitation. The box plot contrasts drugs vs. non-drugs, while heatmaps show utility across two objectives. Results align with medicinal chemistry ranges.
 </section>
@@ -593,10 +477,9 @@ Key: Performance of CheapVS in identifying EGFR drugs. Multi-objective optimizat
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h3 id="outline-4">Outline</h3>
+<h3 id="outline-3">Outline</h3>
 <ul>
 <li><span style="opacity: 0.5;">Problem Setup</span></li>
-<li><span style="opacity: 0.5;">Virtual Screening on Synthetic Functions</span></li>
 <li><span style="opacity: 0.5;">Chemist-guided Active Preferential Virtual Screening</span></li>
 <li>Protein-ligand docking with Diffusion Models</li>
 </ul>
@@ -605,7 +488,7 @@ Key: Performance of CheapVS in identifying EGFR drugs. Multi-objective optimizat
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h3 id="4-protein-ligand-docking-with-diffusion-models">4. Protein-Ligand Docking with Diffusion Models</h3>
+<h3 id="3-protein-ligand-docking-with-diffusion-models">3. Protein-Ligand Docking with Diffusion Models</h3>
 
 
 <span class='fragment ' ><p><strong>Problem:</strong> Traditional docking tools (Vina) are computationally expensive, slowing down active virtual screening.</p>
@@ -618,21 +501,16 @@ Key: Performance of CheapVS in identifying EGFR drugs. Multi-objective optimizat
 </span>
 
 
-
-
-<span class='fragment ' ><p><strong>How This Fits In:</strong> This docking module slots into our iterative loop (active screening + chemist feedback), speeding up each evaluate-and-choose cycle.</p>
-</span>
-
-
-</section>
+<!-- ---
 
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h3 id="4-diffusion-model-noise-to-pattern">4. Diffusion Model: Noise to pattern</h3>
+### 3. Diffusion Model: Noise to pattern
 
 
 <span class='fragment ' ><strong>Diffusion models</strong> are a type of machine learning model used to generate data by starting with noise and gradually creating a meaningful pattern.</span>
+
 
 
 
@@ -643,19 +521,20 @@ Key: Performance of CheapVS in identifying EGFR drugs. Multi-objective optimizat
 </figure> 
 </span>
 
-
+ -->
 </section>
 
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h3 id="4-diffusion-model-why-used-for-docking">4. Diffusion Model: Why used for docking?</h3>
+<h3 id="3-diffusion-model-why-used-for-docking">3. Diffusion Model: Why used for docking?</h3>
 <p>Why Use Diffusion Models for Molecules?</p>
 
 
 <span class='fragment ' ><figure style="display: flex; flex-direction: column; align-items: center; width: 100%; margin-top: 0px;">
   <img src="figures/molecular_diffusion.png" alt="Molecular Diffusion Process" style="width: 100%;">
-  <figcaption style="text-align: center; font-size: 24px; margin-top: 0px;">From random points to a structured 3D molecule.</figcaption>
+  <figcaption style="text-align: center; font-size: 24px; margin-top: 0px;">From random points to a structured 3D molecule.
+  <span style="font-size: 22px;"><a href="https://www.nature.com/articles/s42004-024-01233-z">(Source)</a></span></figcaption>
 </figure>
 </span>
 
@@ -665,7 +544,7 @@ Key: Performance of CheapVS in identifying EGFR drugs. Multi-objective optimizat
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h3 id="4-diffusion-model-training-data">4. Diffusion Model: Training Data</h3>
+<h3 id="3-diffusion-model-training-data">3. Diffusion Model: Training Data</h3>
 
 
 <span class='fragment ' ><p>The PDB database is limited:</p>
@@ -697,7 +576,7 @@ Key: Performance of CheapVS in identifying EGFR drugs. Multi-objective optimizat
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h3 id="4-diffusion-model-training-data-1">4. Diffusion Model: Training Data</h3>
+<h3 id="3-diffusion-model-training-data-1">3. Diffusion Model: Training Data</h3>
 
 
 <span class='fragment ' ><p><strong>Data Augmentation Techniques</strong>:</p>
@@ -735,7 +614,7 @@ Key: Performance of CheapVS in identifying EGFR drugs. Multi-objective optimizat
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h3 id="4-diffusion-model-results">4. Diffusion Model: Results</h3>
+<h3 id="3-diffusion-model-results">3. Diffusion Model: Results</h3>
 
 
 <span class='fragment ' ><figure style="text-align: center; margin-top: 0px; position: relative;">
@@ -746,13 +625,13 @@ Key: Performance of CheapVS in identifying EGFR drugs. Multi-objective optimizat
 </span>
 
 
-</section>
+<!-- ---
 
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h3 id="4-diffusion-model-results-1">4. Diffusion Model: Results</h3>
-<p><strong>Benchmark on Posebusters Dataset</strong>:
+### 3. Diffusion Model: Results
+**Benchmark on Posebusters Dataset**:
 
 
 <span class='fragment ' >Posebusters: Version 1 (428 structures) and Version 2 (308 structures), released post-2021 in PDB.</span>
@@ -762,7 +641,8 @@ Key: Performance of CheapVS in identifying EGFR drugs. Multi-objective optimizat
 
 <span class='fragment ' >Performance: % of ligand pairs with $RMSD &lt; 2 Å$ in pocket alignment.</span>
 
-</p>
+
+
 
 
 <span class='fragment ' ><figure style="text-align: center; margin-top: -20px; position: relative;">
@@ -770,13 +650,13 @@ Key: Performance of CheapVS in identifying EGFR drugs. Multi-objective optimizat
 </figure>
 </span>
 
-
+ -->
 </section>
 
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h3 id="4-diffusion-model-neural-search-for-docking">4. Diffusion Model: Neural Search for Docking</h3>
+<h3 id="3-diffusion-model-neural-search-for-docking">3. Diffusion Model: Neural Search for Docking</h3>
 <ul style="font-size: 0.9em;"> 
   <li class="fragment"><b>Traditional Tools</b> (e.g., Vina, Smina): ~2mins per pose</li> 
   <li class="fragment"><b>Chai</b> (AlphaFold3-like): ~1.5 mins for 1 pose (1.3x faster)</li> 
@@ -803,20 +683,10 @@ Key: EDM-S minimizes regret faster and is significantly more efficient than Chai
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h3 id="5-conclusion">5. Conclusion</h3>
+<h3 id="4-conclusion">4. Conclusion</h3>
 <ul>
     <li class="fragment"><b>Efficient Drug Discovery:</b> Our framework accelerates VS by leveraging preferential multi-objective BO, requiring only a small subset of ligands and expert pairwise preferences.</li>
     <li class="fragment"><b>Strong Performance:</b> Our algorithm successfully identified 16/37 drugs, significantly outperforming baseline methods, highlighting the power of preference-based optimization.</li>
-</ul>
-</section>
-
-<section data-noprocess data-shortcode-slide
-      data-auto-animate="">
-  
-<h3 id="6-next-steps">6. Next steps</h3>
-<ul> 
-  <li class="fragment">Listwise preference for providing richer preference information</li>
-  <li class="fragment">Build on top of state-of-the-art models such as AlphaFold3</li> 
 </ul></section>
 
   
@@ -878,6 +748,11 @@ Key: EDM-S minimizes regret faster and is significantly more efficient than Chai
 
 
 
+
+  
+  
+    
+  
 
   
   
