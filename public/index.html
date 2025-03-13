@@ -43,35 +43,45 @@ Tai Dang<sup>1,2</sup>,Hung Pham<sup>3</sup>,Sang Truong<sup>2</sup>, Ari Glenn<
 <h3 id="outline">Outline</h3>
 <ul>
 <li>Problem Setup</li>
-<li>Chemist-guided Active Preferential Virtual Screening</li>
+<li>Preference Elicitation from Pairwise Comparisons</li>
 <li>Protein-ligand docking with Diffusion Models</li>
+<li>Chemist-guided Active Virtual Screening</li>
 </ul>
 </section>
 
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h3 id="overview-problem-setup">Overview: Problem setup</h3>
-<p>Traditional large-scale docking consumes extensive computational resources, making the process slow and costly.
+<h3 id="overview-challenges-in-virtual-screening">Overview: Challenges in Virtual Screening</h3>
+<p><b>Problem:</b> Large-scale virtual screening is computationally expensive, inefficient.</p>
+<li class="fragment"><b>Computational Bottleneck:</b> Exhaustive docking of millions of compounds wastes substantial resources on low-quality hits.</li>
+<li class="fragment"><b>Manual Hit Selection:</b> Chemists must manually evaluate molecules, balancing multiple properties, making the process slow and labor-intensive.</li>
+<li class="fragment"><b>Lack of Multi-Objective Optimization:</b> Traditional VS prioritizes affinity, ignores other key factors, leading to wasted effort on unsuitable candidates.</li>
+<p class="fragment"><b>→ A more efficient, expert-informed, and multi-objective approach is needed.</b></p>
+</section>
 
-
-<span class='fragment ' >Chemists manually evaluate thousands of molecules, selecting hits based on intuition.</span>
-
-
-
-
-<span class='fragment ' >This step is critical yet slow, forming a major bottleneck.</span>
-
-
-
-<span class='fragment ' >Experts must balance multiple drug properties (e.g., efficacy, safety, solubility),</span>
-
-
-
-
-<span class='fragment ' >complicating decision-making and extending timelines in drug development.</span>
-
-</p>
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="overview-streamlining-virtual-screening-with-advanced-techniques">Overview: Streamlining Virtual Screening with Advanced Techniques</h3>
+<div style="margin-top: 20px; display: flex; justify-content: space-between; align-items: flex-start;">
+  <div style="width: 50%;">
+    <h3 style="font-size: 36px;">Challenges:</h3>
+    <ol style="font-size: 32px;">
+      <li class="fragment" data-fragment-index="1">Leverage expert intuition to optimize drug candidate selection</li>
+      <li class="fragment" data-fragment-index="2">Slow conventional docking for affinity measurement</li>
+      <li class="fragment" data-fragment-index="3">Single-objective virtual screening insufficient</li>
+    </ol>
+  </div>
+  <div style="width: 50%;">
+    <h3 style="font-size: 36px; padding-left: 30px;">Solutions:</h3>
+    <ol style="font-size: 32px; padding-left: 30px;">
+      <li class="fragment" data-fragment-index="1">Expert Elicitation through preference learning</li>
+      <li class="fragment" data-fragment-index="2">Accelerate affinity measurement through diffusion model.</li>
+      <li class="fragment" data-fragment-index="3">Leverage Multi-objective Bayesian Optmization</li>
+    </ol>
+  </div>
+</div>
 </section>
 
 <section data-noprocess data-shortcode-slide
@@ -123,30 +133,6 @@ Tai Dang<sup>1,2</sup>,Hung Pham<sup>3</sup>,Sang Truong<sup>2</sup>, Ari Glenn<
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h3 id="overview-streamlining-virtual-screening-with-advanced-techniques">Overview: Streamlining Virtual Screening with Advanced Techniques</h3>
-<div style="margin-top: 20px; display: flex; justify-content: space-between; align-items: flex-start;">
-  <div style="width: 50%;">
-    <h3 style="font-size: 36px;">Challenges:</h3>
-    <ol style="font-size: 32px;">
-      <li class="fragment" data-fragment-index="1">Conducting virtual screening within budget constraints.</li>
-      <li class="fragment" data-fragment-index="2">Incorporating multiple objectives beyond affinity.</li>
-      <li class="fragment" data-fragment-index="3">Training efficient docking models with limited resources.</li>
-    </ol>
-  </div>
-  <div style="width: 50%;">
-    <h3 style="font-size: 36px; padding-left: 30px;">Solutions:</h3>
-    <ol style="font-size: 32px; padding-left: 30px;">
-      <li class="fragment" data-fragment-index="1">Optimize ligand selection through active screening.</li>
-      <li class="fragment" data-fragment-index="2">Utilize Preferential Multi-Objective Bayesian Optimization.</li>
-      <li class="fragment" data-fragment-index="3">Enhance docking model through diffusion model.</li>
-    </ol>
-  </div>
-</div>
-</section>
-
-<section data-noprocess data-shortcode-slide
-      data-auto-animate="">
-  
 <h3 id="outline-1">Outline</h3>
 <ul>
 <li>Problem Setup</li>
@@ -193,24 +179,25 @@ Tai Dang<sup>1,2</sup>,Hung Pham<sup>3</sup>,Sang Truong<sup>2</sup>, Ari Glenn<
       data-auto-animate="">
   
 <h3 id="1-problem-setup-1">1. Problem Setup</h3>
+
+
+<span class='fragment ' >Traditional docking wastes vast computational resources on low-scoring compounds, though only top-ranked molecules move forward for validation.</span>
+
+
+
+
+<span class='fragment ' ><p>To improve efficiency, virtual screening incorporates <b>hit identification</b>, where chemists select promising compounds based on ligand properties.</p>
+</span>
+
+
 <p>
 
-<span class='fragment ' >Docking consumes vast computational resources on low-scoring compounds, though only top-ranked molecules advance for validation.</span>
+<span class='fragment ' >However, exhaustively screening millions of candidates remains infeasible, even with expert-defined trade-offs.</span>
 
 
 
 
-<span class='fragment ' >To refine this process, virtual screening includes <b>hit identification</b>, where chemists select promising compounds based on ligand properties.</span>
-
-</p>
-<p>
-
-<span class='fragment ' >Even with expert-defined trade-offs, exhaustively screening millions of candidates is infeasible.</span>
-
-
-
-
-<span class='fragment ' >To address this, we prioritize promising ligands while avoiding those likely to be poor candidates.</span>
+<span class='fragment ' >To solve this, we prioritize high-potential ligands while eliminating poor candidates early.</span>
 
 </p>
 </section>
@@ -218,20 +205,14 @@ Tai Dang<sup>1,2</sup>,Hung Pham<sup>3</sup>,Sang Truong<sup>2</sup>, Ari Glenn<
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h3 id="1-problem-setup-2">1. Problem Setup</h3>
-<p>
-
-<span class='fragment ' >To prioritize high-potential ligands, we use <strong>Preferential Bayesian Optimization</strong>,</span>
-
-
-
-
-<span class='fragment ' >an approach that balances exploring new candidates and exploiting known promising ones to efficiently find optimal solutions.</span>
-
-</p>
+<h3 id="1-problem-setup-active-virtual-screening">1. Problem Setup: Active Virtual Screening</h3>
+<p class="fragment"><b>Bayesian Optimization</b> iteratively refines ligand selection by balancing exploration and exploitation, often optimizing for binding affinity.</p>
+<li class="fragment"><b>Step 1:</b> Start with a ligand library $\mathcal{L} = \{ l_1, \dots, l_N \}$ and an empty dataset $\mathcal{D}$. The goal is to iteratively identify ligands with high binding affinity.</li>
+<li class="fragment"><b>Step 2:</b> Use an acquisition function $\alpha$ to select a subset $\mathcal{D}_i$ with high predicted binding affinity. Update $\mathcal{D}$ and remove selected ligands from $\mathcal{L}$.</li>
+<li class="fragment"><b>Step 3:</b> Train a model on $\mathcal{D}$ to improve binding affinity predictions and refine ligand selection in the next iteration.</li>
 
 
-<span class='fragment ' ><img src="figures/avs.png" alt="Active Virtual Screening Diagram" style="display: block; margin: 0 auto; width: 75%;" class="fragment">
+<span class='fragment ' ><img src="figures/avs.png" alt="Active Virtual Screening Diagram" style="display: block; margin: 0 auto; width: 60%;" class="fragment">
 <figcaption style="text-align: center; font-size: 24px; margin-top: 20px;">
     Active Virtual Screening Process
     <span style="font-size: 22px;"><a href="https://openreview.net/pdf?id=7d7Gpiyc2TU">(Graff et al., 2021)</a></span>
@@ -244,140 +225,28 @@ Tai Dang<sup>1,2</sup>,Hung Pham<sup>3</sup>,Sang Truong<sup>2</sup>, Ari Glenn<
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h3 id="1-problem-setup-3">1. Problem Setup</h3>
-<p><b>Goal:</b> Identify the top <i>k</i> candidate ligands for a given protein from a library.</p>
-<li class="fragment"><b>Step 1:</b> Start with a ligand library $\mathcal{L} = \{ l_1, \dots, l_N \}$ and a empty dataset $\mathcal{D}$.  </li>
-<li class="fragment"><b>Step 2:</b> Select a subset $\mathcal{D}_i = \{ l_i, l_k, l_f, \dots \}$  using an acquisition function $\alpha$, update the dataset $\mathcal{D} \leftarrow \mathcal{D} \cup \mathcal{D}_i$
-  and remove these ligands from $\mathcal{L} \leftarrow \mathcal{L} \setminus \mathcal{D}_i$.
-</li>
-<li class="fragment"><b>Step 3:</b> Dock ligands in $\mathcal{D}_i$ using a docking model $\theta$ to estimate binding affinity.</li>
-<li class="fragment"><b>Step 4:</b> Train a GP $g$ on ligand fingerprints $t$ to predict affinity: $ g(t) \sim \mathcal{GP}(\mu, k) $
-</li>
-<li class="fragment"><b>Step 5:</b> Compute additional ligand properties (e.g., solubility, toxicity).</li>
-<li class="fragment"><b>Step 6:</b> Train a GP $f$ with pairwise preferences from ligand properties:  
-  $$ f(\mathbf{x}) \sim \mathcal{GP}(\mu, k) \quad \text{and} \quad p(y=1 \mid \mathbf{x}_1, \mathbf{x}_2) = \sigma(f(\mathbf{x}_1) - f(\mathbf{x}_2)) $$
-</li>
-<li class="fragment"><b>Step 7:</b> Return to Step 2 or terminate if the computational budget is reached.</li>
-</section>
-
-<section data-noprocess data-shortcode-slide
-      data-auto-animate="">
-  
-<h3 id="overview-1">Overview</h3>
-<figure style="text-align: center; margin-top: -50px; position: relative;" class="fragment fade-in">
-  <img src="figures/presentation_overview.png" alt="Overview Image" style="width: 80%; max-width: 1000px;">
-</figure>
-<!-- ---
-
-<section data-noprocess data-shortcode-slide
-      data-auto-animate="">
-  
-### 1. Problem Setup
-Learning a preference model from binary preference data can be viewed as learning a classifier. 
-
-  
-
-<span class='fragment ' ><p>$$p(y \mid x_1, x_2; f) = \frac{e^{f(x_1)}}{e^{f(x_1)} + e^{f(x_2)}}$$</p>
-</span>
-
-
-
-  
-
-<span class='fragment ' ><p>$$= \frac{1}{1 + e^{-[f(x_1)-f(x_2)]}}$$</p>
-</span>
-
-
-
-  
-
-<span class='fragment ' ><p>$$= \sigma(f(x_1)-f(x_2))$$</p>
-</span>
-
-
-
-
-
-<span class='fragment ' >where $\sigma(\cdot)$ is the sigmoid function.</span>
-
- -->
-</section>
-
-<section data-noprocess data-shortcode-slide
-      data-auto-animate="">
-  
 <h3 id="outline-2">Outline</h3>
 <ul>
 <li><span style="opacity: 0.5;">Problem Setup</span></li>
-<li>Chemist-guided Active Preferential Virtual Screening</li>
+<li>Preference Elicitation from Pairwise Comparisons</li>
 <li><span style="opacity: 0.5;">Protein-ligand docking with Diffusion Models</span></li>
+<li><span style="opacity: 0.5;">Chemist-guided Active Virtual Screening</span></li>
 </ul>
 </section>
 
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h3 id="2-cheapvs-chemist-guided-active-preferential-virtual-screening-framework">2. CheapVS: Chemist-guided Active Preferential Virtual Screening Framework</h3>
+<h3 id="2-preference-elicitation-from-pairwise-comparisons">2. Preference Elicitation from Pairwise Comparisons</h3>
 
 
-<span class='fragment ' ><p><strong>Problem:</strong> Affinity alone isn’t enough; real chemists balance multiple properties (toxicity, solubility, etc.).</p>
+<span class='fragment ' ><p><strong>Problem:</strong>  Traditional virtual screening prioritizes binding affinity but ignores other key drug properties (e.g., toxicity, solubility), making hit selection inefficient.</p>
 </span>
 
 
 
 
-<span class='fragment ' ><p><strong>Solution:</strong> We introduce pairwise preference elicitation to capture expert intuition.</p>
-</span>
-
-
-</section>
-
-<section data-noprocess data-shortcode-slide
-      data-auto-animate="">
-  
-<h3 id="2cheapvs">2.CheapVS</h3>
-<p>In drug discovery, selecting candidate ligands goes beyond targeting high-affinity molecules.
-
-
-<span class='fragment ' >Experts use their deep chemical intuition to balance competing properties such as synthesizability, solubility, and potential side effects.</span>
-
-
-
-
-<span class='fragment ' >This approach ensures ligands are not only effective but also practical and safe for therapeutic use.</span>
-
-</p>
-</section>
-
-<section data-noprocess data-shortcode-slide
-      data-auto-animate="">
-  
-<h3 id="2cheapvs-1">2.CheapVS</h3>
-<p>
-  Depending on the disease and target protein, experts have <b>intuition</b> about ligand characteristics,  
-  
-
-<span class='fragment ' >balancing synthesizability, affinity, solubility, and side effects.</span>
-
-  
-  
-
-<span class='fragment ' >For instance, bulky functional groups can enhance binding but reduce solubility or increase toxicity, complicating optimization.</span>
-
-  
-</p>
-
-
-<span class='fragment ' ><div style="display: flex; justify-content: center; width: 100%; gap: -30px; margin-top: -100px;">
-  <figure style="display: flex; flex-direction: column; align-items: center; width: 45%;">
-    <img src="figures/lig1.png" style="width: 100%;" alt="Aff: -10.11, PSA: 67.66">
-    <figcaption style="text-align: left; font-size: 20px; margin-top: -50px;">Affinity: -10.11, Solubility: 67.66</figcaption>
-  </figure>
-  <figure style="display: flex; flex-direction: column; align-items: center; width: 45%;">
-    <img src="figures/lig2.png" style="width: 100%;" alt="Aff: -6.3, Solubility: 128.37">
-    <figcaption style="text-align: left; font-size: 20px; margin-top: -50px;">Affinity: -6.3, Solubility: 128.37</figcaption>
-  </figure>
-</div>
+<span class='fragment ' ><p><strong>Solution:</strong>  Leverage preference learning to model expert intuition, capturing trade-offs between multiple ligand properties through pairwise comparisons.</p>
 </span>
 
 
@@ -386,92 +255,84 @@ Learning a preference model from binary preference data can be viewed as learnin
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h3 id="2cheapvs-2">2.CheapVS</h3>
-<p>
-
-<span class='fragment ' >These implicit expert knowledge, encoded as preferences over ligands, are valuable to elicit for effective virtual screening.</span>
+<h3 id="2-preference-elicitation-from-pairwise-comparisons-1">2. Preference Elicitation from Pairwise Comparisons</h3>
+<p>Learning a preference model from binary data is equivalent to training a classifier.</p>
 
 
+<span class='fragment ' >Given two ligands $\ell_1$ and $\ell_2$ with properties $x_{\ell_1}$ and $x_{\ell_2}$ (e.g., affinity, toxicity, solubility), we model their preference as:</span>
 
 
-<span class='fragment ' >We can leverage toolkits from the field of machine learning from human preferences to tackle this challenge.</span>
 
 
-<span class="fragment"></p>
-<table style="width: 90%; margin-top: 20px; border-collapse: collapse; text-align: center; font-size: 24px;">
-  <tr>
-    <th style="border: 1px solid #ddd; padding: 8px;">First ligand</th>
-    <th style="border: 1px solid #ddd; padding: 8px;">Second ligand</th>
-    <th style="border: 1px solid #ddd; padding: 8px;">Preference $(x_1 \succ x_2)$</th>
-  </tr>
-  <tr>
-    <td style="border: 1px solid #ddd; padding: 8px;">[-7.81, 113.38, 0.51]</td>
-    <td style="border: 1px solid #ddd; padding: 8px;">[-8.12, 116.28, 0.47]</td>
-    <td style="border: 1px solid #ddd; padding: 8px;">0</td>
-  </tr>
-  <tr>
-    <td style="border: 1px solid #ddd; padding: 8px;">[-10.45, 186.17, 0.29]</td>
-    <td style="border: 1px solid #ddd; padding: 8px;">[-8.12, 116.28, 0.47]</td>
-    <td style="border: 1px solid #ddd; padding: 8px;">1</td>
-  </tr>
-  <tr>
-    <td style="border: 1px solid #ddd; padding: 8px;">[-6.18, 35.32, 0.83]</td>
-    <td style="border: 1px solid #ddd; padding: 8px;">[-8.12, 116.28, 0.47]</td>
-    <td style="border: 1px solid #ddd; padding: 8px;">0</td>
-  </tr>
-</table>
-<p style="font-size: 24px; text-align: center; margin-top: 15px;">
-  <em>Each ligand is represented by a set of features, such as affinity, polar surface area, QED drug-likeness score</em>
-</p>
+<span class='fragment ' ><p>$$p(\ell_1 \succ \ell_2 \mid x_{\ell_1}, x_{\ell_2}) = \frac{e^{f(x_{\ell_1})}}{e^{f(x_{\ell_1})} + e^{f(x_{\ell_2})}}$$</p>
 </span>
+
+
+
+
+<span class='fragment ' ><p>$$= \frac{1}{1 + e^{-[f(x_{\ell_1}) - f(x_{\ell_2})]}}$$</p>
+</span>
+
+
+
+
+<span class='fragment ' ><p>$$= \sigma(f(x_{\ell_1}) - f(x_{\ell_2}))$$</p>
+</span>
+
+
+
+
+<span class='fragment ' >where $\sigma(\cdot)$ is the sigmoid function, mapping the difference in ligand scores to a preference probability.</span>
+
+
 </section>
 
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h3 id="2cheapvs-experiment-setup">2.CheapVS: Experiment Setup</h3>
-<p>BO Optimization for EGFR and DRD2</p>
-<p><b>EGFR (Epidermal Growth Factor Receptor)</b> is a protein that regulates cell growth. Mutations in EGFR are linked to cancers. <b>DRD2 (Dopamine Receptor D2)</b> is the protein target of many psychotic disorders (such as depression, schizophrenia).</p>
-  <ul>
-    <li class="fragment">Screening library: 100K molecules.</li>
-    <li class="fragment">37 and 58 FDA-approved or late-stage drugs as goal-optimal molecules.</li>
-    <li class="fragment">Expert-labeled preferences for multi-objective optimization.</li>
-    <li class="fragment">Multi Objectives: 4 for EGFR, 5 for DRD2.</li>
-    <li class="fragment">BO samples 1%, adds 0.5% per iteration (10 iterations, 6% total).</li>
-  </ul>
-</section>
+<h3 id="2-preference-elicitation-from-pairwise-comparisons-2">2. Preference Elicitation from Pairwise Comparisons</h3>
+
+
+<span class='fragment ' ><p><strong>Approach:</strong>  We train a preference model using ligand properties (binding affinity, lipophilicity, molecular weight, half-life) as input. The utility function $f$ is modeled using a pairwise <strong>Gaussian Process</strong>.</p>
+</span>
+
+
+
+
+<span class='fragment ' ><p><strong>Synthetic:</strong>  Generate 1,200 pairwise comparisons using synthetic functions</p>
+</span>
+
+
+
+
+<span class='fragment ' ><p><strong>Human:</strong> Experts rank ligands given a protein, generating pairwise comparisons.</p>
+</span>
+
+
+
+
+<span class='fragment ' ><p><strong>Evaluation:</strong></p>
+<li> 80/20 train-test split with 20-fold cross-validation. </li>
+<li> Metrics: Accuracy and ROC AUC. </li>
+</span>
+
+
 </section>
 
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h3 id="2cheapvs-3">2.CheapVS</h3>
-<img src="figures/app.png" alt="app" style="display: block; margin: 0px auto 0 auto; width: 70%;">
-<figcaption style="text-align: center; font-size: 28px; margin-top: 10px;">App for interacting with Chemists.
-</section>
-
-<section data-noprocess data-shortcode-slide
-      data-auto-animate="">
-  
-<h3 id="2cheapvs-results">2.CheapVS: Results</h3>
-<img src="figures/cheapvs_main.png" alt="cheapvs_main" style="display: block; margin: 20px auto 0 auto; width: 50%;">
+<h3 id="2-preference-elicitation-from-pairwise-comparisons-3">2. Preference Elicitation from Pairwise Comparisons</h3>
+<img src="figures/preference_results.png" alt="preference_results" style="display: block; margin: 20px auto 0 auto; width: 40%;">
 </figcaption> 
 
 
-<span class='fragment ' ><div style="border: 2px solid #333; background-color: rgb(255, 203, 208); padding: 12px; margin-top: 15px; width: calc(100% - 280px); margin-left: 150px; text-align: center; font-size: 0.8em; font-weight: bold; border-radius: 15px;">
-Key: Incorporating expert preferences outperforms affinity-only methods, emphasizing the critical role of chemical intuition in drug discovery.
+<span class='fragment ' ><div style="border: 2px solid #333; background-color: rgb(255, 203, 208); padding: 12px; margin-top: 15px; width: calc(100% - 400px); margin-left: 190px; text-align: center; font-size: 0.8em; font-weight: bold; border-radius: 15px;">
+Preferential learning robustly recovers the latent utility function with high accuracy and AUC on both synthetic and human data.
 </div>
 </span>
 
 
-</section>
-
-<section data-noprocess data-shortcode-slide
-      data-auto-animate="">
-  
-<h3 id="2cheapvs-gp-elicitation">2.CheapVS: GP Elicitation</h3>
-<img src="figures/elicitation.png" alt="cheapvs_main" style="display: block; margin: 50px auto 0 auto; width: 55%;">
-<figcaption style="text-align: left; font-size: 23.5px; margin-top: 10px;">Predictive utility scores after BO on expert preference elicitation. The box plot contrasts drugs vs. non-drugs, while heatmaps show utility across two objectives. Results align with medicinal chemistry ranges.
 </section>
 
 <section data-noprocess data-shortcode-slide
@@ -480,8 +341,9 @@ Key: Incorporating expert preferences outperforms affinity-only methods, emphasi
 <h3 id="outline-3">Outline</h3>
 <ul>
 <li><span style="opacity: 0.5;">Problem Setup</span></li>
-<li><span style="opacity: 0.5;">Chemist-guided Active Preferential Virtual Screening</span></li>
+<li><span style="opacity: 0.5;">Preference Elicitation from Pairwise Comparisons</span></li>
 <li>Protein-ligand docking with Diffusion Models</li>
+<li><span style="opacity: 0.5;">Chemist-guided Active Virtual Screening</span></li>
 </ul>
 </section>
 
@@ -501,16 +363,21 @@ Key: Incorporating expert preferences outperforms affinity-only methods, emphasi
 </span>
 
 
-<!-- ---
+
+
+<span class='fragment ' ><p><strong>How This Fits In:</strong> This docking module slots into our iterative loop (active screening + chemist feedback), speeding up each evaluate-and-choose cycle.</p>
+</span>
+
+
+</section>
 
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-### 3. Diffusion Model: Noise to pattern
+<h3 id="3-diffusion-model-noise-to-pattern">3. Diffusion Model: Noise to pattern</h3>
 
 
 <span class='fragment ' ><strong>Diffusion models</strong> are a type of machine learning model used to generate data by starting with noise and gradually creating a meaningful pattern.</span>
-
 
 
 
@@ -521,7 +388,7 @@ Key: Incorporating expert preferences outperforms affinity-only methods, emphasi
 </figure> 
 </span>
 
- -->
+
 </section>
 
 <section data-noprocess data-shortcode-slide
@@ -533,8 +400,7 @@ Key: Incorporating expert preferences outperforms affinity-only methods, emphasi
 
 <span class='fragment ' ><figure style="display: flex; flex-direction: column; align-items: center; width: 100%; margin-top: 0px;">
   <img src="figures/molecular_diffusion.png" alt="Molecular Diffusion Process" style="width: 100%;">
-  <figcaption style="text-align: center; font-size: 24px; margin-top: 0px;">From random points to a structured 3D molecule.
-  <span style="font-size: 22px;"><a href="https://www.nature.com/articles/s42004-024-01233-z">(Source)</a></span></figcaption>
+  <figcaption style="text-align: center; font-size: 24px; margin-top: 0px;">From random points to a structured 3D molecule.</figcaption>
 </figure>
 </span>
 
@@ -618,20 +484,20 @@ Key: Incorporating expert preferences outperforms affinity-only methods, emphasi
 
 
 <span class='fragment ' ><figure style="text-align: center; margin-top: 0px; position: relative;">
-  <img src="figures/box_affinity.png" style="width: 50%; max-width: 700px;">
-  <p style="text-align: left; font-size: 20px; margin-top: 10px;">Box plot of binding affinities (kcal/mol) for different docking models. Vina achieves the lowest median binding affinity, followed by EDM-S, while Chai exhibits the weakest binding.
+  <img src="figures/violin_affinity.png" style="width: 50%; max-width: 700px;">
+  <p style="text-align: left; font-size: 20px; margin-top: 10px;">Violin plot of binding affinities (kcal/mol) for different docking models. Vina achieves the lowest median binding affinity, followed by EDM-S, while Chai exhibits the weakest binding.
 </p>
 </figure>
 </span>
 
 
-<!-- ---
+</section>
 
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-### 3. Diffusion Model: Results
-**Benchmark on Posebusters Dataset**:
+<h3 id="3-diffusion-model-results-1">3. Diffusion Model: Results</h3>
+<p><strong>Benchmark on Posebusters Dataset</strong>:
 
 
 <span class='fragment ' >Posebusters: Version 1 (428 structures) and Version 2 (308 structures), released post-2021 in PDB.</span>
@@ -641,8 +507,7 @@ Key: Incorporating expert preferences outperforms affinity-only methods, emphasi
 
 <span class='fragment ' >Performance: % of ligand pairs with $RMSD &lt; 2 Å$ in pocket alignment.</span>
 
-
-
+</p>
 
 
 <span class='fragment ' ><figure style="text-align: center; margin-top: -20px; position: relative;">
@@ -650,7 +515,38 @@ Key: Incorporating expert preferences outperforms affinity-only methods, emphasi
 </figure>
 </span>
 
- -->
+
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="3-diffusion-model-affinity-vs-rmsd">3. Diffusion Model: Affinity vs RMSD</h3>
+
+
+<span class='fragment ' ><p>Most diffusion models optimize for RMSD, but RMSD only measures geometric similarity, not binding strength.</p>
+</span>
+
+
+
+
+<span class='fragment ' ><strong>Why RMSD Falls Short:</strong> Low RMSD (&lt;2Å) can still cause steric clashes and fails to capture a ligand&rsquo;s regulatory potential.</span>
+
+
+
+
+<span class='fragment ' ><p><strong>Affinity Matters:</strong> Binding affinity is a stronger indicator of drug effectiveness.</p>
+</span>
+
+
+
+
+<span class='fragment ' ><figure style="text-align: center; margin-top: -20px; position: relative;">
+  <img src="figures/affinity_rmsd.png" alt="Docking Results" style="width: 75%; max-width: 1000px;">
+</figure>
+</span>
+
+
 </section>
 
 <section data-noprocess data-shortcode-slide
@@ -683,10 +579,269 @@ Key: EDM-S minimizes regret faster and is significantly more efficient than Chai
 <section data-noprocess data-shortcode-slide
       data-auto-animate="">
   
-<h3 id="4-conclusion">4. Conclusion</h3>
+<h3 id="outline-4">Outline</h3>
+<ul>
+<li><span style="opacity: 0.5;">Problem Setup</span></li>
+<li><span style="opacity: 0.5;">Preference Elicitation from Pairwise Comparisons</span></li>
+<li><span style="opacity: 0.5;">Protein-ligand docking with Diffusion Models</span></li>
+<li>Chemist-guided Active Virtual Screening</li>
+</ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="4-cheapvs-chemist-guided-active-preferential-virtual-screening-framework">4. CheapVS: Chemist-guided Active Preferential Virtual Screening Framework</h3>
+
+
+<span class='fragment ' ><p><strong>Problem:</strong> Traditional virtual screening is computationally expensive and inefficient, requiring exhaustive docking and manual hit selection.</p>
+</span>
+
+
+
+
+<span class='fragment ' ><p><strong>Solution:</strong> CheapVS leverages <strong>active learning</strong> and <strong>chemist-driven preferences</strong> to efficiently prioritize high-potential ligands, reducing computational costs.</p>
+</span>
+
+
+
+
+<span class='fragment ' ><p><strong>How This Fits In:</strong> By integrating <strong>expert knowledge</strong> with <strong>machine learning</strong>, CheapVS refines ligand selection, optimizing both efficiency and drug quality.</p>
+</span>
+
+
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="4cheapvs">4.CheapVS</h3>
+<p>In drug discovery, selecting candidate ligands goes beyond targeting high-affinity molecules.
+
+
+<span class='fragment ' >Experts use their deep chemical intuition to balance competing properties such as synthesizability, solubility, and potential side effects.</span>
+
+
+
+
+<span class='fragment ' >This approach ensures ligands are not only effective but also practical and safe for therapeutic use.</span>
+
+</p>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="4cheapvs-1">4.CheapVS</h3>
+<p>
+  Depending on the disease and target protein, experts have <b>intuition</b> about ligand characteristics,  
+  
+
+<span class='fragment ' >balancing synthesizability, affinity, solubility, and side effects.</span>
+
+  
+  
+
+<span class='fragment ' >For instance, bulky functional groups can enhance binding but reduce solubility or increase toxicity, complicating optimization.</span>
+
+  
+</p>
+
+
+<span class='fragment ' ><div style="display: flex; justify-content: center; width: 100%; gap: -30px; margin-top: -100px;">
+  <figure style="display: flex; flex-direction: column; align-items: center; width: 45%;">
+    <img src="figures/lig1.png" style="width: 100%;" alt="Aff: -10.11, PSA: 67.66">
+    <figcaption style="text-align: left; font-size: 20px; margin-top: -50px;">Affinity: -10.11, Solubility: 67.66</figcaption>
+  </figure>
+  <figure style="display: flex; flex-direction: column; align-items: center; width: 45%;">
+    <img src="figures/lig2.png" style="width: 100%;" alt="Aff: -6.3, Solubility: 128.37">
+    <figcaption style="text-align: left; font-size: 20px; margin-top: -50px;">Affinity: -6.3, Solubility: 128.37</figcaption>
+  </figure>
+</div>
+</span>
+
+
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="4cheapvs-2">4.CheapVS</h3>
+<p>
+
+<span class='fragment ' >These implicit expert knowledge, encoded as preferences over ligands, are valuable to elicit for effective virtual screening.</span>
+
+
+
+
+<span class='fragment ' >We can leverage toolkits from the field of machine learning from human preferences to tackle this challenge.</span>
+
+
+<span class="fragment"></p>
+<table style="width: 90%; margin-top: 20px; border-collapse: collapse; text-align: center; font-size: 24px;">
+  <tr>
+    <th style="border: 1px solid #ddd; padding: 8px;">First ligand</th>
+    <th style="border: 1px solid #ddd; padding: 8px;">Second ligand</th>
+    <th style="border: 1px solid #ddd; padding: 8px;">Preference $(x_1 \succ x_2)$</th>
+  </tr>
+  <tr>
+    <td style="border: 1px solid #ddd; padding: 8px;">[-7.81, 113.38, 0.51]</td>
+    <td style="border: 1px solid #ddd; padding: 8px;">[-8.12, 116.28, 0.47]</td>
+    <td style="border: 1px solid #ddd; padding: 8px;">0</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid #ddd; padding: 8px;">[-10.45, 186.17, 0.29]</td>
+    <td style="border: 1px solid #ddd; padding: 8px;">[-8.12, 116.28, 0.47]</td>
+    <td style="border: 1px solid #ddd; padding: 8px;">1</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid #ddd; padding: 8px;">[-6.18, 35.32, 0.83]</td>
+    <td style="border: 1px solid #ddd; padding: 8px;">[-8.12, 116.28, 0.47]</td>
+    <td style="border: 1px solid #ddd; padding: 8px;">0</td>
+  </tr>
+</table>
+<p style="font-size: 24px; text-align: center; margin-top: 15px;">
+  <em>Each ligand is represented by a set of features, such as affinity, polar surface area, QED drug-likeness score</em>
+</p>
+</span>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="4cheapvs-3">4.CheapVS</h3>
+<img src="figures/app.png" alt="app" style="display: block; margin: 0px auto 0 auto; width: 70%;">
+<figcaption style="text-align: center; font-size: 28px; margin-top: 10px;">App for interacting with Chemists.
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="4cheapvs-overview">4.CheapVS: Overview</h3>
+<figure style="text-align: center; margin-top: -50px; position: relative;" class="fragment fade-in">
+  <img src="figures/presentation_overview.png" alt="Overview Image" style="width: 80%; max-width: 1000px;">
+</figure>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="4cheapvs-algorithm">4.CheapVS: algorithm</h3>
+<p><b>Goal:</b> Identify the top <i>k</i> drug ligands for a given protein $\rho$.</p>
+<li class="fragment"><b>Step 1:</b> Start with a ligand library $\mathcal{L} = \{\ell_1, \dots, \ell_N\}$ and an empty dataset $\mathcal{D}$.</li>
+<li class="fragment"><b>Step 2:</b> Select a subset $\mathcal{D}_i \subset \mathcal{L}$ using the acquisition function $\alpha$ on $f$; update $\mathcal{D} \gets \mathcal{D} \cup \mathcal{D}_i$ and remove these ligands from $\mathcal{L} \gets \mathcal{L} \setminus \mathcal{D}_i$.</li>
+<li class="fragment"><b>Step 3:</b> Dock ligands in $\mathcal{D}_i$ using the $p_\theta$ to estimate binding affinity $x_{\ell,\rho}^{\text{aff}}$.</li>
+<li class="fragment"><b>Step 4:</b> Train a GP $g_P \sim \mathcal{GP}(\mu, k)$ on ligand fingerprints to predict affinity.</li>
+<li class="fragment"><b>Step 5:</b> Compute additional ligand properties (e.g., solubility and toxicity).</li>
+<li class="fragment"><b>Step 6:</b> Train a GP $f$ with pairwise preferences from ligand properties:  
+  $$ f(\mathbf{x}) \sim \mathcal{GP}(\mu, k) \quad \text{and} \quad p(\ell_1 \succ \ell_2 \mid x_{\ell_1}, x_{\ell_2}) = \sigma(f(x_{\ell_1}) - f(x_{\ell_2}))$$
+</li>
+<li class="fragment"><b>Step 7:</b> Return to Step 2 or terminate when the computational budget is reached.</li>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="4cheapvs-experiment-setup">4.CheapVS: Experiment Setup</h3>
+<p>BO Optimization for EGFR and DRD2</p>
+<p><b>EGFR (Epidermal Growth Factor Receptor)</b> is a protein that regulates cell growth. Mutations in EGFR are linked to cancers. <b>DRD2 (Dopamine Receptor D2)</b> is the protein target of many psychotic disorders (such as depression, schizophrenia).</p>
+  <ul>
+    <li class="fragment">Screening library: 100K molecules.</li>
+    <li class="fragment">37 and 58 FDA-approved or late-stage drugs as goal-optimal molecules.</li>
+    <li class="fragment">Expert-labeled preferences for multi-objective optimization.</li>
+    <li class="fragment">Multi Objectives: 4 for EGFR, 5 for DRD2.</li>
+    <li class="fragment">BO samples 1%, adds 0.5% per iteration (10 iterations, 6% total).</li>
+  </ul>
+</section>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="4cheapvs-results">4.CheapVS: Results</h3>
+<img src="figures/cheapvs_main.png" alt="cheapvs_main" style="display: block; margin: 20px auto 0 auto; width: 50%;">
+</figcaption> 
+
+
+<span class='fragment ' ><div style="border: 2px solid #333; background-color: rgb(255, 203, 208); padding: 12px; margin-top: 15px; width: calc(100% - 280px); margin-left: 150px; text-align: center; font-size: 0.8em; font-weight: bold; border-radius: 15px;">
+Key: Performance of CheapVS in identifying EGFR drugs. Multi-objective optimization outperforms the rest, identifying up to 16 of 37 approved drugs.
+</div>
+</span>
+
+
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="4cheapvs-gp-elicitation">4.CheapVS: GP Elicitation</h3>
+<img src="figures/elicitation.png" alt="cheapvs_main" style="display: block; margin: 50px auto 0 auto; width: 55%;">
+<figcaption style="text-align: left; font-size: 23.5px; margin-top: 10px;">Predictive utility scores after BO on expert preference elicitation. The box plot contrasts drugs vs. non-drugs, while heatmaps show utility across two objectives. Results align with medicinal chemistry ranges.
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="4cheapvs-multi-objective-trade-off">4.CheapVS: Multi-Objective Trade-Off</h3>
+
+
+<span class='fragment ' >Single-objective fails to capture trade-offs in drug discovery. Understanding how ligand properties interact helps us model expert preferences more accurately.</span>
+
+
+
+
+<span class='fragment ' ><p><strong>Approach:</strong> Model interactions between continuous ligand properties using linear regression, incorporating higher-order terms to capture complex dependencies.</p>
+<p>$$y = x_1w_1 + x_2w_2 + x_1x_2w_3$$</p>
+<p>where  $y$ is the utility score, and $x_1$, $x_2$ are ligand properties.</p>
+</span>
+
+
+
+
+<span class='fragment ' ><p><strong>Evaluation Metrics:</strong> Accuracy, ROC AUC</p>
+</span>
+
+
+
+
+<span class='fragment ' ><p><strong>Hypothesis:</strong> Higher-order interactions improve prediction performance by capturing complex dependencies among ligand properties.</p>
+</span>
+
+
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="4cheapvs-multi-objective-trade-off-results">4.CheapVS: Multi-Objective Trade-Off Results</h3>
+<img src="figures/interaction.png" alt="interaction" style="display: block; margin: 50px auto 0 auto; width: 50%;">
+
+
+<span class='fragment ' ><p><b>Key Finding:</b></p>
+<li class="fragment"> Higher-order interactions enhance performance by capturing interdependencies. </li>  
+<li class="fragment"> GPs model these dependencies, eliminating explicit interaction terms. </li>  
+</span>
+
+
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="5-conclusion">5. Conclusion</h3>
 <ul>
     <li class="fragment"><b>Efficient Drug Discovery:</b> Our framework accelerates VS by leveraging preferential multi-objective BO, requiring only a small subset of ligands and expert pairwise preferences.</li>
-    <li class="fragment"><b>Strong Performance:</b> Our algorithm successfully identified 16/37 drugs, significantly outperforming baseline methods, highlighting the power of preference-based optimization.</li>
+    <li class="fragment"><b>Strong Performance:</b> Our algorithm identified <b>16/37 EGFR</b> and <b>36/57 DRD2</b> drugs, significantly outperforming baselines and demonstrating the power of chemist-guided active preferential optimization.</li>
+  </ul>
+</section>
+
+<section data-noprocess data-shortcode-slide
+      data-auto-animate="">
+  
+<h3 id="6-next-steps">6. Next steps</h3>
+<ul> 
+  <li class="fragment">Listwise preference for providing richer preference information</li>
+  <li class="fragment">Build on top of state-of-the-art models such as AlphaFold3</li> 
 </ul></section>
 
   
@@ -748,11 +903,6 @@ Key: EDM-S minimizes regret faster and is significantly more efficient than Chai
 
 
 
-
-  
-  
-    
-  
 
   
   
