@@ -29,7 +29,7 @@ Tai Dang<sup>1,2</sup>,Hung Pham<sup>3</sup>,Sang Truong<sup>2</sup>, Ari Glenn<
 ### Outline
 - Problem Setup
 - Preference Elicitation from Pairwise Comparisons
-- Protein-ligand docking with Diffusion Models
+- Benchmarking Docking Models
 - Chemist-guided Active Virtual Screening
 
 
@@ -37,7 +37,7 @@ Tai Dang<sup>1,2</sup>,Hung Pham<sup>3</sup>,Sang Truong<sup>2</sup>, Ari Glenn<
 {{< slide auto-animate="" >}}
 ### Overview: Challenges in Virtual Screening
 
-<p><b>Problem:</b> Large-scale virtual screening is computationally expensive, inefficient.</p>
+<!-- <p><b>Problem:</b> Large-scale virtual screening is computationally expensive, inefficient.</p>
 
 <li class="fragment"><b>Computational Bottleneck:</b> Exhaustive docking of millions of compounds wastes substantial resources on low-quality hits.</li>
 
@@ -45,8 +45,9 @@ Tai Dang<sup>1,2</sup>,Hung Pham<sup>3</sup>,Sang Truong<sup>2</sup>, Ari Glenn<
 
 <li class="fragment"><b>Lack of Multi-Objective Optimization:</b> Traditional VS prioritizes affinity, ignores other key factors, leading to wasted effort on unsuitable candidates.</li>
 
-<p class="fragment"><b>→ A more efficient, expert-informed, and multi-objective approach is needed.</b></p>
-
+<p class="fragment"><b>→ A more efficient, expert-informed, and multi-objective approach is needed.</b></p> -->
+<p><b>Problem:</b> Traditional virtual screening is inefficient and overly focused on binding affinity.</p> <ul> <li class="fragment"><b>Computational Waste:</b> Exhaustive docking wastes resources on low-quality hits.</li> <li class="fragment"><b>Manual Bottlenecks:</b> Chemists manually evaluate compounds, slowing progress.</li> <li class="fragment"><b>Lack of Multi-Objective Optimization:</b> Other crucial properties-synthesizability, solubility, safety-are often ignored.</li> </ul> 
+<p class="fragment"><b>→ A smarter, multi-objective, expert-informed strategy is essential.</b></p>
 
 ---
 {{< slide auto-animate="" >}}
@@ -57,7 +58,7 @@ Tai Dang<sup>1,2</sup>,Hung Pham<sup>3</sup>,Sang Truong<sup>2</sup>, Ari Glenn<
     <h3 style="font-size: 36px;">Challenges:</h3>
     <ol style="font-size: 32px;">
       <li class="fragment" data-fragment-index="1">Leverage expert intuition to optimize drug candidate selection</li>
-      <li class="fragment" data-fragment-index="2">Slow conventional docking for affinity measurement</li>
+      <li class="fragment" data-fragment-index="2">Comparing diffusion vs. physics-based models for affinity prediction</li>
       <li class="fragment" data-fragment-index="3">Single-objective virtual screening insufficient</li>
     </ol>
   </div>
@@ -66,7 +67,7 @@ Tai Dang<sup>1,2</sup>,Hung Pham<sup>3</sup>,Sang Truong<sup>2</sup>, Ari Glenn<
     <h3 style="font-size: 36px; padding-left: 30px;">Solutions:</h3>
     <ol style="font-size: 32px; padding-left: 30px;">
       <li class="fragment" data-fragment-index="1">Expert Elicitation through preference learning</li>
-      <li class="fragment" data-fragment-index="2">Accelerate affinity measurement through diffusion model.</li>
+      <li class="fragment" data-fragment-index="2">Benchmarking docking models in VS.</li>
       <li class="fragment" data-fragment-index="3">Leverage Multi-objective Bayesian Optmization</li>
     </ol>
   </div>
@@ -86,7 +87,7 @@ A Unified Workflow for Efficient Virtual Screening
 
   <div style="text-align: center; width: 22%;">
     <p style="font-size: 0.8em; margin-bottom: 0.2em;"><strong>2. Docking Module</strong></p>
-    <p style="font-size: 0.8em; margin-bottom: 0.3em;">Diffusion-based Docking</p>
+    <p style="font-size: 0.8em; margin-bottom: 0.3em;">Docking Model</p>
   </div>
   <div style="font-size: 1.2em;">&rarr;</div>
   
@@ -126,8 +127,8 @@ A Unified Workflow for Efficient Virtual Screening
 ### Outline
 - Problem Setup
 - <span style="opacity: 0.5;">Virtual Screening on Synthetic Functions</span>
+- <span style="opacity: 0.5;">Benchmarking Docking Models</span>
 - <span style="opacity: 0.5;">Chemist-guided Active Preferential Virtual Screening</span>
-- <span style="opacity: 0.5;">Protein-ligand docking with Diffusion Models</span>
 
 
 ---
@@ -184,7 +185,7 @@ For **a given protein** linked to a certain disease,
 ### Outline
 - <span style="opacity: 0.5;">Problem Setup</span>
 - Preference Elicitation from Pairwise Comparisons
-- <span style="opacity: 0.5;">Protein-ligand docking with Diffusion Models</span>
+- <span style="opacity: 0.5;">Benchmarking Docking Models</span>
 - <span style="opacity: 0.5;">Chemist-guided Active Virtual Screening</span>
 
 
@@ -268,20 +269,19 @@ Preferential learning robustly recovers the latent utility function with high ac
 ### Outline
 - <span style="opacity: 0.5;">Problem Setup</span>
 - <span style="opacity: 0.5;">Preference Elicitation from Pairwise Comparisons</span>
-- Protein-ligand docking with Diffusion Models
+- Benchmarking Docking Models
 - <span style="opacity: 0.5;">Chemist-guided Active Virtual Screening</span>
 
 
 ---
 {{< slide auto-animate="" >}}
-### 3. Protein-Ligand Docking with Diffusion Models
-
+### 3. Benchmarking Docking Models
 {{% fragment %}}
-**Problem:** Traditional docking tools (Vina) are computationally expensive, slowing down active virtual screening.
+**Problem:** While traditional docking tools like Vina (especially GPU-accelerated versions) are already fast, it's unclear how newer diffusion-based docking models compare in speed and accuracy.
 {{% /fragment %}}
 
 {{% fragment %}}
-**Solution:** A diffusion-based docking model drastically reduces runtime and can handle flexible ligand conformations.
+**Solution:** Benchmark our diffusion-based docking models against Vina to evaluate performance, runtime, and flexibility in modeling ligand conformations.
 {{% /fragment %}}
 
 {{% fragment %}}
@@ -409,19 +409,19 @@ Data augmentation techniques create a richer dataset, boosting model performance
 {{< slide auto-animate="" >}}
 ### 3. Diffusion Model: Neural Search for Docking
 <ul style="font-size: 0.9em;"> 
-  <li class="fragment"><b>Traditional Tools</b> (e.g., Vina, Smina): ~2mins per pose</li> 
-  <li class="fragment"><b>Chai</b> (AlphaFold3-like): ~1.5 mins for 1 pose (1.3x faster)</li> 
-  <li class="fragment"><b>Our Diffusion Model</b>: ~25s for 128 poses (4.9x faster)</li> 
+  <li class="fragment"><b>Traditional Tools</b> (e.g., Vina, Smina): ~1.5s per pose</li> 
+  <li class="fragment"><b>Chai</b> (AlphaFold3-like): ~1.5 min for 5 pose</li> 
+  <li class="fragment"><b>Our Diffusion Model</b>: ~10s for 128 poses</li> 
 </ul>
 {{% fragment %}}
 <figure style="text-align: center; margin-top: -10px; position: relative;">
-  <img src="figures/time_regret.png" style="width: 53%; max-width: 800px;">
+  <img src="figures/acc_flops.png" style="width: 53%; max-width: 800px;">
 </figure>
 {{% /fragment %}}
 
 {{% fragment %}}
 <div style="border: 2px solid #333; background-color: rgb(255, 203, 208); padding: 12px; margin-top: -15px; width: calc(100% - 300px); margin-left: 150px; text-align: center; font-size: 0.8em; font-weight: bold; border-radius: 15px;">
-Key: EDM-S minimizes regret faster and is significantly more efficient than Chai-1 and Vina, highlighting the power of lightweight docking in VS.
+Key: Diffusion models show promise in binding affinity prediction, though physics-based methods demonstrate greater efficiency and accuracy.
 </div>
 {{% /fragment %}}
 
@@ -430,7 +430,7 @@ Key: EDM-S minimizes regret faster and is significantly more efficient than Chai
 ### Outline
 - <span style="opacity: 0.5;">Problem Setup</span>
 - <span style="opacity: 0.5;">Preference Elicitation from Pairwise Comparisons</span>
-- <span style="opacity: 0.5;">Protein-ligand docking with Diffusion Models</span>
+- <span style="opacity: 0.5;">Benchmarking Docking Models</span>
 - Chemist-guided Active Virtual Screening
 
 
@@ -448,14 +448,7 @@ Key: EDM-S minimizes regret faster and is significantly more efficient than Chai
 
 ---
 {{< slide auto-animate="" >}}
-### 4.CheapVS
-In drug discovery, selecting candidate ligands goes beyond targeting high-affinity molecules.
-{{% fragment %}}Experts use their deep chemical intuition to balance competing properties such as synthesizability, solubility, and potential side effects. {{% /fragment %}}
-{{% fragment %}}This approach ensures ligands are not only effective but also practical and safe for therapeutic use.{{% /fragment %}}
-
----
-{{< slide auto-animate="" >}}
-### 4.CheapVS
+### 4. CheapVS: Chemist-guided Active Preferential Virtual Screening Framework
 <p>
   Depending on the disease and target protein, experts have <b>intuition</b> about ligand characteristics,  
   {{% fragment %}}balancing synthesizability, affinity, solubility, and side effects.{{% /fragment %}}  
@@ -552,7 +545,6 @@ BO Optimization for EGFR and DRD2
   </ul>
 </section>
 
-
 ---
 {{< slide auto-animate="" >}}
 ### 4.CheapVS: Results
@@ -561,7 +553,7 @@ BO Optimization for EGFR and DRD2
 
 {{% fragment %}}
 <div style="border: 2px solid #333; background-color: rgb(255, 203, 208); padding: 12px; margin-top: 15px; width: calc(100% - 280px); margin-left: 150px; text-align: center; font-size: 0.8em; font-weight: bold; border-radius: 15px;">
-Key: Performance of CheapVS in identifying EGFR drugs. Multi-objective optimization outperforms the rest, identifying up to 16 of 37 approved drugs.
+Key: Incorporating expert preferences outperforms affinity-only methods, emphasizing the critical role of chemical intuition in drug discovery.
 </div>
 {{% /fragment %}}
 
